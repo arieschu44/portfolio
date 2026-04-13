@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aries Chu · UX Researcher</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+      --navy: #060f24;
+      --blue: #0066cc;
+      --blue2: #1a7fe8;
+      --blue-lt: #ddeeff;
+      --teal: #0891b2;
+      --teal-lt: #cffafe;
+      --violet: #6d28d9;
+      --vio-lt: #ede9fe;
+      --amber: #b45309;
+      --amb-lt: #fef3c7;
+      --green: #047857;
+      --grn-lt: #d1fae5;
+      --bg: #f5f7fa;
+      --sfc: #ffffff;
+      --rule: #e5e9f0;
+      --ink: #0d1117;
+      --ink2: #1a2332;
+      --ink3: #4a5568;
+      --ink4: #9aabb8;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sf);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 300;
+      height: 56px;
+      background: rgba(6, 15, 36, 0.96);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 44px
+    }
+
+    .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em
+    }
+
+    .nav-chip {
+      margin-left: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 4px
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      transition: color .2s
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 18px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 6px;
+      transition: background .2s
+    }
+
+    .nav-cta:hover {
+      background: var(--blue2)
+    }
+
+    /* ─── HERO ───────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 44px 80px
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1800&q=60') center/cover no-repeat;
+      opacity: .06
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(0, 102, 204, .18) 0%, transparent 55%, rgba(109, 40, 217, .12) 100%)
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 2
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--blue2)
+    }
+
+    .hero-name {
+      font-size: clamp(60px, 6.5vw, 88px);
+      font-weight: 800;
+      color: #fff;
+      line-height: .95;
+      letter-spacing: -.035em;
+      margin-bottom: 20px
+    }
+
+    .hero-name em {
+      color: var(--blue2);
+      font-style: normal;
+      display: block
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 28px
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, .62);
+      max-width: 520px;
+      margin-bottom: 44px
+    }
+
+    .hero-desc strong {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 44px;
+      flex-wrap: wrap
+    }
+
+    .hs-n {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .hs-n span {
+      color: var(--blue2)
+    }
+
+    .hs-l {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .38);
+      margin-top: 5px;
+      letter-spacing: .04em;
+      font-weight: 500
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn-solid {
+      padding: 13px 26px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      display: inline-block
+    }
+
+    .btn-solid:hover {
+      background: var(--blue2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 102, 204, .45)
+    }
+
+    .btn-ghost {
+      padding: 12px 26px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, .18);
+      color: rgba(255, 255, 255, .72);
+      border-radius: 8px;
+      transition: all .2s;
+      display: inline-block
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, .45);
+      color: #fff
+    }
+
+    /* Hero photo stack */
+    .hero-right {
+      position: relative
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, .6)
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -16px;
+      left: -20px;
+      background: var(--blue);
+      padding: 18px 22px;
+      border-radius: 10px;
+      box-shadow: 0 12px 36px rgba(0, 102, 204, .5)
+    }
+
+    .hb-n {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .hb-l {
+      font-size: 10px;
+      color: rgba(255, 255, 255, .7);
+      margin-top: 4px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .hero-chip {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      background: rgba(13, 17, 23, .95);
+      border: 1px solid rgba(255, 255, 255, .1);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .75);
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    /* ─── STRIPE ──────────────────────────────── */
+    .stripe {
+      background: linear-gradient(90deg, var(--blue) 0%, #0077ee 35%, var(--teal) 70%, var(--violet) 100%);
+      padding: 28px 44px
+    }
+
+    .stripe-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center
+    }
+
+    .st-n {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .st-l {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .65);
+      margin-top: 5px;
+      font-weight: 500;
+      letter-spacing: .04em
+    }
+
+    /* ─── SECTION ─────────────────────────────── */
+    section {
+      padding: 96px 44px
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 2px
+    }
+
+    .ew-blue {
+      color: var(--blue)
+    }
+
+    .ew-blue::before {
+      background: var(--blue)
+    }
+
+    .ew-teal {
+      color: var(--teal)
+    }
+
+    .ew-teal::before {
+      background: var(--teal)
+    }
+
+    .ew-violet {
+      color: var(--violet)
+    }
+
+    .ew-violet::before {
+      background: var(--violet)
+    }
+
+    .ew-white {
+      color: rgba(255, 255, 255, .5)
+    }
+
+    .ew-white::before {
+      background: rgba(255, 255, 255, .35)
+    }
+
+    .sec-title {
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -.025em
+    }
+
+    .sec-title.light {
+      color: #fff
+    }
+
+    /* ─── VALUES ──────────────────────────────── */
+    #values {
+      background: var(--sfc);
+      padding: 80px 44px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .val-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--rule);
+      margin-top: 52px;
+      border: 1px solid var(--rule)
+    }
+
+    .vc {
+      background: var(--sfc);
+      padding: 36px 28px;
+      transition: background .2s
+    }
+
+    .vc:hover {
+      background: #f0f6ff
+    }
+
+    .vc-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px
+    }
+
+    .ic1 {
+      background: var(--blue-lt)
+    }
+
+    .ic2 {
+      background: var(--teal-lt)
+    }
+
+    .ic3 {
+      background: var(--amb-lt)
+    }
+
+    .ic4 {
+      background: var(--grn-lt)
+    }
+
+    .vc-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -.01em
+    }
+
+    .vc-desc {
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.65
+    }
+
+    /* ─── WORK ────────────────────────────────── */
+    #work {
+      background: var(--bg)
+    }
+
+    .work-hdr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 60px
+    }
+
+    .work-intro-text {
+      font-size: 16px;
+      color: var(--ink3);
+      line-height: 1.75;
+      margin-top: 14px
+    }
+
+    /* CS card */
+    .cs-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .cs-card {
+      background: var(--sfc);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      transition: box-shadow .2s, border-color .2s
+    }
+
+    .cs-card:hover {
+      box-shadow: 0 8px 40px rgba(13, 17, 23, .1);
+      border-color: #c5d3e8
+    }
+
+    .cs-card.c1 {
+      border-top: 4px solid var(--blue)
+    }
+
+    .cs-card.c2 {
+      border-top: 4px solid var(--teal)
+    }
+
+    .cs-card.c3 {
+      border-top: 4px solid var(--violet)
+    }
+
+    .cs-hdr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 40px 44px 36px;
+      cursor: pointer;
+      align-items: start
+    }
+
+    .cs-idx {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--ink4);
+      margin-bottom: 10px;
+      text-transform: uppercase
+    }
+
+    .cs-tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 14px
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px
+    }
+
+    .tb {
+      background: var(--blue-lt);
+      color: var(--blue)
+    }
+
+    .tt {
+      background: var(--teal-lt);
+      color: var(--teal)
+    }
+
+    .tv {
+      background: var(--vio-lt);
+      color: var(--violet)
+    }
+
+    .ta {
+      background: var(--amb-lt);
+      color: var(--amber)
+    }
+
+    .tg {
+      background: var(--grn-lt);
+      color: var(--green)
+    }
+
+    .tn {
+      background: var(--rule);
+      color: var(--ink3)
+    }
+
+    .cs-title {
+      font-size: clamp(19px, 2vw, 25px);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 12px
+    }
+
+    .cs-excerpt {
+      font-size: 14px;
+      color: var(--ink3);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 24px
+    }
+
+    .cs-kpis {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap
+    }
+
+    .kpi-n {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .kpi-n.bl {
+      color: var(--blue)
+    }
+
+    .kpi-n.te {
+      color: var(--teal)
+    }
+
+    .kpi-n.vi {
+      color: var(--violet)
+    }
+
+    .kpi-l {
+      font-size: 11px;
+      color: var(--ink4);
+      margin-top: 4px;
+      font-weight: 500
+    }
+
+    .cs-hdr-r {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      min-width: 120px
+    }
+
+    .cs-pills {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end
+    }
+
+    .pill {
+      font-size: 10px;
+      padding: 3px 8px;
+      border: 1px solid var(--rule);
+      color: var(--ink3);
+      font-weight: 500;
+      border-radius: 4px
+    }
+
+    .cs-toggle {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all .2s;
+      flex-shrink: 0
+    }
+
+    .cs-card.open .cs-toggle {
+      background: var(--blue);
+      border-color: var(--blue)
+    }
+
+    .cs-toggle svg {
+      transition: transform .3s;
+      stroke: var(--ink3);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    .cs-card.open .cs-toggle svg {
+      transform: rotate(180deg);
+      stroke: #fff
+    }
+
+    /* Detail */
+    .cs-detail {
+      display: none;
+      border-top: 1px solid var(--rule)
+    }
+
+    .cs-card.open .cs-detail {
+      display: block
+    }
+
+    .cs-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px
+    }
+
+    .cd-main {
+      border-right: 1px solid var(--rule)
+    }
+
+    /* Hero photo full-bleed */
+    .cd-hero {
+      position: relative;
+      height: 320px;
+      overflow: hidden
+    }
+
+    .cd-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s
+    }
+
+    .cs-card:hover .cd-hero img {
+      transform: scale(1.03)
+    }
+
+    .cd-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 36, .82) 0%, transparent 55%)
+    }
+
+    .cd-hero-meta {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end
+    }
+
+    .cd-hero-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      max-width: 540px;
+      letter-spacing: -.01em
+    }
+
+    .cd-hero-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+      text-align: right;
+      white-space: nowrap
+    }
+
+    .cd-body {
+      padding: 48px 44px
+    }
+
+    /* Section label pill */
+    .d-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px
+    }
+
+    .dl-b {
+      background: var(--blue);
+      color: #fff
+    }
+
+    .dl-t {
+      background: var(--teal);
+      color: #fff
+    }
+
+    .dl-v {
+      background: var(--violet);
+      color: #fff
+    }
+
+    .dl-a {
+      background: var(--amber);
+      color: #fff
+    }
+
+    .dl-g {
+      background: var(--green);
+      color: #fff
+    }
+
+    .dl-d {
+      background: var(--ink2);
+      color: #fff
+    }
+
+    .d-block {
+      margin-bottom: 40px
+    }
+
+    .d-text {
+      font-size: 14px;
+      line-height: 1.82;
+      color: var(--ink3)
+    }
+
+    .d-text p {
+      margin-bottom: 14px
+    }
+
+    .d-text strong {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    /* Reframe box */
+    .reframe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 20px 0
+    }
+
+    .rf {
+      background: var(--sfc);
+      padding: 22px
+    }
+
+    .rf.new {
+      background: var(--grn-lt)
+    }
+
+    .rf-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 8px
+    }
+
+    .rf-lbl.old {
+      color: var(--ink4)
+    }
+
+    .rf-lbl.new {
+      color: var(--green)
+    }
+
+    .rf-text {
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--ink3)
+    }
+
+    .rf-text.new {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .rf-note {
+      font-size: 11px;
+      color: var(--ink4);
+      margin-top: 6px
+    }
+
+    .rf-note.new {
+      color: var(--green);
+      font-weight: 500
+    }
+
+    /* Process bar */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 20px 0
+    }
+
+    .ps {
+      background: var(--sfc);
+      padding: 22px 16px;
+      text-align: center
+    }
+
+    .ps-n {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px
+    }
+
+    .ps-t {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 3px
+    }
+
+    .ps-s {
+      font-size: 11px;
+      color: var(--ink4);
+      line-height: 1.4
+    }
+
+    .ps-n.bl {
+      color: var(--blue)
+    }
+
+    .ps-n.te {
+      color: var(--teal)
+    }
+
+    .ps-n.vi {
+      color: var(--violet)
+    }
+
+    .ps-n.am {
+      color: var(--amber)
+    }
+
+    .ps-n.gr {
+      color: var(--green)
+    }
+
+    /* Photo grid */
+    .pg2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin: 20px 0
+    }
+
+    .pg3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      margin: 20px 0
+    }
+
+    .ph {
+      position: relative;
+      overflow: hidden
+    }
+
+    .ph img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      transition: transform .35s;
+      display: block
+    }
+
+    .ph:hover img {
+      transform: scale(1.05)
+    }
+
+    .ph-lbl {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 12px;
+      background: linear-gradient(transparent, rgba(6, 15, 36, .78));
+      font-size: 10px;
+      color: rgba(255, 255, 255, .8);
+      font-weight: 500;
+      letter-spacing: .04em
+    }
+
+    .ph.tall img {
+      height: 280px
+    }
+
+    /* Quote */
+    .quote {
+      border-left: 3px solid var(--blue);
+      padding: 18px 22px;
+      background: var(--blue-lt);
+      border-radius: 0 6px 6px 0;
+      margin: 20px 0
+    }
+
+    .quote.teal {
+      border-color: var(--teal);
+      background: var(--teal-lt)
+    }
+
+    .quote.violet {
+      border-color: var(--violet);
+      background: var(--vio-lt)
+    }
+
+    .q-text {
+      font-size: 15px;
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-weight: 500
+    }
+
+    .q-attr {
+      font-size: 12px;
+      color: var(--ink3);
+      font-weight: 500
+    }
+
+    /* Findings list */
+    .findings {
+      list-style: none;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden
+    }
+
+    .fi {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .fi:last-child {
+      border-bottom: none
+    }
+
+    .fi-n {
+      background: var(--bg);
+      padding: 18px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink4);
+      text-align: center;
+      border-right: 1px solid var(--rule)
+    }
+
+    .fi-body {
+      padding: 16px 20px;
+      font-size: 14px;
+      line-height: 1.72;
+      color: var(--ink3)
+    }
+
+    .fi-body strong {
+      color: var(--ink);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink3);
+      line-height: 1.55;
+      align-items: start
+    }
+
+    .checklist li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 800;
+      font-size: 12px;
+      padding-top: 1px
+    }
+
+    /* Sidebar */
+    .cd-side {
+      padding: 36px 28px;
+      background: var(--bg)
+    }
+
+    .sb {
+      background: var(--sfc);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 14px;
+      overflow: hidden
+    }
+
+    .sb-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink4);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .sb-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      gap: 12px
+    }
+
+    .sb-row:last-child {
+      border-bottom: none
+    }
+
+    .sb-k {
+      font-size: 12px;
+      color: var(--ink3);
+      white-space: nowrap;
+      font-weight: 500
+    }
+
+    .sb-v {
+      font-size: 12px;
+      color: var(--ink);
+      font-weight: 600;
+      text-align: right;
+      line-height: 1.4;
+      max-width: 170px
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px
+    }
+
+    .ib {
+      padding: 16px 12px;
+      text-align: center;
+      background: var(--navy);
+      border-radius: 6px
+    }
+
+    .ib-n {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -.02em
+    }
+
+    .ib-l {
+      font-size: 10px;
+      color: rgba(255, 255, 255, .5);
+      margin-top: 4px;
+      font-weight: 500;
+      line-height: 1.4
+    }
+
+    /* ─── ABOUT ──────────────────────────────── */
+    #about {
+      background: var(--navy)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start
+    }
+
+    .about-h {
+      font-size: clamp(32px, 3.5vw, 46px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+      margin-bottom: 24px
+    }
+
+    .about-body {
+      font-size: 15px;
+      line-height: 1.82;
+      color: rgba(255, 255, 255, .6)
+    }
+
+    .about-body p {
+      margin-bottom: 18px
+    }
+
+    .about-body strong {
+      color: #fff;
+      font-weight: 600
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 32px
+    }
+
+    .sk {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 11px 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      font-weight: 500;
+      border-radius: 6px
+    }
+
+    .about-right {}
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5)
+    }
+
+    .exp-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .07)
+    }
+
+    .exp-role {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px
+    }
+
+    .exp-place {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--blue2);
+      font-weight: 600;
+      margin-top: 5px;
+      letter-spacing: .03em
+    }
+
+    /* ─── CONTACT ────────────────────────────── */
+    #contact {
+      background: var(--blue);
+      padding: 80px 44px
+    }
+
+    .contact-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center
+    }
+
+    .contact-h {
+      font-size: clamp(34px, 4vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -.025em;
+      margin-bottom: 12px
+    }
+
+    .contact-sub {
+      font-size: 15px;
+      color: rgba(255, 255, 255, .65);
+      font-weight: 300
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 10px;
+      transition: background .2s
+    }
+
+    .contact-card:hover {
+      background: rgba(255, 255, 255, .18)
+    }
+
+    .cc-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px
+    }
+
+    .cc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 3px
+    }
+
+    .cc-val {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .hero-inner>* {
+      opacity: 0;
+      animation: fadeUp .75s forwards
+    }
+
+    .hero-inner>*:nth-child(1) {
+      animation-delay: .1s
+    }
+
+    .hero-inner>*:nth-child(2) {
+      animation-delay: .3s
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────── */
+    @media(max-width:960px) {
+      nav {
+        padding: 0 20px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      section {
+        padding: 72px 20px
+      }
+
+      #hero {
+        padding: 100px 20px 72px
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .hero-right {
+        display: none
+      }
+
+      .stripe-inner {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .val-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .work-hdr {
+        grid-template-columns: 1fr
+      }
+
+      .cs-hdr {
+        padding: 28px 20px
+      }
+
+      .cs-detail-grid {
+        grid-template-columns: 1fr
+      }
+
+      .cd-main {
+        border-right: none;
+        border-bottom: 1px solid var(--rule)
+      }
+
+      .cd-body {
+        padding: 32px 20px
+      }
+
+      .cd-side {
+        padding: 28px 20px
+      }
+
+      .reframe {
+        grid-template-columns: 1fr
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .pg2 {
+        grid-template-columns: 1fr
+      }
+
+      .pg3 {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr
+      }
+
+      .stripe {
+        padding: 24px 20px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Aries Chu <span class="nav-chip">UXR</span></div>
+    <ul class="nav-links">
+      <li><a href="#values">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div>
+        <p class="hero-eyebrow">UX Researcher · Enterprise AI · Human Factors</p>
+        <h1 class="hero-name">Aries<em>Chu</em></h1>
+        <p class="hero-sub">UX Researcher · SAP Joule Mobile GenAI · San Jose, CA</p>
+        <p class="hero-desc">I lead UX Research at SAP for Joule Mobile and Mobile Design System, specialized in
+          aligning complex LLM capabilities
+          with high-stakes human workflows. My work focuses on de-risking the product lifecycle and partnering with
+          product leadership to pivot roadmaps toward measurable CSAT gains.</p>
+        <div class="hero-stats">
+          <div>
+            <div class="hs-n"><span>400K</span>+</div>
+            <div class="hs-l">Enterprise users impacted</div>
+          </div>
+          <div>
+            <div class="hs-n"><span>+12.6%</span></div>
+            <div class="hs-l">CSAT increase driven</div>
+          </div>
+          <div>
+            <div class="hs-n"><span>~8</span> wks</div>
+            <div class="hs-l">Engineering rework prevented</div>
+          </div>
+        </div>
+        <div class="hero-btns">
+          <a href="#work" class="btn-solid">View Case Studies</a>
+          <a href="#contact" class="btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="./pic/me.png" alt="UX Researcher" class="hero-photo" />
+        <div class="hero-badge">
+          <div class="hb-n">4</div>
+          <div class="hb-l">Case Studies</div>
+        </div>
+        <div class="hero-chip">Open to UXR Roles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIPE -->
+  <div class="stripe">
+    <div class="stripe-inner">
+      <div class="reveal">
+        <div class="st-n">400K+</div>
+        <div class="st-l">Enterprise users impacted</div>
+      </div>
+      <div class="reveal">
+        <div class="st-n">+12.6%</div>
+        <div class="st-l">Satisfaction increase driven</div>
+      </div>
+      <div class="reveal">
+        <div class="st-n">~8 wks</div>
+        <div class="st-l">Engineering rework prevented</div>
+      </div>
+      <div class="reveal">
+        <div class="st-n">9</div>
+        <div class="st-l">Roadmap decisions influenced</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section id="values">
+    <div class="container">
+      <p class="eyebrow ew-blue reveal">Research Philosophy</p>
+      <h2 class="sec-title reveal">What I bring to every project</h2>
+      <div class="val-grid reveal">
+        <div class="vc">
+          <div class="vc-icon ic1">🎯</div>
+          <div class="vc-title">Solid IC</div>
+          <div class="vc-desc">End-to-end ownership from research plan to stakeholder readout. Independent initiation —
+            I identify the gaps, not just fill the briefs given to me.</div>
+        </div>
+        <div class="vc">
+          <div class="vc-icon ic2">📡</div>
+          <div class="vc-title">Strategic Influence</div>
+          <div class="vc-desc">Research that redirects roadmaps and shapes investment decisions — not research that gets
+            presented and filed. I connect findings to business risk.</div>
+        </div>
+        <div class="vc">
+          <div class="vc-icon ic3">🔊</div>
+          <div class="vc-title">Voice of the User</div>
+          <div class="vc-desc">Translating real behavioral insight into language that product and engineering teams can
+            act on. I make the user present in every decision room.</div>
+        </div>
+        <div class="vc">
+          <div class="vc-icon ic4">🔍</div>
+          <div class="vc-title">Anticipating Failure</div>
+          <div class="vc-desc">Identifying how and where a product will break before it ships — not after. Human Factors
+            training means I think in failure modes by default.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="work-hdr">
+        <div class="reveal">
+          <p class="eyebrow ew-blue">Selected Work</p>
+          <h2 class="sec-title">Case Studies</h2>
+        </div>
+        <div class="work-intro-text reveal">Four research projects from SAP's Joule Mobile platform — each one a
+          different kind of intervention at a different level of the product organization.</div>
+      </div>
+
+      <div class="cs-stack">
+
+        <!-- ═══ CS 1: VOICE ═══ -->
+        <div class="cs-card c1 reveal" id="card1">
+          <div class="cs-hdr" onclick="toggleCard('card1')">
+            <div>
+              <div class="cs-idx">Case Study 01</div>
+              <div class="cs-tags">
+                <span class="tag tb">Strategic Research</span>
+                <span class="tag tv">Cross-Org Initiative</span>
+                <span class="tag tn">In Progress</span>
+              </div>
+              <h3 class="cs-title">Defining the Role of Voice in Enterprise Mobile AI</h3>
+              <p class="cs-excerpt">Voice development had started without a validated user model. I reframed the
+                question from "how do we build voice?" to "where does voice earn its place?" — redirecting cross-org
+                engineering investment before it compounded in the wrong direction.</p>
+              <div class="cs-kpis">
+                <div>
+                  <div class="kpi-n bl">7</div>
+                  <div class="kpi-l">PM Interviews</div>
+                </div>
+                <div>
+                  <div class="kpi-n bl">3</div>
+                  <div class="kpi-l">Orgs Aligned</div>
+                </div>
+                <div>
+                  <div class="kpi-n bl">∞</div>
+                  <div class="kpi-l">Speculative builds paused</div>
+                </div>
+              </div>
+            </div>
+            <div class="cs-hdr-r">
+              <div class="cs-pills">
+                <span class="pill">JTBD</span><span class="pill">Stakeholder Alignment</span><span
+                  class="pill">Foundational</span>
+              </div>
+              <button class="cs-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="cs-detail">
+            <div class="cs-detail-grid">
+              <div class="cd-main">
+                <div class="cd-hero">
+                  <img src="./pic/bg1.webp" alt="Enterprise AI strategy" style="object-position: center 80%;" />
+                  <div class="cd-overlay"></div>
+                  <div class="cd-hero-meta">
+                    <div class="cd-hero-title">When "Move Fast" Needs a Research Checkpoint</div>
+                    <div class="cd-hero-tag">Joule Mobile · Feb 2025–Present</div>
+                  </div>
+                </div>
+                <div class="cd-body">
+
+                  <div class="d-block">
+                    <span class="d-label dl-b">The Situation</span>
+                    <div class="d-text">
+                      <p>SAP's AI-first strategy positioned voice as the key differentiator for Joule — their enterprise
+                        AI assistant serving 400K+ customers. By the time I joined the initiative, voice development was
+                        already underway. The problem: it had started without answering a foundational question.</p>
+                      <p><strong>Do enterprise users actually want to use voice for work tasks? And if so — which tasks,
+                          under which conditions?</strong></p>
+                      <p>Development was driven by executive enthusiasm and competitive pressure. Both are legitimate
+                        business drivers — but neither is a user need. I identified the gap and initiated the research
+                        independently.</p>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-d">The Critical Reframe</span>
+                    <div class="reframe">
+                      <div class="rf">
+                        <div class="rf-lbl old">Original Brief</div>
+                        <div class="rf-text">"How should we build Joule Voice?"</div>
+                        <div class="rf-note">Assumes voice is always valuable. Leads to feature design.</div>
+                      </div>
+                      <div class="rf new">
+                        <div class="rf-lbl new">My Reframe</div>
+                        <div class="rf-text new">"Where does voice earn its place in enterprise workflows?"</div>
+                        <div class="rf-note new">Questions the premise. Leads to investment strategy.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-b">Research Approach</span>
+                    <div class="process">
+                      <div class="ps">
+                        <div class="ps-n bl">7</div>
+                        <div class="ps-t">PM Interviews</div>
+                        <div class="ps-s">Across all SAP mobile apps</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n te">JTBD</div>
+                        <div class="ps-t">Framework</div>
+                        <div class="ps-s">"When would a user hire voice?"</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n vi">4</div>
+                        <div class="ps-t">Org Alignment</div>
+                        <div class="ps-s">AI + Voice + Mobile leads</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n gr">→</div>
+                        <div class="ps-t">Next Phase</div>
+                        <div class="ps-s">End-user validation (n=15–20)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pg2">
+                    <div class="ph">
+                      <img src="./pic/pm1.png" alt="Stakeholder interview" />
+                      <div class="ph-lbl">PM stakeholder interviews</div>
+                    </div>
+                    <div class="ph">
+                      <img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=700&q=80"
+                        alt="Mobile workflow research" />
+                      <div class="ph-lbl">Mobile workflow analysis</div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-b">Early Directional Findings</span>
+                    <ul class="findings">
+                      <li class="fi">
+                        <div class="fi-n">01</div>
+                        <div class="fi-body"><strong>Voice is situational, not universal.</strong> The roadmap treated
+                          voice as a global input method. Research showed it's a mode that unlocks specific high-value
+                          moments — not a feature to add everywhere.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">02</div>
+                        <div class="fi-body"><strong>Hands-occupied, single-intent contexts win.</strong> Field
+                          technicians logging status updates. One clear intent, no visual complexity. Voice is a natural
+                          fit here.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">03</div>
+                        <div class="fi-body"><strong>Complex workflows break voice.</strong> Expense approvals,
+                          precision input, multi-step processes. Voice adds cognitive load — it doesn't remove it.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">04</div>
+                        <div class="fi-body"><strong>Cognitive load matters more than privacy.</strong> Expected privacy
+                          to be the primary barrier (per consumer voice literature). Enterprise users flagged cognitive
+                          load and workflow complexity instead. Recalibrated mid-study.</div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-g">Strategic Impact So Far</span>
+                    <div class="d-text">
+                      <p>Voice integrations for complex workflows paused pending end-user validation. Three previously
+                        siloed teams now operating from a shared criteria framework. Leadership framing shifted from
+                        "innovation signal" to "investment risk mitigation."</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="cd-side">
+                <div class="sb">
+                  <div class="sb-title">Project Details</div>
+                  <div class="sb-row"><span class="sb-k">Role</span><span class="sb-v">Sole Researcher</span></div>
+                  <div class="sb-row"><span class="sb-k">Timeline</span><span class="sb-v">Feb 2025 – Present</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Scope</span><span class="sb-v">Cross-org: AI, Voice,
+                      Mobile</span></div>
+                  <div class="sb-row"><span class="sb-k">Status</span><span class="sb-v">Foundational complete;
+                      validation next</span></div>
+                  <div class="sb-row"><span class="sb-k">Product</span><span class="sb-v">Joule Mobile</span>
+                  </div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Methods</div>
+                  <div class="sb-row"><span class="sb-k">Interviews</span><span class="sb-v">n=7 PMs</span></div>
+                  <div class="sb-row"><span class="sb-k">Framework</span><span class="sb-v">Jobs to Be Done & Secondary
+                      Research</span></div>
+                  <div class="sb-row"><span class="sb-k">Alignment</span><span class="sb-v">4 org leads</span></div>
+                  <div class="sb-row"><span class="sb-k">Analysis</span><span class="sb-v">Thematic + workflow
+                      mapping</span></div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">IC Contribution</div>
+                  <ul class="checklist">
+                    <li>Identified gap independently — not assigned</li>
+                    <li>Rewrote brief from design to strategy</li>
+                    <li>Surfaced cross-org assumption contradictions</li>
+                    <li>Influenced roadmap before engineering invested</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CS 2: DESIGN SYSTEM ═══ -->
+        <div class="cs-card c2 reveal" id="card2">
+          <div class="cs-hdr" onclick="toggleCard('card2')">
+            <div>
+              <div class="cs-idx">Case Study 02</div>
+              <div class="cs-tags">
+                <span class="tag tt">Systemic Research</span>
+                <span class="tag tg">Measured Impact</span>
+              </div>
+              <h3 class="cs-title">Restoring Trust in the SAP Fiori Mobile Design System</h3>
+              <p class="cs-excerpt">Teams were quietly abandoning a design system built to help them — not because it
+                was broken, but because they couldn't trust it. I diagnosed three structural trust failures across 19
+                interviews and drove changes that measurably reversed the crisis in one quarter.</p>
+              <div class="cs-kpis">
+                <div>
+                  <div class="kpi-n te">+12.6%</div>
+                  <div class="kpi-l">Satisfaction (3.71→4.18)</div>
+                </div>
+                <div>
+                  <div class="kpi-n te">~8 wks</div>
+                  <div class="kpi-l">Engineering saved</div>
+                </div>
+                <div>
+                  <div class="kpi-n te">19</div>
+                  <div class="kpi-l">Interviews + workshop</div>
+                </div>
+              </div>
+            </div>
+            <div class="cs-hdr-r">
+              <div class="cs-pills">
+                <span class="pill">Mixed Methods</span><span class="pill">Workshop Facilitation</span><span
+                  class="pill">Roadmap Influence</span>
+              </div>
+              <button class="cs-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="cs-detail">
+            <div class="cs-detail-grid">
+              <div class="cd-main">
+                <div class="cd-hero">
+                  <img src="./pic/bg2.png" alt="Design system components" style="object-position: center 60%;" />
+                  <div class="cd-overlay"></div>
+                  <div class="cd-hero-meta">
+                    <div class="cd-hero-title">A Trust Problem Disguised as a UI Problem</div>
+                    <div class="cd-hero-tag">Fiori Design System · Aug–Sep 2025</div>
+                  </div>
+                </div>
+                <div class="cd-body">
+
+                  <div class="d-block">
+                    <span class="d-label dl-t">The Problem</span>
+                    <div class="d-text">
+                      <p>Satisfaction had dropped to 3.71/5. Teams were building custom components instead of using the
+                        system — quietly, without filing tickets. The initial hypothesis was component quality.</p>
+                      <p><strong>I challenged it.</strong> Teams were avoiding working components. That behavioral
+                        signal told me this was a trust problem, not a quality problem — requiring a completely
+                        different approach.</p>
+                    </div>
+                    <div class="reframe">
+                      <div class="rf">
+                        <div class="rf-lbl old">Starting Assumption</div>
+                        <div class="rf-text">"The components have quality issues — fix them."</div>
+                      </div>
+                      <div class="rf new">
+                        <div class="rf-lbl new">Research Question</div>
+                        <div class="rf-text new">"Why do teams feel unsafe relying on this system — and on what
+                          dimensions?"</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-t">Research Approach</span>
+                    <div class="process">
+                      <div class="ps">
+                        <div class="ps-n bl">19</div>
+                        <div class="ps-t">Interviews</div>
+                        <div class="ps-s">Designers + devs separately</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n te">👁</div>
+                        <div class="ps-t">Live Audits</div>
+                        <div class="ps-s">Real handoff processes</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n am">📊</div>
+                        <div class="ps-t">Survey</div>
+                        <div class="ps-s">Pre + post benchmark</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n gr">🤝</div>
+                        <div class="ps-t">Workshop</div>
+                        <div class="ps-s">Cross-functional ownership</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pg2">
+                    <div class="ph">
+                      <img src="./pic/bg21.png" alt="Research workshop" />
+                      <div class="ph-lbl">Cross-functional prioritization workshop</div>
+                    </div>
+                    <div class="ph">
+                      <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=700&q=80"
+                        alt="Component analysis" />
+                      <div class="ph-lbl">Component workflow audit sessions</div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-t">Three Root Causes</span>
+                    <ul class="findings">
+                      <li class="fi">
+                        <div class="fi-n">01</div>
+                        <div class="fi-body"><strong>The Guidelines Conflict.</strong> SAP's internal guidelines
+                          contradicted Apple HIG and Android Material. Designers were caught between two authoritative
+                          sources — every decision required external validation, doubling design time.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">02</div>
+                        <div class="fi-body"><strong>The Detachment Loop.</strong> Rigid components → teams forced to
+                          customize → detach → lose future updates → build custom → debt compounds. Once detached, the
+                          cost of returning kept growing with every release.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">03</div>
+                        <div class="fi-body"><strong>The Accessibility Void.</strong> Developers couldn't verify WCAG
+                          compliance. Legal anxiety drove custom builds they "knew were safe" — even though those builds
+                          were objectively worse on accessibility. Fear of the unknown outweighed the known risk.</div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="quote teal">
+                    <div class="q-text">"Sometimes I spend more time figuring out which component to use than actually
+                      designing."</div>
+                    <div class="q-attr">— Internal designer, workflow audit session</div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-g">Changes Shipped in v25.04</span>
+                    <ul class="checklist">
+                      <li>Comparison tables showing where SAP intentionally diverges from Apple/Android — and why</li>
+                      <li>Flexible component variants with documented customization zones — adapt without detaching</li>
+                      <li>Screen-reader annotations integrated into every component spec — removing accessibility
+                        ambiguity</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <div class="cd-side">
+                <div class="sb">
+                  <div class="sb-title">Project Details</div>
+                  <div class="sb-row"><span class="sb-k">Role</span><span class="sb-v">Lead Researcher</span></div>
+                  <div class="sb-row"><span class="sb-k">Timeline</span><span class="sb-v">July – Aug 2025</span></div>
+                  <div class="sb-row"><span class="sb-k">Scope</span><span class="sb-v">Multi-product design
+                      system</span></div>
+                  <div class="sb-row"><span class="sb-k">Users</span><span class="sb-v">600+ internal designers</span>
+                  </div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Impact</div>
+                  <div class="impact-grid">
+                    <div class="ib">
+                      <div class="ib-n">+12.6%</div>
+                      <div class="ib-l">Satisfaction lift</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">~8 wks</div>
+                      <div class="ib-l">Engineering saved</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">v25.04</div>
+                      <div class="ib-l">3 changes shipped</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">2026</div>
+                      <div class="ib-l">Roadmap shaped</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Methods</div>
+                  <div class="sb-row"><span class="sb-k">Interviews</span><span class="sb-v">n=19</span></div>
+                  <div class="sb-row"><span class="sb-k">Workflow audits</span><span class="sb-v">Live sessions</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Survey</span><span class="sb-v">Pre + post benchmark</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Workshop</span><span class="sb-v">Cross-functional</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CS 3: RETRY ═══ -->
+        <div class="cs-card c3 reveal" id="card3">
+          <div class="cs-hdr" onclick="toggleCard('card3')">
+            <div>
+              <div class="cs-idx">Case Study 03</div>
+              <div class="cs-tags">
+                <span class="tag ta">Behavioral Research</span>
+                <span class="tag tg">Stop-Ship Decision</span>
+              </div>
+              <h3 class="cs-title">The "Stop Ship" Decision — Retry vs. Conversational Repair</h3>
+              <p class="cs-excerpt">Leadership requested a Retry button to handle AI errors for 440K+ users. I ran 8
+                customer interviews before engineering started — and found 8 out of 8 users repaired errors
+                conversationally, never via button. The feature was deprioritized. The deck reached VP level.</p>
+              <div class="cs-kpis">
+                <div>
+                  <div class="kpi-n vi">8/8</div>
+                  <div class="kpi-l">Users repaired conversationally</div>
+                </div>
+                <div>
+                  <div class="kpi-n vi">VP</div>
+                  <div class="kpi-l">Research escalated to exec</div>
+                </div>
+                <div>
+                  <div class="kpi-n vi">4 wks</div>
+                  <div class="kpi-l">Full independent ownership</div>
+                </div>
+              </div>
+            </div>
+            <div class="cs-hdr-r">
+              <div class="cs-pills">
+                <span class="pill">In-Depth Interviews</span><span class="pill">Behavioral Observation</span><span
+                  class="pill">Executive Influence</span>
+              </div>
+              <button class="cs-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="cs-detail">
+            <div class="cs-detail-grid">
+              <div class="cd-main">
+                <div class="cd-hero">
+                  <img src="./pic/bg3.png" alt="AI assistant interface research" />
+                  <div class="cd-overlay"></div>
+                  <div class="cd-hero-meta">
+                    <div class="cd-hero-title">Sometimes the Best Research Outcome Is Telling Your Team Not to Build
+                      Something</div>
+                    <div class="cd-hero-tag">Joule AI Assistant · Sept 2025</div>
+                  </div>
+                </div>
+                <div class="cd-body">
+
+                  <div class="d-block">
+                    <span class="d-label dl-v">The Situation</span>
+                    <div class="d-text">
+                      <p>SAP leadership requested a Retry/Regenerate button to handle AI errors — a reasonable fix on
+                        the surface, serving 440,000+ enterprise customers. Engineering was ready to start.</p>
+                      <p><strong>I paused the pipeline.</strong> The assumption embedded in the request was that users
+                        think about AI errors transactionally — something mechanical that a button can fix. I hadn't
+                        seen evidence that enterprise users actually had that mental model.</p>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-d">Why I Rejected a Survey</span>
+                    <div class="d-text">
+                      <p>A survey asking "would you use a Retry button?" would return false signal. People say yes to
+                        features in isolation. I needed to observe <strong>natural repair behavior</strong> — what users
+                        actually do when an AI response misses the mark, with no prompting.</p>
+                      <p>I recruited enterprise SAP users who were also power users of mature AI tools (ChatGPT,
+                        Copilot) to benchmark whether enterprise context changes the mental model — or whether it
+                        transfers.</p>
+                    </div>
+                  </div>
+
+                  <div class="pg2">
+                    <div class="ph">
+                      <img src="./pic/bg31.png" alt="Customer interview session"
+                        style="object-fit: contain; box-sizing: border-box;" />
+                      <div class="ph-lbl">8 in-depth customer interviews</div>
+                    </div>
+                    <div class="ph">
+                      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80"
+                        alt="Research synthesis" />
+                      <div class="ph-lbl">Thematic analysis + synthesis</div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-v">The Core Finding</span>
+                    <div class="d-text">
+                      <p>All 8 participants — when faced with a response that missed — immediately and instinctively
+                        rephrased their prompt. None looked for a button. Several couldn't distinguish "Retry" from
+                        "Regenerate" even when prompted.</p>
+                    </div>
+                    <div class="quote violet">
+                      <div class="q-text">"I don't know sometimes what exactly I'm looking for and [I am] figuring
+                        out... the journey along the way."</div>
+                      <div class="q-attr">— Enterprise user, describing their AI error-repair process</div>
+                    </div>
+                    <div class="d-text">
+                      <p>Users experience AI error correction as <strong>collaborative exploration</strong>, not a
+                        mechanical transaction. A button solves the wrong problem — it actively misrepresents how users
+                        think about this interaction.</p>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-v">What Users Actually Wanted</span>
+                    <ul class="findings">
+                      <li class="fi">
+                        <div class="fi-n">01</div>
+                        <div class="fi-body"><strong>Side-by-side comparisons</strong> of old vs. new responses — to
+                          understand what changed and why</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">02</div>
+                        <div class="fi-body"><strong>Tone adjustment controls</strong> (more formal, shorter, simpler) —
+                          conversational, not mechanical</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">03</div>
+                        <div class="fi-body"><strong>Transparency</strong> about why the regenerated response differs —
+                          trust through visibility</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">04</div>
+                        <div class="fi-body"><strong>Interactive suggestions</strong> rather than a static button —
+                          dynamic, collaborative repair</div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-g">Impact</span>
+                    <ul class="checklist">
+                      <li>Feature deprioritized — no longer treated as urgent</li>
+                      <li>Team redirected to conversational repair patterns</li>
+                      <li>Deck shared with VP of Research (unsolicited escalation)</li>
+                      <li>Stakeholders: "validated concerns we already had"</li>
+                      <li>"Conversational vs. UI" framework now used to vet future AI interface requests</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <div class="cd-side">
+                <div class="sb">
+                  <div class="sb-title">Project Details</div>
+                  <div class="sb-row"><span class="sb-k">Role</span><span class="sb-v">Sole Researcher (first
+                      independent project)</span></div>
+                  <div class="sb-row"><span class="sb-k">Timeline</span><span class="sb-v">4 weeks · Sept 2025</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Product</span><span class="sb-v">Joule AI Assistant</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Scale</span><span class="sb-v">440K+ enterprise users</span>
+                  </div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Methods</div>
+                  <div class="sb-row"><span class="sb-k">Interviews</span><span class="sb-v">n=8 enterprise users</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Recruitment</span><span class="sb-v">Respondent</span></div>
+                  <div class="sb-row"><span class="sb-k">Benchmark</span><span class="sb-v">ChatGPT + Copilot
+                      users</span></div>
+                  <div class="sb-row"><span class="sb-k">Saturation</span><span class="sb-v">Reached at n=6</span></div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">End-to-End Ownership</div>
+                  <ul class="checklist">
+                    <li>Research plan + discussion guide written</li>
+                    <li>Participant recruitment via Respondent</li>
+                    <li>All 8 sessions conducted independently</li>
+                    <li>Thematic analysis performed</li>
+                    <li>Figma presentation deck delivered to PM, Design, AI leads</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CS 4: ATTACHMENTS ═══ -->
+        <div class="cs-card reveal" style="border-top:4px solid var(--green)" id="card4">
+          <div class="cs-hdr" onclick="toggleCard('card4')">
+            <div>
+              <div class="cs-idx">Case Study 04</div>
+              <div class="cs-tags">
+                <span class="tag tg">Mixed Methods</span>
+                <span class="tag tb">Engineering Unblocking</span>
+                <span class="tag ta">Decision Velocity</span>
+              </div>
+              <h3 class="cs-title">De-risking Mobile AI Interaction: Attachments in Joule</h3>
+              <p class="cs-excerpt">Engineering was blocked by a design debate with no clear winner — novelty
+                (Attachment Sheet) vs. familiarity (Input Field). I designed a mixed-methods triangulation study (n=55)
+                that resolved the deadlock, unblocked the sprint, and established a new rapid-research protocol for the
+                team.</p>
+              <div class="cs-kpis">
+                <div>
+                  <div class="kpi-n" style="color:var(--green)">55</div>
+                  <div class="kpi-l">Participants (quant + qual)</div>
+                </div>
+                <div>
+                  <div class="kpi-n" style="color:var(--green)">1 sprint</div>
+                  <div class="kpi-l">Engineering unblocked</div>
+                </div>
+                <div>
+                  <div class="kpi-n" style="color:var(--green)">2-phase</div>
+                  <div class="kpi-l">Broad → granular iteration</div>
+                </div>
+              </div>
+            </div>
+            <div class="cs-hdr-r">
+              <div class="cs-pills">
+                <span class="pill">UserZoom</span><span class="pill">A/B Testing</span><span class="pill">Iterative
+                  Research</span>
+              </div>
+              <button class="cs-toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="cs-detail">
+            <div class="cs-detail-grid">
+              <div class="cd-main">
+                <div class="cd-hero">
+                  <img src="./pic/bg4.png" alt="Mobile app interaction design research"
+                    style="object-position: center 30%;" />
+                  <div class="cd-overlay"></div>
+                  <div class="cd-hero-meta">
+                    <div class="cd-hero-title">From Design Deadlock to Merged Code in One Sprint</div>
+                    <div class="cd-hero-tag">Joule Attachments · Oct 2025 · 3 weeks</div>
+                  </div>
+                </div>
+                <div class="cd-body">
+
+                  <div class="d-block">
+                    <span class="d-label" style="background:var(--green);color:#fff">The Design Deadlock</span>
+                    <div class="d-text">
+                      <p>Engineering was blocked on the Attachments feature for Joule's AI assistant. The team was
+                        paralyzed by a design debate between two interaction models: <strong>Design A — Attachment
+                          Sheet</strong> (novel, auto-prompt capable) vs. <strong>Design B — Input Field</strong>
+                        (familiar, mirrors ChatGPT's "+" pattern).</p>
+                      <p>Neither camp had data. A wrong decision would either confuse new users (high support cost) or
+                        frustrate power users (high friction). I stepped in as the impartial data partner to objectively
+                        settle the debate and unblock the backlog.</p>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-d">Triangulation Strategy</span>
+                    <div class="process">
+                      <div class="ps">
+                        <div class="ps-n" style="color:var(--blue)">47</div>
+                        <div class="ps-t">Unmoderated</div>
+                        <div class="ps-s">UserZoom · Task Success + Time-on-Task</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n" style="color:var(--teal)">8</div>
+                        <div class="ps-t">Moderated</div>
+                        <div class="ps-s">IDIs · Mental models + discoverability</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n" style="color:var(--amber)">A/B</div>
+                        <div class="ps-t">Preference</div>
+                        <div class="ps-s">Head-to-head comparison</div>
+                      </div>
+                      <div class="ps">
+                        <div class="ps-n" style="color:var(--green)">→</div>
+                        <div class="ps-t">Phase 2</div>
+                        <div class="ps-s">Attachment Cell Form follow-up</div>
+                      </div>
+                    </div>
+                    <div class="d-text" style="margin-top:16px">
+                      <p>I deliberately sequenced quant before qual: UserZoom gave me rapid behavioral baselines at
+                        scale, then moderated interviews let me understand <em>why</em> the numbers looked the way they
+                        did. A/B preference testing quantified the directional signal from qual.</p>
+                    </div>
+                  </div>
+
+                  <div class="pg2">
+                    <div class="ph">
+                      <img src="./pic/bg41.svg" alt="Mobile usability testing"
+                        style="object-fit: contain; box-sizing: border-box; transform: scale(1.1);" />
+                      <div class="ph-lbl">Unmoderated testing via UserZoom (n=47)</div>
+                    </div>
+                    <div class="ph">
+                      <img src="./pic/bg42.png" alt="Qualitative synthesis" />
+                      <div class="ph-lbl">Moderated interviews + mental model analysis</div>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label" style="background:var(--green);color:#fff">The Strategic Trade-off</span>
+                    <div class="d-text">
+                      <p>Quantitative performance was at parity — no statistically significant difference in Task
+                        Success or Time-on-Task. That meant the decision rested on <strong>cognitive load
+                          strategy</strong>, not performance metrics. Qualitative data had to drive the call.</p>
+                    </div>
+                    <div class="quote" style="border-color:var(--green);background:var(--grn-lt)">
+                      <div class="q-text">"I mean ChatGPT operates the same way. It literally looks like this."</div>
+                      <div class="q-attr">— Enterprise user, recognizing the Input Field "+" mental model</div>
+                    </div>
+                    <div class="d-text">
+                      <p>8/8 moderated participants immediately recognized the Input Field pattern from mature AI tools.
+                        Leveraging an existing mental model yields faster adoption than teaching a novel one —
+                        especially in enterprise contexts where users have limited tolerance for learning curve.</p>
+                      <p><strong>Recommendation: Design B (Input Field).</strong> In mobile AI, reducing cognitive load
+                        is paramount. The familiar pattern wins.</p>
+                    </div>
+                  </div>
+
+                  <div class="d-block">
+                    <span class="d-label dl-d">Phase 2 — Following the Finding</span>
+                    <div class="d-text">
+                      <p>Selecting Design B was just the start. I initiated a follow-up study on the specific Attachment
+                        Cell Form component (Project 7) — the granular UI element users interact with after attaching a
+                        file.</p>
+                      <p>Targeted usability testing revealed the "Status" state was ambiguous — users couldn't tell if a
+                        file was uploading, processing, or ready. I drove immediate UI refinements before the code
+                        merge. This ensured the right feature was also <strong>built right</strong>.</p>
+                    </div>
+                    <ul class="findings" style="margin-top:16px">
+                      <li class="fi">
+                        <div class="fi-n">✓</div>
+                        <div class="fi-body"><strong>Design B greenlit.</strong> Engineering merged code within the
+                          active sprint — no sprint carryover.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">✓</div>
+                        <div class="fi-body"><strong>Status state ambiguity caught pre-merge.</strong> UI refined before
+                          shipping — not discovered in production.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">✓</div>
+                        <div class="fi-body"><strong>UserZoom protocol established.</strong> Piloted as team standard
+                          for rapid unmoderated testing on future design decisions.</div>
+                      </li>
+                      <li class="fi">
+                        <div class="fi-n">✓</div>
+                        <div class="fi-body"><strong>UI Kit updated.</strong> Initiated formal Change Request;
+                          Attachment Cell Form component updated in the design system.</div>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <div class="cd-side">
+                <div class="sb">
+                  <div class="sb-title">Project Details</div>
+                  <div class="sb-row"><span class="sb-k">Role</span><span class="sb-v">Lead Researcher
+                      (Independent)</span></div>
+                  <div class="sb-row"><span class="sb-k">Timeline</span><span class="sb-v">3 weeks · Oct 2025</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Product</span><span class="sb-v">Joule Mobile AI
+                      Assistant</span></div>
+                  <div class="sb-row"><span class="sb-k">Phases</span><span class="sb-v">2 (Broad concept → Granular
+                      UI)</span></div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Methods</div>
+                  <div class="sb-row"><span class="sb-k">Unmoderated</span><span class="sb-v">n=47 via UserZoom</span>
+                  </div>
+                  <div class="sb-row"><span class="sb-k">Moderated IDIs</span><span class="sb-v">n=8</span></div>
+                  <div class="sb-row"><span class="sb-k">A/B preference</span><span class="sb-v">Direct
+                      head-to-head</span></div>
+                  <div class="sb-row"><span class="sb-k">Metrics</span><span class="sb-v">Task Success, Time-on-Task,
+                      Mental Models</span></div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">Impact</div>
+                  <div class="impact-grid">
+                    <div class="ib">
+                      <div class="ib-n">55</div>
+                      <div class="ib-l">Total participants</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">1</div>
+                      <div class="ib-l">Sprint unblocked</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">0</div>
+                      <div class="ib-l">Bugs shipped from ambiguous Status state</div>
+                    </div>
+                    <div class="ib">
+                      <div class="ib-n">∞</div>
+                      <div class="ib-l">UserZoom protocol now team standard</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sb">
+                  <div class="sb-title">What This Shows</div>
+                  <ul class="checklist">
+                    <li>Mixed methods sequencing — quant baseline, qual depth</li>
+                    <li>Velocity without sacrificing rigor (3 weeks, n=55)</li>
+                    <li>Iterating past the decision — following findings downstream</li>
+                    <li>Infrastructure building — new protocols, not just outputs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="eyebrow ew-white">About</p>
+          <h2 class="about-h">I think about where products break before they ship.</h2>
+          <div class="about-body">
+            <p>My background is in <strong>Human Factors and Cognitive Science</strong> — fields built on the premise
+              that systems fail in predictable ways when designed without understanding how people actually behave under
+              real conditions.</p>
+            <p>I bring that lens to enterprise AI. Before asking "how should we build this," I ask "what are we assuming
+              about our users — and have we validated that?" That question has redirected roadmaps, deprioritized
+              features, and prevented engineering investment from going in the wrong direction.</p>
+            <p>I'm a <strong>solid IC</strong>: end-to-end ownership, independent initiation, research that earns its
+              way to the executive level without being pushed.</p>
+          </div>
+          <div class="skills-grid">
+            <div class="sk">Interviews</div>
+            <div class="sk">Usability Testing</div>
+            <div class="sk">Workshop Facilitation</div>
+            <div class="sk">Jobs to Be Done</div>
+            <div class="sk">A/B Testing</div>
+            <div class="sk">Surveys</div>
+            <div class="sk">MaxDiff</div>
+            <div class="sk">Behavioral Analysis</div>
+            <div class="sk">Eye Tracking · GSR · HRV · Motion Capture</div>
+            <div class="sk">FDA Usability (IEC 62366)</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <img src="./pic/me.png" alt="UX Researcher professional" class="about-photo" />
+          <div class="exp-item">
+            <div class="exp-role">UX Researcher</div>
+            <div class="exp-place">SAP · Joule Mobile + Mobile Design System + WalkMe</div>
+            <div class="exp-date">Jun 2025 – Present · Palo Alto, CA</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-role">Human Factors Intern</div>
+            <div class="exp-place">ClariMed · FDA-regulated medical devices</div>
+            <div class="exp-date">Jan – May 2025 · San Jose, CA</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-role">Graduate Research Assistant</div>
+            <div class="exp-place">SJSU · Autonomous systems </div>
+            <div class="exp-date">Sep 2023 – May 2025 · San Jose, CA</div>
+          </div>
+          <div class="exp-item" style="border-bottom:none">
+            <div class="exp-role">M.S. Human Factors & Ergonomics</div>
+            <div class="exp-place">San Jose State University · UX Concentration</div>
+            <div class="exp-date">2023 – 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="eyebrow ew-white" style="color:rgba(255,255,255,.6)">Get in Touch</p>
+        <h2 class="contact-h">Let's work together.</h2>
+        <p class="contact-sub">Open to UXR roles · Enterprise AI · Mobile<br>San Jose, CA
+        </p>
+      </div>
+      <div class="contact-cards reveal">
+        <a href="mailto:arieschu44@gmail.com" class="contact-card">
+          <div class="cc-icon">✉</div>
+          <div>
+            <div class="cc-label">Email</div>
+            <div class="cc-val">arieschu44@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+12183945397" class="contact-card">
+          <div class="cc-icon">📞</div>
+          <div>
+            <div class="cc-label">Phone</div>
+            <div class="cc-val">+1 218-394-5397</div>
+          </div>
+        </a>
+        <a href="./files/resume.pdf" class="contact-card" target="_blank">
+          <div class="cc-icon">📄</div>
+          <div>
+            <div class="cc-label">Resume</div>
+            <div class="cc-val">Download PDF →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleCard(id) {
+      const card = document.getElementById(id);
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.cs-card').forEach(c => c.classList.remove('open'));
+      if (!isOpen) {
+        card.classList.add('open');
+        setTimeout(() => {
+          card.querySelector('.cs-detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
+      }
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 90);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: .07 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+
+</html>
