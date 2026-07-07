@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS01: SAP Support Landscape · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<style>
+#pw-gate{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Google Sans',sans-serif}
+#pw-box{text-align:center;padding:48px 40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:360px;width:90%}
+#pw-box h2{margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a}
+#pw-box p{margin:0 0 24px;font-size:14px;color:#666}
+#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;outline:none;margin-bottom:12px;transition:border-color .2s}
+#pw-input:focus{border-color:#1a73e8}
+#pw-btn{width:100%;padding:12px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+#pw-btn:hover{background:#1558b0}
+#pw-error{color:#d93025;font-size:13px;margin-top:8px;min-height:18px}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Protected Work</h2>
+    <p>This case study is password protected.<br>Enter the password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var correct='star';
+  var key='portfolio_unlocked';
+  if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  function attempt(){
+    if(document.getElementById('pw-input').value===correct){
+      sessionStorage.setItem(key,'1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-error').textContent='Incorrect password. Try again.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-btn').addEventListener('click',attempt);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+})();
+</script>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-blue">Generative Research</span><span class="tag t-amber">Multi-Phase</span><span class="tag t-green">Product Direction</span></div>
+    <div class="cs-num">01 · SAP Help &amp; Support · Jan–Mar 2026 · 3 phases</div>
+    <h1 class="cs-page-title">SAP Help &amp; Support Navigation Research</h1>
+    <p class="cs-hook">SAP had 74 help and support resources across 5 platforms, yet self-service kept failing. I led a three-phase landscape study across 95 participants to understand why. The findings directly generated the requirements for the Next Gen Panel, SAP's redesigned in-product support experience.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Lead researcher across all 3 phases. Phase 3 fully independent; Phases 1–2 co-led with a research partner, synthesis and product framing led by me.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">Ecosystem survey (n=66) · semi-structured interviews (n=18) · CSM interviews (n=11)</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Generated requirements for the Next Gen Panel — a role-filtered, AI-first entry point replacing the manual curation CSMs were absorbing. Escalated to executive level without being pushed. Product on track for Q3 2026 launch. Interview guide and landscape audit template adopted as reusable frameworks.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">95</div><div class="cs-ml">Participants across 3 phases</div></div>
+        <div><div class="cs-mn">74</div><div class="cs-ml">Support resources in ecosystem</div></div>
+        <div><div class="cs-mn">11/11</div><div class="cs-ml">CSMs independently named same gap</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Context &amp; Research Opportunity</div>
+        <p class="ns-p">Stakeholders came to me with a surface-level question: <em>"Why are we receiving so many support tickets?"</em> My instinct was to reframe it. Tickets are the end of a failure chain. Treating them as the problem would only produce fixes at the wrong layer. Before anyone could address ticket volume, we needed to understand the full help and support landscape: what resources existed, whether users knew about them, and where the journey broke down. No one had mapped this before.</p>
+        <p class="ns-p">SAP's ecosystem had grown to 74 resources across 5 platforms. Yet self-service adoption kept failing. Users either bypassed it entirely and contacted their Customer Success Manager (CSM), or tried once, hit a dead end, and never returned. CSMs were absorbing the navigation burden the product was designed to carry. No one had documented why at scale.</p>
+        <!-- VISUALIZATION 1: SAP Ecosystem Stats -->
+        <div class="viz-ecosystem">
+            <div class="viz-eco-label">The SAP ecosystem in scope</div>
+            <div class="viz-eco-stats">
+                <div class="viz-eco-block">
+                    <div class="viz-eco-num">5</div>
+                    <div class="viz-eco-desc">central platforms</div>
+                </div>
+                <div class="viz-eco-arrow">
+                    <svg viewBox="0 0 60 24" fill="none"><path d="M0 12 H52 M44 4 L52 12 L44 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="viz-eco-block viz-eco-block--mid">
+                    <div class="viz-eco-num">74</div>
+                    <div class="viz-eco-desc">help &amp; support<br>resources</div>
+                </div>
+                <div class="viz-eco-arrow">
+                    <svg viewBox="0 0 60 24" fill="none"><path d="M0 12 H52 M44 4 L52 12 L44 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="viz-eco-block viz-eco-block--last">
+                    <div class="viz-eco-num">6</div>
+                    <div class="viz-eco-desc">resource types</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ns">
+        <div class="ns-h">Research Program</div>
+
+        <!-- 3-PHASE TIMELINE VISUAL -->
+        <div class="viz-timeline">
+            <div class="vtl-title">Three phases · Jan–Mar 2026 · 95 total participants</div>
+            <div class="vtl-track">
+                <div class="vtl-phase vtl-phase--1">
+                    <div class="vtl-num">Phase 1</div>
+                    <div class="vtl-when">Jan 2026</div>
+                    <div class="vtl-method">Ecosystem survey</div>
+                    <div class="vtl-n">n = 66</div>
+                    <div class="vtl-out">Quantified the discoverability gap · reframed the problem</div>
+                </div>
+                <div class="vtl-connector"></div>
+                <div class="vtl-phase vtl-phase--2">
+                    <div class="vtl-num">Phase 2</div>
+                    <div class="vtl-when">Feb 2026</div>
+                    <div class="vtl-method">User interviews · end users, admins, content creators</div>
+                    <div class="vtl-n">n = 18</div>
+                    <div class="vtl-out">Mapped 2 support paths and 4 friction points</div>
+                </div>
+                <div class="vtl-connector"></div>
+                <div class="vtl-phase vtl-phase--3">
+                    <div class="vtl-num">Phase 3</div>
+                    <div class="vtl-when">Mar 2026</div>
+                    <div class="vtl-method">CSM interviews</div>
+                    <div class="vtl-n">n = 11</div>
+                    <div class="vtl-out">Triangulated findings · surfaced role-filtered entry requirement</div>
+                </div>
+            </div>
+            <div class="vtl-footer">Sequenced to build evidence: survey established scale → interviews revealed behavior → CSM lens triangulated both from outside.</div>
+        </div>
+
+        <div class="two-col" style="margin-top:28px">
+            <div class="ns-col">
+                <h4>Phase 1: Ecosystem survey (n=66)</h4>
+                <ul class="ns-list">
+                    <li>Catalogued 74 resources across 5 platforms. First time the landscape had been fully documented.</li>
+                    <li>Users aware of only 3 resources on average. High awareness did not produce adoption. This reframed the problem from ticket volume to discoverability.</li>
+                </ul>
+            </div>
+            <div class="ns-col">
+                <h4>Phase 2: User interviews (n=18)</h4>
+                <ul class="ns-list">
+                    <li>Mapped two divergent support paths: direct-to-human (8/18) vs. self-service first (10/18).</li>
+                    <li>14 of 18 participants independently named AI as their near-ideal support model.</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top:14px">
+            <h4>Phase 3: CSM interviews (n=11)</h4>
+            <ul class="ns-list">
+                <li>CSMs were manually filtering 25+ resources down to ~13 before customers started. This curation work belonged in the product.</li>
+                <li>All 11 CSMs independently named a role-filtered single entry point as the critical missing capability.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <p class="ns-p">Themes developed through affinity mapping in Miro across all three phases, then tagged and reconciled in Dovetail. Five structural patterns emerged consistently regardless of participant type or phase.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;margin-bottom:32px">
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #4285F4">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 1</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">No mental model of the ecosystem</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Users could not describe what resources existed or how they related to each other. Most assumed SAP Central was the only entry point. The ecosystem was invisible to the people it was designed to serve.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #1A73E8">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 2</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Escalation was the path of least resistance</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">For 8 of 18 interview participants, contacting a CSM or filing a ticket was faster and more reliable than self-service. The system had trained users to bypass it. CSMs confirmed this pattern: most customers arrived having attempted nothing.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #188038">
+                <div style="font-size:12px;font-weight:700;color:#137333;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 3</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Content existed but context was missing</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Resources that existed for one product line or role surfaced generically across all users. Participants repeatedly landed on content that was technically correct but did not apply to their specific setup, version, or situation. Relevance filtering was entirely manual.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #E37400">
+                <div style="font-size:12px;font-weight:700;color:#8A5000;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 4</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Language was a structural barrier</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Users searched in the language of their business problem. SAP documentation used internal product taxonomy. These vocabularies rarely matched. Users who did not already know the right SAP term could not find the right answer, regardless of whether it existed.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #D93025;grid-column:1/-1">
+                <div style="font-size:12px;font-weight:700;color:#C5221F;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 5</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">AI was the unprompted near-ideal model</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">14 of 18 interview participants independently described AI as the kind of support they wished existed: something that understood their question in plain language, knew their context, and returned one relevant answer rather than a list. This theme emerged without prompting across all three participant types and was the strongest convergence signal in the data set. It became the primary design requirement for the Next Gen Panel.</p>
+            </div>
+        </div>
+
+        <!-- Support Paths A and B -->
+        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:28px">
+
+        <div class="viz-journey">
+            <div class="viz-journey-label">Path A: Direct to Human (8 of 18 participants)</div>
+            <p class="viz-journey-sub">Participants bypass self-service entirely. Triggered by high business urgency, prior failed self-service experiences, or familiarity with IT-supported workflows. Common in complex integration scenarios and critical system issues.</p>
+            <div class="viz-journey-steps">
+                <div class="viz-step viz-step--red">
+                    <div class="viz-step-num">Problem Occurs</div>
+                    <div class="viz-step-body">Problem arises. High urgency or high stakes.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--green">
+                    <div class="viz-step-num">Colleagues</div>
+                    <div class="viz-step-body">When colleagues aren't available or can't help.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--blue">
+                    <div class="viz-step-num">SAP Consultant / Ticket</div>
+                    <div class="viz-step-body">Immediate escalation. Self-service is never attempted.</div>
+                </div>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap">
+                <div class="quote" style="flex:1;min-width:260px;margin:0"><p style="font-size:13px">"When company installed for Concur, company had direct contact phone numbers to SAP... so when there is an issue, then just call that number."</p><cite>Admin User P1</cite></div>
+                <div class="quote" style="flex:1;min-width:260px;margin:0"><p style="font-size:13px">"I emailed Concur Support 3 times, first time last year and last time a week and a half ago. If nothing happens, I will call them."</p><cite>End User P2</cite></div>
+            </div>
+        </div>
+
+        <div class="viz-journey" style="margin-top:0">
+            <div class="viz-journey-label">Path B: Self-Serve First → Gradual Escalation (10 of 18 participants)</div>
+            <p class="viz-journey-sub">Participants prefer to resolve issues independently before escalating. Triggered by lower-stakes problems, prior self-service success, and greater time flexibility.</p>
+            <div class="viz-journey-steps">
+                <div class="viz-step viz-step--red">
+                    <div class="viz-step-num">Problem Occurs</div>
+                    <div class="viz-step-body">Problem arises.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--orange">
+                    <div class="viz-step-num">Google / YouTube / AI</div>
+                    <div class="viz-step-body">Most common first resource. Preferred for visual, quick-answer formats.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--amber">
+                    <div class="viz-step-num">Colleagues</div>
+                    <div class="viz-step-body">When first step fails, the people next to them or reachable quickly.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--green">
+                    <div class="viz-step-num">SAP Resources</div>
+                    <div class="viz-step-body">When colleagues can't help; deeper technical documentation.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--blue">
+                    <div class="viz-step-num">SAP Consultant / Ticket</div>
+                    <div class="viz-step-body">Last resort. Slow and expensive. Filed only when everything else fails.</div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- SURVEY DATA: HTML bar chart -->
+        <div class="viz-survey" style="margin-top:0;margin-bottom:28px">
+            <div class="viz-ag-label">Phase 1 survey — resource awareness by platform (n=66)</div>
+            <div class="viz-survey-legend">
+                <span class="viz-svy-dot dot-eu"></span>End Users
+                <span class="viz-svy-dot dot-ad" style="margin-left:16px"></span>Admins
+                <span class="viz-svy-dot dot-cc" style="margin-left:16px"></span>Content Creators
+            </div>
+            <div class="viz-survey-bars">
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:92px"><span>46</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:86px"><span>43</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:80px"><span>40</span></div>
+                    </div>
+                    <div class="viz-svy-label">SAP Central</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:62px"><span>31</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:46px"><span>23</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:76px"><span>38</span></div>
+                    </div>
+                    <div class="viz-svy-label">Help Portal</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:56px"><span>28</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:46px"><span>23</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:76px"><span>38</span></div>
+                    </div>
+                    <div class="viz-svy-label">Community</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:54px"><span>27</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:40px"><span>20</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:70px"><span>35</span></div>
+                    </div>
+                    <div class="viz-svy-label">Support Portal</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:18px"><span>9</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:18px"><span>9</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:16px"><span>8</span></div>
+                    </div>
+                    <div class="viz-svy-label">Learning Hub</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:20px"><span>10</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:16px"><span>8</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:26px"><span>13</span></div>
+                    </div>
+                    <div class="viz-svy-label">openSAP</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:22px"><span>11</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:16px"><span>8</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:28px"><span>14</span></div>
+                    </div>
+                    <div class="viz-svy-label">Events</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:8px"><span>4</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:16px"><span>8</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:22px"><span>11</span></div>
+                    </div>
+                    <div class="viz-svy-label">Training</div>
+                </div>
+                <div class="viz-svy-group">
+                    <div class="viz-svy-bars-row">
+                        <div class="viz-svy-bar bar-eu" style="height:32px"><span>16</span></div>
+                        <div class="viz-svy-bar bar-ad" style="height:14px"><span>7</span></div>
+                        <div class="viz-svy-bar bar-cc" style="height:32px"><span>16</span></div>
+                    </div>
+                    <div class="viz-svy-label">SAP Press</div>
+                </div>
+            </div>
+            <div class="viz-survey-footer">
+                <div class="viz-survey-stat"><span>3</span> avg resources known by end users</div>
+                <div class="viz-survey-stat highlight"><span>74</span> total resources in ecosystem</div>
+                <div class="viz-survey-stat"><span>7+</span> avg resources known by admins</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ns">
+        <div class="ns-h">From Research to Product Direction</div>
+
+        <!-- Hub-spoke resource map -->
+        <div class="viz-hub-wrap" style="margin-bottom:28px">
+            <div class="viz-hub-label">The ecosystem users had to navigate before a single entry point existed</div>
+            <div class="viz-hub">
+                <div class="viz-hub-center">SAP Central Hub</div>
+                <div class="viz-spoke viz-spoke--1">openSAP</div>
+                <div class="viz-spoke viz-spoke--2">SAP Learning Hub</div>
+                <div class="viz-spoke viz-spoke--3">SAP Support Portal</div>
+                <div class="viz-spoke viz-spoke--4">SAP Events &amp; Webinars</div>
+                <div class="viz-spoke viz-spoke--5">SAP Press</div>
+                <div class="viz-spoke viz-spoke--6">SAP Learning Journeys</div>
+                <div class="viz-spoke viz-spoke--7">SAP Training &amp; Certification</div>
+                <div class="viz-spoke viz-spoke--8">SAP Help Portal</div>
+                <div class="viz-spoke viz-spoke--9">SAP Community</div>
+            </div>
+            <p class="viz-hub-caption">9 of 74 resources shown. End users were aware of an average of 3; admins averaged 7+. CSMs manually curated 25+ down to ~13 before customers even started searching.</p>
+        </div>
+
+        <div class="reframe">
+            <div class="rf-box">
+                <div class="rf-mark">Current state</div>
+                <div class="rf-text">User hits an issue → attempts self-service → fails → contacts CSM → CSM manually curates and filters resources → user gets an answer. CSM absorbs the navigation burden.</div>
+            </div>
+            <div class="rf-arrow">→</div>
+            <div class="rf-box after">
+                <div class="rf-mark">Design requirement (research-generated)</div>
+                <div class="rf-text">A role-filtered, AI-first single entry point that surfaces relevant resources by product, role, and situation. It can diagnose SAP application problems directly and replaces the manual curation chain so CSMs can focus on strategic work.</div>
+            </div>
+        </div>
+        <p class="ns-p" style="margin-top:14px">The three-phase program produced a product direction rather than evaluating one. All three data sets converged on the same requirement: 11/11 CSMs named it unprompted, 14/18 end users described AI as their near-ideal model, and the ecosystem survey quantified exactly where the filtration gap sat.</p>
+
+        <div style="background:var(--md-primary-container);border-radius:var(--shape-lg);padding:28px 32px;margin-top:24px;border-left:4px solid var(--md-primary)">
+            <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--md-primary);margin-bottom:10px">Research output</div>
+            <div style="font-family:'Google Sans',sans-serif;font-size:18px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px;line-height:1.3">Introducing the Next Gen Panel</div>
+            <p style="font-size:14px;color:var(--md-on-primary-container);line-height:1.75;margin:0">That convergence became the product brief for SAP's redesigned in-product help and support experience, planned for public release Q3 2026. The panel introduces a single, role-filtered entry point surfaced directly inside the product. Instead of navigating across 5 platforms and 74 resources, users ask Joule a question in natural language, get contextually relevant results, and have a pre-filled support case created without leaving the screen. The curation work that CSMs were absorbing manually is now handled by the product itself.</p>
+        </div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/next-gen-panel.png" alt="Next Gen Panel — SAP's redesigned in-product support experience" style="width:100%;height:auto;object-fit:unset;max-height:none;display:block" />
+            <figcaption><strong>The Next Gen Panel, single entry point:</strong> SAP's AI-first in-product support panel consolidates 74 resources into one place. Joule search, contextually relevant materials, and recents replace the 5-platform navigation users were failing to traverse. Requirements generated directly from this research program.</figcaption>
+        </figure>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:20px">
+            <img src="pic/Rectangle 34656882.png" alt="Joule diagnosing an HTTP 401 error and creating a support case in-context" style="width:100%;height:auto;object-fit:unset;max-height:none;display:block" />
+            <figcaption><strong>The Next Gen Panel, AI-first resolution flow:</strong> Joule diagnoses the root cause of an application error directly in context, surfaces troubleshooting steps, and creates a pre-filled support case, all without the user leaving the product. This is the end state the research defined: replace the CSM navigation burden with in-product intelligence.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Cross-Functional Influence</div>
+        <div class="sth">
+            <div class="sth-lbl">The reframe that created buy-in</div>
+            <div class="sth-text">Stakeholders brought me a tactical question about ticket volume. I reframed it as a structural design problem that started well before a ticket was ever filed. This repositioning changed who needed to be in the room. What began as a product team conversation escalated organically to executive stakeholders once the Phase 1 data showed the scale of the discoverability gap: we were solving for users who did not even know better options existed.</div>
+        </div>
+        <ul class="ns-list">
+            <li>Phase 1 survey data was the turning point. Showing users averaged only 3 known resources out of 74 made the gap concrete and undeniable for stakeholders who had assumed awareness was not the issue.</li>
+            <li>Anchored readouts in CSM voice. "I'm the Siri of SAP" communicated the structural problem more persuasively than any researcher summary.</li>
+            <li>Visualized the curation chain (25+ resources, CSM curates to 13, user sees 1 to 3) to make the product opportunity legible to non-researchers.</li>
+            <li>Cross-phase triangulation across three independent data sets (survey, user interviews, and CSM interviews) made the findings resistant to dismissal.</li>
+            <li>Research escalated to executive level without being pushed. An executive stakeholder described it as "long needed" and one of the most comprehensive help and support ecosystem studies they had seen at SAP.</li>
+        </ul>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Generated requirements for the Next Gen Panel — SAP's redesigned in-product support experience, on track for Q3 2026 launch</span>
+            <span class="ic">Research escalated to executive level without being pushed; described as one of the most comprehensive support ecosystem studies seen at SAP</span>
+            <span class="ic">Prototype task success rate exceeded 80% in early testing · post-launch success metric defined: 20% reduction in user time-to-resolution within one quarter</span>
+        </div>
+        <div class="quote" style="margin-top:24px">
+            <p>"This is long needed. One of the most comprehensive help and support ecosystem studies we have seen."</p>
+            <cite>Executive stakeholder, post-readout</cite>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">The reframe was the hardest call and the right one</div>
+            <div class="reflect-body">When stakeholders arrived with a ticket volume question, the safe response would have been to study tickets. I pushed back and proposed a broader landscape study instead. That decision added scope and time, and it required stakeholders to trust a direction before they had any data. Looking back, the Phase 1 survey results validated the reframe quickly. But I went in without a guarantee. If the data had come back ambiguous, I would have had to defend a scope expansion that did not pay off. That is a real risk I would take again, but I would be more explicit upfront about the bet I was making and what the off-ramp looked like if the data did not converge.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">Run the CSM phase earlier to sharpen Phase 2 recruitment</div>
+            <div class="reflect-body">Phase 3 CSM interviews corroborated and sharpened the Phase 2 user findings after the fact. Running them first, or in parallel, would have let me target more specific user profiles in Phase 2 and made the cross-phase triangulation tighter from the start.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="index.html#work" class="cs-nav-link">← All case studies</a>
+    <a href="cs02-fiori-design-system.html" class="cs-nav-link next">CS02: Fiori Design System →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

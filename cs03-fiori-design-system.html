@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS03: Fiori Design System · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-green">Measured Impact</span><span class="tag t-blue">Mixed Methods</span><span class="tag t-blue">Workshop Facilitation</span></div>
+    <div class="cs-num">03 · SAP Fiori Design System · Aug–Sep 2025</div>
+    <h1 class="cs-page-title">Designers were abandoning a working design system. The problem wasn't quality. It was trust.</h1>
+    <p class="cs-hook">Satisfaction with SAP Fiori Mobile dropped to 3.71/5 and teams were quietly building custom components instead of using the ones available. The team's hypothesis pointed to component quality. I challenged that hypothesis, uncovered three structural trust failures, and drove changes that lifted satisfaction by +12.6% within a single quarter.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">Problem</div>
+            <div class="snap-val">Teams were bypassing functional components. A quality fix would have addressed the symptom and missed the underlying cause entirely.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Lead researcher. Challenged the initial hypothesis, designed and ran the mixed-methods study, facilitated a cross-functional workshop, and drove three changes shipped in v25.04.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">n=19 interviews · live workflow observations · pre/post benchmark survey · cross-functional prioritization workshop</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">+12.6% satisfaction (3.71 → 4.18) in one quarter. ~8 weeks of engineering rework prevented. Three structural changes shipped in v25.04. 2026 roadmap shaped.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">+12.6%</div><div class="cs-ml">Satisfaction lift in one quarter</div></div>
+        <div><div class="cs-mn">~8 wks</div><div class="cs-ml">Engineering rework prevented</div></div>
+        <div><div class="cs-mn">19</div><div class="cs-ml">Interviews across designers &amp; developers</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Context &amp; Hypothesis Challenge</div>
+        <p class="ns-p">600+ internal designers at SAP depended on Fiori Mobile. When satisfaction dropped and teams began building custom components, the first instinct was to audit component quality. The behavioral signal told a different story. Teams were bypassing components that worked correctly. Avoiding something functional pointed to a structural cause, not a technical one.</p>
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/visualFoundationImg.834e09a36611bd5c921d.png" alt="SAP Fiori design system component library" />
+            <figcaption><strong>The system in scope:</strong> SAP Fiori Mobile — the design system that 600+ internal designers depended on. Teams were quietly bypassing functional components and building custom alternatives instead.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">The Reframe</div>
+        <div class="reframe">
+            <div class="rf-box">
+                <div class="rf-mark">Team's hypothesis</div>
+                <div class="rf-text">"The components have quality issues. Improve them and adoption returns."</div>
+            </div>
+            <div class="rf-arrow">→</div>
+            <div class="rf-box after">
+                <div class="rf-mark">My research question</div>
+                <div class="rf-text">"Why do designers feel unsafe depending on this system, and which dimensions of trust are breaking down?"</div>
+            </div>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Conflicting design authorities doubled decision time</div>
+                    <div class="in-body">SAP guidelines contradicted Apple HIG and Material Design. Every component decision required external cross-referencing. Designers weren't avoiding low-quality components. They were avoiding a system that couldn't tell them what "correct" meant.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">Rigid components created a debt spiral teams couldn't exit</div>
+                    <div class="in-body">Any customization required detaching from the component → detaching meant losing future updates → teams built custom alternatives → debt compounded with every release. The system's inflexibility was generating the abandonment it suffered from.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Accessibility anxiety produced worse accessibility outcomes</div>
+                    <div class="in-body">Developers couldn't verify WCAG compliance in the system, so they built custom components they believed were safe. Those builds were objectively less accessible. Unverifiable risk produced worse outcomes than the risk itself.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="quote">
+        <p>"Sometimes I spend more time figuring out which component to use than actually designing."</p>
+        <cite>— Internal designer, live workflow observation</cite>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Driving Consensus Across a Skeptical Team</div>
+        <div class="sth">
+            <div class="sth-lbl">The challenge</div>
+            <div class="sth-text">The team had already committed to a quality hypothesis. Shifting the frame to investigate trust required presenting the behavioral evidence. Teams bypassing working components was a signal strong enough to warrant a different investigation entirely.</div>
+        </div>
+        <ul class="ns-list">
+            <li>Facilitated a cross-functional prioritization workshop. Buy-in was built through co-prioritization, not presentation</li>
+            <li>Interviewed designers and developers separately to surface role-specific trust failures before bringing groups together</li>
+            <li>Framed each root cause as structural rather than attributable to any individual, reducing defensiveness and enabling action</li>
+        </ul>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Changes Shipped in v25.04</div>
+        <ul class="ns-list">
+            <li>Comparison tables documenting where SAP intentionally diverges from Apple and Android guidelines, with the rationale made explicit</li>
+            <li>Flexible component variants with clearly defined customization zones, enabling adaptation without forcing detachment</li>
+            <li>Screen reader annotations integrated into every component spec, removing accessibility ambiguity at the point of decision</li>
+        </ul>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">+12.6% satisfaction in one quarter (3.71 → 4.18)</span>
+            <span class="ic">~8 weeks of engineering rework prevented</span>
+            <span class="ic">3 structural changes shipped in v25.04</span>
+            <span class="ic">2026 roadmap shaped by trust framework</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:12px;line-height:1.55"><strong style="color:var(--md-on-surface)">On ~8 weeks:</strong> PM estimate based on average sprint cost of custom component detachment cycles observed during research. Each detachment forced a rebuild that the PM team calculated at ~2 sprint weeks of engineering time. Three identified structural blockers contributed to at least 4 such cycles in the 6 months prior to the study. Conservative estimate; actual value was likely higher given compounding downstream effects on QA and accessibility review.</p>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Use a diary study to capture abandonment decisions as they happen</div>
+            <div class="reflect-body">Workflow observations captured a snapshot of behavior. A short diary study (1–2 weeks) would have revealed when teams made the detachment decision in real time rather than reconstructed after the fact, strengthening the causal chain and making the root cause harder to dispute.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs02-retry-button.html" class="cs-nav-link">← CS02: Joule Retry Button</a>
+    <a href="cs04-attachment-sheet.html" class="cs-nav-link next">CS04: Attachment Sheet →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

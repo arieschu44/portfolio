@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS03: Joule Retry Button · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<style>
+#pw-gate{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Google Sans',sans-serif}
+#pw-box{text-align:center;padding:48px 40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:360px;width:90%}
+#pw-box h2{margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a}
+#pw-box p{margin:0 0 24px;font-size:14px;color:#666}
+#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;outline:none;margin-bottom:12px;transition:border-color .2s}
+#pw-input:focus{border-color:#1a73e8}
+#pw-btn{width:100%;padding:12px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+#pw-btn:hover{background:#1558b0}
+#pw-error{color:#d93025;font-size:13px;margin-top:8px;min-height:18px}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Protected Work</h2>
+    <p>This case study is password protected.<br>Enter the password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var correct='star';
+  var key='portfolio_unlocked';
+  if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  function attempt(){
+    if(document.getElementById('pw-input').value===correct){
+      sessionStorage.setItem(key,'1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-error').textContent='Incorrect password. Try again.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-btn').addEventListener('click',attempt);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+})();
+</script>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-red">Feature Deprioritized</span><span class="tag t-blue">Behavioral Research</span><span class="tag t-amber">Executive Influence</span></div>
+    <div class="cs-num">03 · Joule AI Assistant · Sept 2025 · 2-week turnaround</div>
+    <h1 class="cs-page-title">Joule AI Assistant Error Recovery Behavior Study</h1>
+    <p class="cs-hook">A stakeholder requested a Retry button for Joule, SAP's enterprise AI assistant. The request was based on intuition, not evidence. In two weeks I audited product logs and ran behavioral interviews, zero of eight users wanted a manual button. The feature was deprioritized before engineering scoping began.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Sole researcher. Scoped the study, audited product logs, recruited via Respondent, ran all sessions, and presented to PM, Design, and AI leadership within two weeks.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">Product log audit · behavioral interviews (n=8) · think-aloud protocol · thematic synthesis</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Retry feature deprioritized before engineering scoped it, saving ~4 sprint-weeks. Team redirected to graceful in-line recovery patterns. Findings escalated to VP unsolicited. "Conversational vs. UI" framework adopted, 3 subsequent Joule features screened through it.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">0/8</div><div class="cs-ml">Users wanted a manual Retry button</div></div>
+        <div><div class="cs-mn">2 wks</div><div class="cs-ml">End-to-end study on a tight deadline</div></div>
+        <div><div class="cs-mn">VP</div><div class="cs-ml">Findings escalated unsolicited</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">The Stakes Behind a "Small" Feature</div>
+        <p class="ns-p">The Retry button looked like a low-risk addition, but the underlying decision carried real cost. Adding a control adds surface area to an already dense AI interface, and shipping it would consume engineering time the team did not have to spare. The more important risk was strategic: building a feature that users would not use signals that the product is being shaped by internal assumptions rather than user behavior. My concern was not whether a Retry button was possible. It was whether the feature should exist at all.</p>
+    </div>
+
+    <!-- PROPOSED FEATURE MOCKUPS -->
+    <div class="ns">
+        <div class="viz-proposed">
+            <div class="vp-title">The proposed feature for Joule</div>
+            <div class="vp-sub">Two Joule variants were on the table when the study began: a single Regenerate action and a Regenerate-with-options split control. Engineering was ready to build. This is what did not ship.</div>
+            <div class="vp-grid">
+                <figure class="vp-card">
+                    <img src="pic/joule-regenerate-static.webp" alt="Proposed Joule Regenerate button on an AI response card" />
+                    <figcaption><strong>Variant A:</strong> single Regenerate action anchored to the response card.</figcaption>
+                </figure>
+                <figure class="vp-card">
+                    <img src="pic/joule-regenerate-menu.webp" alt="Proposed Regenerate split control with Change Tone, Change Language, and Edit Prompt options" />
+                    <figcaption><strong>Variant B:</strong> Regenerate with an options dropdown: Change Tone, Change Language, Edit Prompt.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Why Log Audit and Behavioral Interviews, Not a Survey</div>
+        <p class="ns-p">A survey asking "would you use a Retry button?" would have returned misleading signal. People reliably say yes to features when evaluated in isolation. I needed two things instead: evidence of what users were actually doing when AI failed, and evidence of what mental model they held about recovery.</p>
+        <p class="ns-p">The log audit surfaced the behavioral baseline: the frequency and shape of error-recovery moments in real Joule sessions. The behavioral interviews with think-aloud protocol surfaced the mental model: how users interpreted an AI mistake, and what they expected to happen next. Combined, these methods answered whether a manual control matched user behavior at all. On a two-week deadline, this pairing was the minimum viable design that could either confirm or falsify the stakeholder's assumption.</p>
+    </div>
+
+    <!-- METHOD PAIR VISUALIZATION -->
+    <div class="ns">
+        <div class="viz-method-pair">
+            <div class="vmp-title">Two evidence sources, one question</div>
+            <div class="vmp-sub">Does user behavior around AI errors match the mental model of "reset and try again"?</div>
+            <div class="vmp-grid">
+                <div class="vmp-card">
+                    <div class="vmp-tag">Behavioral</div>
+                    <div class="vmp-h">Product log audit</div>
+                    <div class="vmp-body">Reviewed error-recovery sessions in Joule to map what users actually did after a failed response: retry, rephrase, abandon, or continue.</div>
+                    <div class="vmp-out">Surfaces <strong>behavior</strong></div>
+                </div>
+                <div class="vmp-arrow">→</div>
+                <div class="vmp-card">
+                    <div class="vmp-tag">Qualitative</div>
+                    <div class="vmp-h">Targeted interviews (n=8)</div>
+                    <div class="vmp-body">Think-aloud sessions on error-recovery workflows. Participants worked through real prompts and narrated expectations without being primed toward any specific control.</div>
+                    <div class="vmp-out">Surfaces <strong>mental model</strong></div>
+                </div>
+            </div>
+            <div class="vmp-footer">Combined signal: user behavior + user expectation had to converge before a UI feature could be justified.</div>
+        </div>
+    </div>
+
+    <!-- OPERATIONS CALLOUT -->
+    <div class="ns">
+        <div class="ops-callout">
+            <div class="ops-title">Methods &amp; Operations</div>
+            <div class="ops-grid">
+                <div class="ops-item">
+                    <div class="ops-label">Recruitment</div>
+                    <div class="ops-val">Participants recruited through Respondent. Screened for active AI assistant use in an enterprise or productivity context, and for prior experience recovering from AI errors in the past 30 days.</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Tools</div>
+                    <div class="ops-val">Respondent (recruitment) · MS Teams (moderated sessions) · internal product logs (behavioral baseline) · Dovetail (transcript synthesis and tagging) · PowerPoint (executive readout)</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Ethics &amp; Compliance</div>
+                    <div class="ops-val">All participants provided informed consent before sessions were recorded. Data anonymized in all deliverables. Log audit conducted on aggregated, de-identified session data in accordance with SAP internal privacy protocols.</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Timeline</div>
+                    <div class="ops-val">Two-week end-to-end delivery. Week 1: scoping, log audit, recruitment, and pilot session. Week 2: remaining sessions, synthesis, and readout to PM, Design, and AI leadership.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2-WEEK TIMELINE VISUAL -->
+    <div class="ns">
+        <div class="viz-sprint">
+            <div class="vsp-title">Two weeks, end to end</div>
+            <div class="vsp-sub">Every activity sequenced against a hard deadline. No slack, no wasted motion.</div>
+            <div class="vsp-grid">
+                <div class="vsp-week">
+                    <div class="vsp-week-label">Week 1</div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 1–2</div>
+                        <div class="vsp-day-body"><strong>Scope + log audit.</strong> Baseline behavior mapped from real error-recovery sessions.</div>
+                    </div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 3–4</div>
+                        <div class="vsp-day-body"><strong>Screener + recruitment.</strong> Respondent panel filtered for active AI assistant users.</div>
+                    </div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 5</div>
+                        <div class="vsp-day-body"><strong>Pilot session + guide refinement.</strong> Think-aloud protocol validated before full run.</div>
+                    </div>
+                </div>
+                <div class="vsp-week">
+                    <div class="vsp-week-label">Week 2</div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 6–8</div>
+                        <div class="vsp-day-body"><strong>Sessions 2–8.</strong> Behavioral saturation reached by session 5; sessions 6–8 confirmed the pattern.</div>
+                    </div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 9</div>
+                        <div class="vsp-day-body"><strong>Synthesis in Dovetail.</strong> Three findings clustered from tagged transcripts.</div>
+                    </div>
+                    <div class="vsp-day">
+                        <div class="vsp-day-num">Day 10</div>
+                        <div class="vsp-day-body"><strong>Executive readout.</strong> PM, Design, and AI leadership aligned on deprioritization.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">On Sample Size: Why n=8 Was Sufficient</div>
+        <p class="ns-p">The goal was not to measure frequency: it was to test whether a specific behavioral pattern existed. In focused behavioral research aimed at identifying a recurring pattern rather than estimating a population distribution, thematic saturation is the appropriate stopping criterion. By session 5, every observed user had repaired errors without reaching for a control, and no new behavioral themes had emerged across the prior two sessions. Sessions 6 through 8 confirmed that saturation, and running additional participants to a stable pattern would not have changed the categorical finding. The appropriate next step is a quantitative phase to measure adoption of graceful recovery patterns at scale, not more behavioral interviews.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Recovery mattered deeply, but users did not want to be the ones performing it</div>
+                    <div class="in-body">Every participant cared about what happened after an AI mistake. But when asked what they wanted to see, none described a manual Retry button. They expected the AI itself to recognize the failure, adjust, and continue.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">Users wanted explanation, not repetition</div>
+                    <div class="in-body">When an AI response missed, participants wanted a short account of what went wrong or a clear next step. A silent regeneration of the same answer felt like the assistant had learned nothing from the failure.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Conversational repair was already the natural fallback</div>
+                    <div class="in-body">Without a Retry control, participants simply rephrased their prompt. The correction was iterative, not transactional. The label debate the team was having (Retry vs. Regenerate) was solving a problem users did not experience.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT USERS WANTED VISUALIZATION -->
+    <div class="ns">
+        <div class="viz-recover">
+            <div class="vr-title">What users expected after an AI error</div>
+            <div class="vr-grid">
+                <div class="vr-item vr-item--strike">
+                    <div class="vr-glyph vr-glyph--x">✕</div>
+                    <div class="vr-h">Manual Retry button</div>
+                    <div class="vr-body">The proposed feature. Not requested by a single participant.</div>
+                    <div class="vr-count">0 of 8</div>
+                </div>
+                <div class="vr-item">
+                    <div class="vr-glyph">↻</div>
+                    <div class="vr-h">Graceful in-line recovery</div>
+                    <div class="vr-body">The AI recognizes the miss and adjusts on its own, without the user having to invoke a control.</div>
+                    <div class="vr-count">Expected by all 8</div>
+                </div>
+                <div class="vr-item">
+                    <div class="vr-glyph">ℹ</div>
+                    <div class="vr-h">Explanation of the failure</div>
+                    <div class="vr-body">A short account of what went wrong, so users can adjust their next prompt intelligently.</div>
+                    <div class="vr-count">Expected by all 8</div>
+                </div>
+                <div class="vr-item">
+                    <div class="vr-glyph">→</div>
+                    <div class="vr-h">A clear next step</div>
+                    <div class="vr-body">A concrete suggestion: a follow-up prompt, a related action, or an alternate path forward.</div>
+                    <div class="vr-count">Expected by all 8</div>
+                </div>
+            </div>
+        </div>
+        <div class="quote" style="margin-top:32px">
+            <p>"I don't want to press a button to get the same wrong answer. I want it to tell me what it didn't understand."</p>
+            <cite>Enterprise user, describing AI error-repair expectations</cite>
+        </div>
+    </div>
+
+    <!-- WHAT WOULD HAVE SHIPPED -->
+    <div class="ns">
+        <div class="viz-notship">
+            <div class="vns-header">
+                <div class="vns-tag">What would have shipped in Joule</div>
+                <div class="vns-title">The Regenerate flow, in motion</div>
+                <div class="vns-sub">The interaction was well-designed. It was not what Joule users needed. The study caught the mismatch before engineering scoping began.</div>
+            </div>
+            <figure class="vns-figure">
+                <img src="pic/joule-regenerate-flow.gif" alt="Animated preview of the proposed Joule Regenerate flow, button appears on an AI response, dropdown expands to Change Tone, Change Language, Edit Prompt" />
+                <figcaption>Prototype animation of the proposed Joule feature: Regenerate control expands into tone, language, and prompt-edit options. Every variant assumed the user wanted to invoke recovery manually, which was the exact mental model the study disconfirmed.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Influencing a Skeptical Stakeholder Environment</div>
+        <div class="sth">
+            <div class="sth-lbl">The challenge</div>
+            <div class="sth-text">The feature request originated with leadership, and a direction was already implied. Recommending "don't build this" required a higher burden of proof than recommending how to shape a feature. On a two-week timeline, the framing had to make the alternative path immediately actionable.</div>
+        </div>
+        <ul class="ns-list">
+            <li>Anchored the conversation on the shared goal: recovery matters. The question was not whether to invest in recovery, it was whether a manual button was the right investment.</li>
+            <li>Led with behavior, not interpretation. "0 of 8 users wanted a manual button" is harder to dismiss than a qualitative theme.</li>
+            <li>Reframed the design question from "how should the button be labeled?" to "how should Joule recover on the user's behalf?" This gave the team a forward direction, not just a stop signal.</li>
+        </ul>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Product Implication</div>
+        <p class="ns-p">The "Conversational vs. UI" framework, which distinguishes when natural-language recovery is sufficient from when UI controls add value, was adopted as a screening lens for future Joule interface decisions. One study created a reusable decision tool the team now applies independently on new AI feature proposals.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Retry feature deprioritized before engineering scoped it · ~4 sprint-weeks saved</span>
+            <span class="ic">Findings escalated to VP unsolicited · team redirected to graceful in-line recovery</span>
+            <span class="ic">"Conversational vs. UI" framework adopted · 3 subsequent Joule features screened through it</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:12px;line-height:1.55"><strong style="color:var(--md-on-surface)">On ~4 sprint-weeks:</strong> PM estimate. The proposed Retry button required two front-end sprints for the control itself plus two back-end sprints for regeneration state handling, error taxonomy, and telemetry. Conservative estimate; excludes downstream QA, accessibility review, and localization work that would have followed.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Research can protect a product from feature bloat</div>
+            <div class="reflect-body">The most useful outcome of this study was not a shipped feature. It was a feature that never shipped. Usability research usually asks "is this feature usable?" This study reminded me that the more valuable question is often "should this feature exist?" On a fast-moving AI product, protecting the roadmap from well-intentioned but unvalidated additions is as important as validating the ones that do move forward.</div>
+        </div>
+        <div class="reflect" style="margin-top:20px">
+            <div class="reflect-title">Follow the disconfirmation with a validation phase</div>
+            <div class="reflect-body">The study was rigorous at disconfirming the Retry button. It was weaker at validating the specific graceful-recovery pattern that should replace it. A follow-up phase testing in-line recovery treatments, failure-explanation microcopy, and next-step suggestions would turn "don't build X" into "build Y instead" with the same evidentiary weight.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs02-fiori-design-system.html" class="cs-nav-link">← CS02: Fiori Design System</a>
+    <a href="cs04-av-hearing-impairment.html" class="cs-nav-link next">CS04: AV & Hearing Impairment →</a>
+</div>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

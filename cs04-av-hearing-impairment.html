@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS04: Autonomous Vehicles & Hearing Impairment · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<style>
+#pw-gate{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Google Sans',sans-serif}
+#pw-box{text-align:center;padding:48px 40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:360px;width:90%}
+#pw-box h2{margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a}
+#pw-box p{margin:0 0 24px;font-size:14px;color:#666}
+#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;outline:none;margin-bottom:12px;transition:border-color .2s}
+#pw-input:focus{border-color:#1a73e8}
+#pw-btn{width:100%;padding:12px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+#pw-btn:hover{background:#1558b0}
+#pw-error{color:#d93025;font-size:13px;margin-top:8px;min-height:18px}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Protected Work</h2>
+    <p>This case study is password protected.<br>Enter the password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var correct='star';
+  var key='portfolio_unlocked';
+  if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  function attempt(){
+    if(document.getElementById('pw-input').value===correct){
+      sessionStorage.setItem(key,'1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-error').textContent='Incorrect password. Try again.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-btn').addEventListener('click',attempt);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+})();
+</script>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-blue">Human Factors</span><span class="tag t-amber">Controlled Experiment</span><span class="tag t-green">Accessibility</span></div>
+    <div class="cs-num">04 · SJSU Human Factors Lab · 2024–2025 · NSF-funded</div>
+    <h1 class="cs-page-title">Multimodal Takeover Signals for Hearing-Impaired Drivers in Automated Vehicles</h1>
+    <p class="cs-hook">Automated vehicle takeover systems rely heavily on auditory signals, yet no prior study had examined how these systems perform for hearing-impaired drivers. This M.S. thesis addressed that gap through a controlled factorial experiment across 42 participants, producing the first empirical data on multimodal takeover performance for this population. Published at AutomotiveUI 2024 at Stanford.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Lead researcher and first author. Designed the study, built all stimulus conditions, recruited and ran all 42 participants, conducted statistical analysis, and wrote the thesis and conference paper.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">3×3×2 factorial experiment · miniSim driving simulator · visual, tactile, and multimodal VT signals · three-way repeated-measures ANOVA · pre/post questionnaire</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Published at AutomotiveUI '24, Stanford (ACM DOI: 10.1145/3641308.3680515). First empirical data on multimodal takeover performance for hearing-impaired AV drivers. VT multimodal signals significantly outperformed single-modal. No performance gap between hearing and non-hearing groups.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">42</div><div class="cs-ml">Participants (21 hearing · 21 simulated HI)</div></div>
+        <div><div class="cs-mn">1st</div><div class="cs-ml">Study of its kind for hearing-impaired AV drivers</div></div>
+        <div><div class="cs-mn">Published</div><div class="cs-ml">AutomotiveUI '24 · Stanford · ACM</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Research Gap</div>
+        <p class="ns-p">Hearing impairment affects approximately 466 million people worldwide and roughly 15% of US adults report some difficulty hearing. While research on multimodal takeover displays has grown substantially, it has focused almost exclusively on drivers with typical hearing. The auditory channel, which carries a significant portion of takeover alert information, is unavailable or unreliable for this population.</p>
+        <p class="ns-p">SAE Level 3 automation handles most driving tasks but still requires human takeover when the system encounters something it cannot handle, such as a construction zone, an unexpected obstacle, or a system fault. The window to respond is 5 to 8 seconds. Standard takeover request systems use auditory alarms, voice prompts, or combinations that assume the driver can hear. For hearing-impaired drivers, that assumption fails silently, and no prior study had measured the consequence.</p>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:24px">
+            <img src="pic/Slide 16_9 - 6.png" alt="Mercedes SAE Level 3 Drive Pilot active — takeover request on dashboard display" style="width:100%;height:auto;border-radius:var(--shape-md)" />
+            <figcaption><strong>The real-world problem:</strong> A Mercedes SAE Level 3 vehicle prompting a driver to take over. The standard system assumes the driver can hear the accompanying alert. For 466 million people worldwide, that assumption fails.</figcaption>
+        </figure>
+
+        <div class="viz-adoption-gap" style="margin-top:28px">
+            <div class="viz-ag-label">The population this research addresses</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:4px">
+                <div class="viz-ag-card sap" style="text-align:center">
+                    <div class="viz-ag-num sap">466M<span></span></div>
+                    <div class="viz-ag-desc">people worldwide with disabling hearing loss (WHO, 2024)</div>
+                </div>
+                <div class="viz-ag-card sap" style="text-align:center">
+                    <div class="viz-ag-num sap">15%<span></span></div>
+                    <div class="viz-ag-desc">of US adults report difficulty hearing (NIDCD)</div>
+                </div>
+                <div class="viz-ag-card" style="text-align:center">
+                    <div class="viz-ag-num">0<span></span></div>
+                    <div class="viz-ag-desc">prior studies on hearing-impaired drivers in SAE Level 3 AV takeover scenarios</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Research Design</div>
+        <p class="ns-p">The study used a 3 (information type) × 3 (signal type) × 2 (hearing ability) full factorial design, giving 18 conditions per participant. This structure tests both main effects and all interactions simultaneously, the right approach when the goal is to know not just whether multimodal is better, but whether it is <em>differentially</em> better for hearing-impaired drivers specifically.</p>
+
+        <div class="two-col" style="margin-top:20px">
+            <div class="ns-col">
+                <h4>Three signal modalities</h4>
+                <ul class="ns-list">
+                    <li><strong>Visual (V):</strong> on-screen display only: arrow, approaching vehicle icon, or red warning circle</li>
+                    <li><strong>Tactile (T):</strong> seat-back vibration only: 9 C-2 tractors in a 3×3 array, 250 Hz, directional patterns</li>
+                    <li><strong>Multimodal (VT):</strong> visual and tactile simultaneously, with no auditory component</li>
+                </ul>
+                <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:8px;line-height:1.55"><strong style="color:var(--md-on-surface)">Why no audio condition:</strong> The research question was specifically about what replaces audio for drivers who cannot use it. A VAT condition was deliberately excluded to focus on the design space that remains viable for the hearing-impaired population.</p>
+            </div>
+            <div class="ns-col">
+                <h4>Three information types</h4>
+                <ul class="ns-list">
+                    <li><strong>Instructional:</strong> green arrow (left or right) telling the driver exactly which lane to use; high specificity, requires interpretation of new symbology</li>
+                    <li><strong>Informative:</strong> red car approaching from behind; situational awareness, driver decides what to do</li>
+                    <li><strong>Baseline:</strong> abstract red circle warning; minimal information, driver must read mirrors and environment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Signal type visualization -->
+        <div class="viz-adoption-gap" style="margin-top:24px">
+            <div class="viz-ag-label">The 3×3 condition matrix: 18 conditions, each participant experienced all of them</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px">
+                <div class="viz-ag-card" style="text-align:center;border-top:3px solid var(--md-primary)">
+                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--md-primary);margin-bottom:4px">Visual only</div>
+                    <div class="viz-ag-desc">On-screen display · no tactile signal</div>
+                </div>
+                <div class="viz-ag-card" style="text-align:center;border-top:3px solid var(--md-secondary)">
+                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--md-secondary);margin-bottom:4px">Tactile only</div>
+                    <div class="viz-ag-desc">Seat vibration · no visual overlay</div>
+                </div>
+                <div class="viz-ag-card sap" style="text-align:center;border-top:3px solid var(--md-tertiary,#1e7e34)">
+                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--md-tertiary,#1e7e34);margin-bottom:4px">Multimodal VT ★</div>
+                    <div class="viz-ag-desc">Visual + tactile simultaneously · best performer</div>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px">
+                <div class="viz-ag-card" style="text-align:center"><div class="viz-ag-desc"><strong>Instructional</strong> × each modality</div></div>
+                <div class="viz-ag-card" style="text-align:center"><div class="viz-ag-desc"><strong>Informative</strong> × each modality</div></div>
+                <div class="viz-ag-card" style="text-align:center"><div class="viz-ag-desc"><strong>Baseline</strong> × each modality</div></div>
+            </div>
+        </div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:24px">
+            <img src="pic/av-signal-conditions.png" alt="Instructional and informative signal conditions — vibration cue seat diagrams and visual cue screenshots" style="width:100%;height:auto;object-fit:contain" />
+            <figcaption><strong>The stimulus conditions:</strong> Instructional signals (top) paired a directional green arrow on screen with seat vibration indicating which side was safe to move to. Informative signals (bottom) showed a red car approaching from behind alongside seat vibration indicating the approaching vehicle's side. A baseline condition (not shown) used an abstract red circle and center-seat vibration, prompting drivers to rely on mirrors.</figcaption>
+        </figure>
+
+        <!-- OPERATIONS CALLOUT -->
+        <div class="ops-callout" style="margin-top:24px">
+            <div class="ops-title">Methods &amp; Operations</div>
+            <div class="ops-grid">
+                <div class="ops-item">
+                    <div class="ops-label">Apparatus</div>
+                    <div class="ops-val">miniSim medium-fidelity driving simulator (University of Iowa DSRI) with three 48-inch LED screens, steering wheel, pedals, and a custom tactile seat with a 9-element vibrotactile array. Participants drove a simulated 3-lane highway at 60–65 mph with autonomous mode active.</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Hearing impairment simulation</div>
+                    <div class="ops-val">Noise-canceling headphones and foam earplugs worn simultaneously, blocking ambient and simulator audio. Healthy participants served as the control group. Actual hearing-impaired individuals were not recruited, a noted limitation as it caps ecological validity.</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Recruitment &amp; ethics</div>
+                    <div class="ops-val">42 participants (26F, 16M, ages 18–44) recruited via SJSU SONA research pool. Required valid driver's license, normal/corrected vision, no neurological issues affecting touch. Written informed consent obtained before all sessions. Compensated with 2 hours course credit. IRB-approved protocol.</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Dependent measures</div>
+                    <div class="ops-val">Reaction time (signal onset to first brake/steer input) · Takeover time (signal onset to 2° steering change) · Maximum resulting acceleration/jerk (takeover quality) · Post-drive questionnaire (preference, subjective experience)</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Analysis</div>
+                    <div class="ops-val">Three-way repeated-measures ANOVA (signal type and information type as within-subjects; hearing ability as between-subjects). Greenhouse-Geisser corrections applied for sphericity violations. Bonferroni post-hoc comparisons for significant effects. Effect sizes reported as partial η².</div>
+                </div>
+                <div class="ops-item">
+                    <div class="ops-label">Secondary task</div>
+                    <div class="ops-val">Participants simultaneously played a matching game during the drive to simulate the cognitive load of being off-task, a common condition during Level 3 automation. Takeover occurred without warning mid-drive, creating realistic urgency.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">The Experiment in the Lab</div>
+        <figure class="cs-figure cs-figure-wide">
+            <img src="pic/IMG_4199 2.png" alt="Participant in the miniSim driving simulator at SJSU Human Factors Lab" style="width:100%;height:auto;max-height:500px;object-fit:cover;object-position:center" />
+            <figcaption><strong>miniSim driving simulator, SJSU Human Factors Lab:</strong> A participant drives the simulated highway at 60 mph in autonomous mode. The tactile seat array is integrated into the seat back. When a takeover event fires, the automation disengages and the appropriate visual and/or tactile signals activate simultaneously. The participant must respond within the 5 to 8 second critical window: brake to deactivate automation, then lane change to avoid the construction zone.</figcaption>
+        </figure>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <p style="font-size:12.5px;color:var(--md-on-surface-variant);margin-bottom:16px;font-style:italic">Three-way repeated-measures ANOVA with Greenhouse-Geisser corrections. All significant effects at p &lt; .001 unless noted. Effect sizes reported as partial η².</p>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Multimodal VT signals produced significantly faster takeover and reaction times than either modality alone</div>
+                    <div class="in-body">Signal type had a significant main effect on both reaction time (F(1.579, 59.996) = 24.697, p &lt; .001, ηp² = .394) and takeover time (F(1.738, 66.038) = 18.874, p &lt; .001, ηp² = .332). VT reaction time (M = 1.38s) was significantly faster than visual-only (M = 1.61s) or tactile-only (M = 1.65s). VT takeover time (M = 2.13s) versus V (M = 2.50s) and T (M = 2.55s). Distributing the alert across two sensory channels, consistent with Wickens' Multiple Resource Theory, reduced cognitive processing time at the most critical moment.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">No significant performance gap between hearing and simulated hearing-impaired drivers</div>
+                    <div class="in-body">Hearing ability had no significant main effect on reaction time (F(1, 38) = 2.433, p = .127, ηp² = .060) or takeover time (F(1, 38) = 0.526, p = .473, ηp² = .014). Drivers with simulated hearing loss performed equivalently to the control group across all 18 conditions. When audio is removed entirely and only visual-tactile signals remain, performance does not degrade. The well-designed non-auditory interface compensated fully.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Abstract baseline warnings produced faster reactions than specific instructional signals</div>
+                    <div class="in-body">Information type had a significant effect on reaction time (F(1.978, 75.163) = 7.768, p &lt; .001, ηp² = .170). The baseline abstract warning (M = 1.45s) was fastest, followed by informative (M = 1.58s) then instructional (M = 1.61s). Instructional signals, despite being the most specific, imposed the highest cognitive load because drivers had to learn and decode new symbology. The familiar warning pattern matched what drivers already knew from everyday driving, reducing processing time at the moment it mattered most. Familiarity operates as a design variable.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">4</div>
+                <div>
+                    <div class="in-title">Subjective preferences aligned with objective performance but diverged on information type</div>
+                    <div class="in-body">60% of participants preferred multimodal VT as most helpful, consistent with the performance data. However, 51% preferred informative signals subjectively despite baseline warnings being objectively faster to respond to. Drivers wanted to understand their situation even if that understanding cost reaction time, a design tension between safety-optimal (simplified abstracts) and user-preferred (situational context) that has direct implications for HMI specification.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Results at a Glance</div>
+        <!-- Results charts — built from actual thesis data -->
+        <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:28px 32px;margin-top:8px">
+
+            <!-- Legend -->
+            <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px;align-items:center">
+                <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline)">Information type</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--md-on-surface-variant)"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#e8eaed;border:1.5px solid #bdc1c6"></span>Baseline</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--md-on-surface-variant)"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#aecbfa;border:1.5px solid #669df6"></span>Instructional</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--md-on-surface-variant)"><span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#1a73e8;border:1.5px solid #1557b0"></span>Informative</div>
+            </div>
+
+            <!-- TAKEOVER TIME -->
+            <div style="margin-bottom:36px">
+                <div style="font-size:13px;font-weight:700;color:var(--md-on-surface);margin-bottom:4px">Takeover Time <span style="font-weight:400;color:var(--md-outline)">(seconds)</span></div>
+                <div style="font-size:11.5px;color:var(--md-outline);margin-bottom:16px">F(1.738, 66.038) = 18.874, p &lt; .001, ηp² = .332 — VT significantly faster than V and T</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+
+                    <!-- V -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline);text-align:center;margin-bottom:10px">Visual only</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:120px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.50</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(2.50/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.39</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(2.39/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.57</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(2.57/3.20*100px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                    <!-- T -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline);text-align:center;margin-bottom:10px">Tactile only</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:120px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.34</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(2.34/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.93</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(2.93/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.36</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(2.36/3.20*100px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                    <!-- VT -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e7e34;text-align:center;margin-bottom:10px">Multimodal VT ★</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:120px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.03</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(2.03/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.11</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(2.11/3.20*100px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">2.20</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(2.20/3.20*100px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:6px">
+                    <div style="text-align:center;font-size:11.5px;color:var(--md-on-surface-variant);font-weight:500">V · M = 2.50s avg</div>
+                    <div style="text-align:center;font-size:11.5px;color:var(--md-on-surface-variant);font-weight:500">T · M = 2.54s avg</div>
+                    <div style="text-align:center;font-size:12px;color:#1e7e34;font-weight:700">VT · M = 2.11s avg ↓ fastest</div>
+                </div>
+            </div>
+
+            <!-- REACTION TIME -->
+            <div>
+                <div style="font-size:13px;font-weight:700;color:var(--md-on-surface);margin-bottom:4px">Reaction Time <span style="font-weight:400;color:var(--md-outline)">(seconds)</span></div>
+                <div style="font-size:11.5px;color:var(--md-outline);margin-bottom:16px">F(1.579, 59.996) = 24.697, p &lt; .001, ηp² = .394 — VT significantly faster; Baseline fastest by information type</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+
+                    <!-- V -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline);text-align:center;margin-bottom:10px">Visual only</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:100px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.60</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(1.60/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.64</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(1.64/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.59</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(1.59/2.00*88px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                    <!-- T -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline);text-align:center;margin-bottom:10px">Tactile only</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:100px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.49</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(1.49/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.76</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(1.76/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.64</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(1.64/2.00*88px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                    <!-- VT -->
+                    <div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1e7e34;text-align:center;margin-bottom:10px">Multimodal VT ★</div>
+                        <div style="display:flex;align-items:flex-end;gap:4px;height:100px;padding:0 8px">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.27</div>
+                                <div style="width:100%;background:#e8eaed;border:1.5px solid #bdc1c6;border-radius:4px 4px 0 0;height:calc(1.27/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.38</div>
+                                <div style="width:100%;background:#aecbfa;border:1.5px solid #669df6;border-radius:4px 4px 0 0;height:calc(1.38/2.00*88px)"></div>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+                                <div style="font-size:11px;font-weight:600;color:var(--md-on-surface-variant)">1.45</div>
+                                <div style="width:100%;background:#1a73e8;border:1.5px solid #1557b0;border-radius:4px 4px 0 0;height:calc(1.45/2.00*88px)"></div>
+                            </div>
+                        </div>
+                        <div style="height:1.5px;background:var(--md-outline-variant);margin:0 8px"></div>
+                    </div>
+
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:6px">
+                    <div style="text-align:center;font-size:11.5px;color:var(--md-on-surface-variant);font-weight:500">V · M = 1.61s avg</div>
+                    <div style="text-align:center;font-size:11.5px;color:var(--md-on-surface-variant);font-weight:500">T · M = 1.63s avg</div>
+                    <div style="text-align:center;font-size:12px;color:#1e7e34;font-weight:700">VT · M = 1.37s avg ↓ fastest</div>
+                </div>
+            </div>
+
+        </div>
+        <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:10px;line-height:1.55">Means in seconds. All values from three-way repeated-measures ANOVA (Greenhouse-Geisser corrected). Hearing vs. non-hearing groups not shown — no significant difference observed across either measure.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">The Unexpected Finding and What It Means</div>
+        <p class="ns-p">The study's hypothesis predicted that hearing-impaired drivers would show slower takeover performance than controls. They did not. This was the most important result and required careful interpretation rather than dismissal.</p>
+        <div class="reframe">
+            <div class="rf-box">
+                <div class="rf-mark">What we expected</div>
+                <div class="rf-text">Removing auditory signals would degrade performance for hearing-impaired drivers relative to controls, who retain access to background environmental sounds (engine noise, other vehicles, sirens) that implicitly support situation awareness.</div>
+            </div>
+            <div class="rf-arrow">→</div>
+            <div class="rf-box after">
+                <div class="rf-mark">What we found and why</div>
+                <div class="rf-text">No significant difference. Three possible mechanisms: (1) the auditory channel is easily masked in real driving by music, phone calls, and road noise; its loss may matter less than assumed; (2) takeover scenarios are dominated by sudden, salient visual-tactile events where audio adds limited value over a well-designed VT system; (3) simulation may have reduced reliance on ambient environmental audio cues present in real driving. All three warrant follow-up with actual hearing-impaired participants.</div>
+            </div>
+        </div>
+        <p class="ns-p" style="margin-top:14px">This null finding carries positive design implications: it provides early empirical evidence that a well-engineered visual-tactile takeover system can serve hearing-impaired drivers without a performance penalty. That is a meaningful signal for automotive HMI designers, even as it requires replication with clinical hearing-impaired participants to be generalized.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Study Video</div>
+        <a href="https://www.youtube.com/watch?v=5XM6ELdGQS8&t=69s" target="_blank" rel="noopener" style="display:block;position:relative;border-radius:var(--shape-lg);overflow:hidden;background:#000;aspect-ratio:16/9;text-decoration:none">
+            <img src="https://img.youtube.com/vi/5XM6ELdGQS8/maxresdefault.jpg" alt="Hearing Impairment in Automotive Vehicles — study overview video" style="width:100%;height:100%;object-fit:cover;opacity:0.85;display:block" />
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <div style="width:72px;height:72px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3)">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#1a1a1a"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+        </a>
+        <p style="font-size:12px;color:var(--md-on-surface-variant);margin-top:8px;line-height:1.5">Study overview video — demonstrates the miniSim setup, stimulus conditions, and takeover scenarios. Opens on YouTube.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Design Implications</div>
+        <div class="impact-chips">
+            <span class="ic">Published at AutomotiveUI '24, Stanford · ACM DOI: 10.1145/3641308.3680515 · first empirical data on multimodal takeover performance for hearing-impaired AV drivers</span>
+            <span class="ic">VT multimodal signals significantly outperformed single-modal · no performance gap between hearing and non-hearing groups</span>
+            <span class="ic">Findings submitted to inform future AV HMI accessibility guidelines</span>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Simulated hearing impairment is not the same as living with it</div>
+            <div class="reflect-body">The study's most significant limitation is one built in by necessity: hearing impairment was simulated with headphones and earplugs, not recruited clinically. Actual hearing-impaired drivers bring years of adapted behavior: heightened visual attention, different mirror-checking habits, compensatory strategies the simulation cannot replicate. The null finding on hearing ability is encouraging, but it cannot be read as definitive until the study is replicated with actual clinical participants. This limitation was named explicitly in the paper and thesis because it matters for how the findings should be used.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">Testing the hypothesis rather than confirming it produced the more valuable result</div>
+            <div class="reflect-body">The study was designed to falsify the assumption that hearing-impaired drivers would perform worse, not to confirm it. The null finding on hearing ability, though it contradicted the original hypothesis, was the right result to report and defend. A disconfirmation backed by a 3×3×2 factorial design and three dependent measures is more useful to automotive HMI designers than a confirmation would have been: it moves the design conversation from "how do we compensate for hearing loss?" to "a well-designed visual-tactile system may not require compensation at all."</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs03-retry-button.html" class="cs-nav-link">← CS03: Joule Retry Button</a>
+    <a href="index.html#work" class="cs-nav-link next">All case studies →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

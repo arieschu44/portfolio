@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS02: Fiori Design System · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<style>
+#pw-gate{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Google Sans',sans-serif}
+#pw-box{text-align:center;padding:48px 40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:360px;width:90%}
+#pw-box h2{margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a}
+#pw-box p{margin:0 0 24px;font-size:14px;color:#666}
+#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;outline:none;margin-bottom:12px;transition:border-color .2s}
+#pw-input:focus{border-color:#1a73e8}
+#pw-btn{width:100%;padding:12px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+#pw-btn:hover{background:#1558b0}
+#pw-error{color:#d93025;font-size:13px;margin-top:8px;min-height:18px}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Protected Work</h2>
+    <p>This case study is password protected.<br>Enter the password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var correct='star';
+  var key='portfolio_unlocked';
+  if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  function attempt(){
+    if(document.getElementById('pw-input').value===correct){
+      sessionStorage.setItem(key,'1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-error').textContent='Incorrect password. Try again.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-btn').addEventListener('click',attempt);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+})();
+</script>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-green">Measured Impact</span><span class="tag t-blue">Mixed Methods</span><span class="tag t-blue">Workshop Facilitation</span></div>
+    <div class="cs-num">02 · SAP Fiori Mobile Design System · Aug–Sep 2025</div>
+    <h1 class="cs-page-title">Designers were abandoning a working design system. The problem was not quality. It was trust.</h1>
+    <p class="cs-hook">Satisfaction with SAP Fiori Mobile had dropped to 3.71/5 and designers were quietly building custom components. I challenged the quality hypothesis, uncovered three structural trust failures, and drove the first major design system update in 15 years, lifting satisfaction by +12.6% in one quarter.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Lead and sole researcher. Scoped, recruited, and ran all 19 sessions. Designed the benchmark survey, facilitated the prioritization workshop, and drove 3 changes shipped in v25.04.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">Moderated interviews (n=19) · live workflow observation · pre/post benchmark survey (n=160) · prioritization workshop</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">+12.6% satisfaction in one quarter (3.71 to 4.18, same n=160 cohort). Three structural changes shipped in v25.04. First major design system update in 15 years. ~8 weeks of engineering rework prevented. Android and iOS leads aligned on a shared problem definition for the first time.</div>
+        </div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Context: Challenging the Assumption</div>
+        <p class="ns-p">When I joined SAP, 600+ internal designers depended on Fiori Mobile as their primary design framework. The system had been in place for 15 years. Yet satisfaction was falling and teams were quietly detaching from components and building custom alternatives.</p>
+        <p class="ns-p">The prevailing assumption inside the team was that designers were not following the system correctly. I wanted to challenge that. If so many designers across different teams and products were all independently leaving the system, the more likely explanation was that the system itself was failing them. I proposed a mixed-methods study to find out where and why.</p>
+
+        <!-- Participant breakdown -->
+        <div class="viz-adoption-gap" style="margin-top:24px">
+            <div class="viz-ag-label">Study participants — 19 total, across both platforms and roles</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:4px">
+                <div class="viz-ag-card sap" style="text-align:center">
+                    <div class="viz-ag-num sap">12<span></span></div>
+                    <div class="viz-ag-desc">Designers (iOS and Android)</div>
+                </div>
+                <div class="viz-ag-card sap" style="text-align:center">
+                    <div class="viz-ag-num sap">7<span></span></div>
+                    <div class="viz-ag-desc">Developers working with Fiori Mobile</div>
+                </div>
+                <div class="viz-ag-card" style="text-align:center">
+                    <div class="viz-ag-num">1 hr<span></span></div>
+                    <div class="viz-ag-desc">Per session, moderated remote interview</div>
+                </div>
+                <div class="viz-ag-card" style="text-align:center">
+                    <div class="viz-ag-num">160<span></span></div>
+                    <div class="viz-ag-desc">Benchmark survey participants (pre/post)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reframe" style="margin-top:28px;margin-bottom:0">
+            <div class="rf-box">
+                <div class="rf-mark">Team's assumption</div>
+                <div class="rf-text">"Designers are not following the system correctly. Improve component quality and adoption will return."</div>
+            </div>
+            <div class="rf-arrow">→</div>
+            <div class="rf-box after">
+                <div class="rf-mark">My research question</div>
+                <div class="rf-text">"Why do designers feel unsafe depending on this system? Which structural conditions are making it faster to abandon it than to use it?"</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Research Program</div>
+        <p class="ns-p">Mixed methods were chosen because the problem had two unknowns: the nature of the abandonment behavior (qualitative) and the scale of it across the broader population (quantitative). Interviews alone would have left the scale question open. A survey alone would not have revealed the behavioral mechanism. Running both in sequence allowed findings from interviews to directly inform the survey instrument.</p>
+
+        <div class="two-col" style="margin-top:20px">
+            <div class="ns-col">
+                <h4>Phase 1: Moderated interviews (n=19)</h4>
+                <p style="font-size:12.5px;color:var(--md-on-surface-variant);margin-bottom:10px;font-style:italic">1-hour sessions combining think-aloud workflow observation with structured feedback on specific UI kit components. Designers and developers were interviewed separately to surface role-specific pain points before identifying shared patterns.</p>
+                <ul class="ns-list">
+                    <li>12 designers across iOS and Android product teams</li>
+                    <li>7 developers working directly with Fiori Mobile components</li>
+                    <li>Sessions observed live component usage and asked participants to walk through a real design decision</li>
+                    <li>Four structural failure patterns emerged consistently across both groups</li>
+                </ul>
+            </div>
+            <div class="ns-col">
+                <h4>Phase 2: Benchmark survey (n=160, pre/post)</h4>
+                <p style="font-size:12.5px;color:var(--md-on-surface-variant);margin-bottom:10px;font-style:italic">A quantitative survey was run before and after v25.04 shipped to measure whether the structural changes moved satisfaction at scale. The survey instrument was built directly from interview findings to ensure the right dimensions were being measured.</p>
+                <ul class="ns-list">
+                    <li>The same 160 internal designers and developers completed both the pre-launch and post-launch survey, enabling a direct within-cohort comparison</li>
+                    <li>Pre-launch baseline: 3.71/5 overall satisfaction</li>
+                    <li>Post-launch (one quarter): 4.18/5</li>
+                    <li>Validated that qualitative trust failures were not edge cases but systemic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- OPERATIONS CALLOUT removed -->
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Key Findings: The Cycle of Abandonment</div>
+        <p style="font-size:12.5px;color:var(--md-on-surface-variant);margin-bottom:16px;font-style:italic">Themes were developed through affinity mapping in Dovetail across all 19 sessions. Three structural failure patterns emerged that together formed a self-reinforcing loop I named the Cycle of Abandonment.</p>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Conflicting standards forced constant cross-referencing</div>
+                    <div class="in-body">SAP Fiori guidelines contradicted Apple HIG and Material Design in unresolved ways. Designers spent significant time cross-checking three sets of rules for every component decision. They were not abandoning the system because they did not care about consistency. They were abandoning it because the system could not tell them what correct looked like.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">Rigid components created a debt spiral no team could exit</div>
+                    <div class="in-body">Any customization required detaching from the component. Detaching meant losing future updates. Losing updates meant building custom alternatives. Custom alternatives compounded with every release. The system's inflexibility was directly generating the abandonment it suffered from.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Accessibility anxiety produced worse accessibility outcomes</div>
+                    <div class="in-body">Developers could not verify WCAG compliance within the system, so they built custom components they believed were safer. Those builds were objectively less accessible. Unverifiable risk produced worse outcomes than the risk itself.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cycle of Abandonment loop -->
+        <div class="viz-adoption-gap" style="margin-top:28px">
+            <div class="viz-ag-label">The Cycle of Abandonment — how the three failures compound</div>
+            <div style="display:flex;align-items:center;gap:0;margin-top:16px;flex-wrap:wrap;justify-content:center">
+                <div style="background:var(--md-error-container);border:1.5px solid #f5c6c3;border-radius:var(--shape-md);padding:14px 18px;flex:1;min-width:160px;max-width:200px;text-align:center">
+                    <div style="font-size:11px;font-weight:700;color:var(--md-on-error-container);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px">Conflicting standards</div>
+                    <div style="font-size:12px;color:var(--md-on-error-container);line-height:1.4">Designer cross-references SAP, Apple HIG, and Material Design</div>
+                </div>
+                <div style="font-size:20px;color:var(--md-outline);padding:0 8px">→</div>
+                <div style="background:var(--md-warning-container);border:1.5px solid #f5d99c;border-radius:var(--shape-md);padding:14px 18px;flex:1;min-width:160px;max-width:200px;text-align:center">
+                    <div style="font-size:11px;font-weight:700;color:var(--md-on-warning-container);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px">Forced detachment</div>
+                    <div style="font-size:12px;color:var(--md-on-warning-container);line-height:1.4">Any customization breaks the component link to future updates</div>
+                </div>
+                <div style="font-size:20px;color:var(--md-outline);padding:0 8px">→</div>
+                <div style="background:var(--md-surface-container);border:1.5px solid var(--md-outline-variant);border-radius:var(--shape-md);padding:14px 18px;flex:1;min-width:160px;max-width:200px;text-align:center">
+                    <div style="font-size:11px;font-weight:700;color:var(--md-on-surface);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px">Custom builds</div>
+                    <div style="font-size:12px;color:var(--md-on-surface-variant);line-height:1.4">Team builds alternatives they believe are safer and faster</div>
+                </div>
+                <div style="font-size:20px;color:var(--md-outline);padding:0 8px">→</div>
+                <div style="background:var(--md-error-container);border:1.5px solid #f5c6c3;border-radius:var(--shape-md);padding:14px 18px;flex:1;min-width:160px;max-width:200px;text-align:center">
+                    <div style="font-size:11px;font-weight:700;color:var(--md-on-error-container);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px">Debt compounds</div>
+                    <div style="font-size:12px;color:var(--md-on-error-container);line-height:1.4">Custom components fall further behind with every release cycle</div>
+                </div>
+            </div>
+            <div style="font-size:11.5px;color:var(--md-primary);font-weight:600;text-align:center;margin-top:12px">↩ Loop repeats — abandonment accelerates over time</div>
+        </div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/fiori-persona.png" alt="Designer persona Rachel — goals, pain points, and needs" style="height:auto !important;object-fit:contain !important;width:100%" />
+            <figcaption><strong>Designer persona developed from interview synthesis:</strong> Rachel represents the core pattern across the 12 designer participants. Her pain points (conflicting guidelines, forced detachment, accessibility uncertainty) mapped directly onto the three structural failure modes identified in the research.</figcaption>
+        </figure>
+
+        <div class="quote" style="margin-top:24px">
+            <p>"Sometimes I spend more time figuring out which component to use than actually designing."</p>
+            <cite>Internal designer, live workflow observation</cite>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Building Buy-in: The Journey Mapping Workshop</div>
+        <div class="sth">
+            <div class="sth-lbl">The challenge</div>
+            <div class="sth-text">The design system team had operated on the quality assumption for years. A readout presenting findings would have been easy to debate. I needed stakeholders to feel the pain themselves rather than hear it from me. I facilitated a journey mapping workshop where the Android and iOS design system leads and their teams worked directly with the raw research data to map designer and developer experiences. Co-ownership of the synthesis meant co-ownership of the problem.</div>
+        </div>
+        <ul class="ns-list" style="margin-bottom:20px">
+            <li>Workshop attended by Android and iOS design system leads and key team members</li>
+            <li>Participants worked with real quotes and behavioral observations from the 19 sessions, not researcher summaries</li>
+            <li>Journey maps produced in the workshop became the shared artifact the team used to prioritize v25.04 changes</li>
+            <li>Framing each failure as structural rather than attributable to any individual reduced defensiveness and made action easier</li>
+        </ul>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/workshop-clean.png" alt="Dovetail affinity board from research synthesis" style="height:auto !important;object-fit:contain !important;width:100%" />
+            <figcaption><strong>Synthesis from 19 interview sessions:</strong> Themes clustered in Dovetail across feedback on UI kit updating strategy, needs for practical example kits, and component usage pain points. This data formed the backbone of the workshop materials.</figcaption>
+        </figure>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Changes Shipped in v25.04</div>
+        <p class="ns-p">This was the first major update to the Fiori Mobile Design System in 15 years. Each change mapped directly to one of the three structural failure patterns.</p>
+
+        <!-- FINDING → SHIPPED CHANGE MAPPING -->
+        <div class="viz-map" style="margin-top:28px">
+            <div class="vmap-title">Every finding shipped as a structural change</div>
+            <div class="vmap-header">
+                <div class="vmap-h-finding">Structural failure (research)</div>
+                <div class="vmap-h-arrow"></div>
+                <div class="vmap-h-ship">Change shipped in v25.04 (product)</div>
+            </div>
+            <div class="vmap-row">
+                <div class="vmap-finding">
+                    <div class="vmap-tag">Finding 1</div>
+                    <div class="vmap-h">Conflicting standards forced constant cross-referencing</div>
+                    <div class="vmap-body">Designers cross-checked SAP, Apple HIG, and Material Design for every component decision.</div>
+                </div>
+                <div class="vmap-arrow">→</div>
+                <div class="vmap-ship">
+                    <div class="vmap-tag vmap-tag--ship">Shipped</div>
+                    <div class="vmap-h">Comparison tables with explicit divergence rationale</div>
+                    <div class="vmap-body">Documented where SAP intentionally diverges from platform guidelines and why, removing the cross-referencing burden.</div>
+                </div>
+            </div>
+            <div class="vmap-row">
+                <div class="vmap-finding">
+                    <div class="vmap-tag">Finding 2</div>
+                    <div class="vmap-h">Rigid components created a debt spiral</div>
+                    <div class="vmap-body">Any customization forced detachment and severed the update path, generating custom builds that compounded over time.</div>
+                </div>
+                <div class="vmap-arrow">→</div>
+                <div class="vmap-ship">
+                    <div class="vmap-tag vmap-tag--ship">Shipped</div>
+                    <div class="vmap-h">Flexible variants with defined customization zones</div>
+                    <div class="vmap-body">Teams can adapt components without detaching, keeping them on the update path and breaking the debt spiral.</div>
+                </div>
+            </div>
+            <div class="vmap-row">
+                <div class="vmap-finding">
+                    <div class="vmap-tag">Finding 3</div>
+                    <div class="vmap-h">Accessibility anxiety produced worse accessibility outcomes</div>
+                    <div class="vmap-body">Developers built "safer" custom components that were objectively less accessible than the system defaults.</div>
+                </div>
+                <div class="vmap-arrow">→</div>
+                <div class="vmap-ship">
+                    <div class="vmap-tag vmap-tag--ship">Shipped</div>
+                    <div class="vmap-h">Screen reader annotations on every component spec</div>
+                    <div class="vmap-body">Accessibility ambiguity removed at the point of decision, eliminating the risk-driven custom builds.</div>
+                </div>
+            </div>
+        </div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/fiori-swap-slots.webp" alt="Fiori Mobile AI Insights component with defined customization swap slots highlighted in yellow" style="height:auto !important;object-fit:contain !important;width:100%" />
+            <figcaption><strong>A shipped example — Change 2 in practice:</strong> swap slots make customization zones explicit at the component level. Teams can adapt the AI Insights component within the yellow-marked regions without detaching from the system, keeping the component on the update path. This is the structural fix to the debt spiral: adapt without detach.</figcaption>
+        </figure>
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/fiori-v25-changelog.png" alt="What's New in Fiori for Android 25.8 UI Kit changelog" style="height:auto !important;object-fit:contain !important;width:100%" />
+            <figcaption><strong>Fiori Android 25.8 UI Kit changelog:</strong> Foundation updates (color, typography, spacing) and component updates across the full kit — the direct output of roadmap changes driven by this research program.</figcaption>
+        </figure>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+
+        <!-- CSAT before/after visualization -->
+        <div class="viz-adoption-gap" style="margin-bottom:28px">
+            <div class="viz-ag-label">Satisfaction benchmark — pre/post v25.04 (same n=160 respondents, both waves)</div>
+            <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:center;margin-top:16px">
+                <div style="text-align:center;padding:24px;background:var(--md-surface-container);border-radius:var(--shape-md);border:1.5px solid var(--md-outline-variant)">
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-outline);margin-bottom:8px">Before — Aug 2025</div>
+                    <div style="font-size:52px;font-weight:700;font-family:var(--font-display);color:var(--md-on-surface-variant);line-height:1">3.71</div>
+                    <div style="font-size:12px;color:var(--md-outline);margin-top:4px">out of 5</div>
+                    <div style="background:var(--md-outline-variant);height:8px;border-radius:4px;margin-top:16px;overflow:hidden">
+                        <div style="background:var(--md-outline);height:100%;width:74.2%;border-radius:4px"></div>
+                    </div>
+                </div>
+                <div style="text-align:center;font-size:22px;color:var(--md-primary);font-weight:700">→</div>
+                <div style="text-align:center;padding:24px;background:var(--md-primary-container);border-radius:var(--shape-md);border:1.5px solid #a8c4f8">
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-primary);margin-bottom:8px">After — Nov 2025</div>
+                    <div style="font-size:52px;font-weight:700;font-family:var(--font-display);color:var(--md-primary);line-height:1">4.18</div>
+                    <div style="font-size:12px;color:var(--md-primary);margin-top:4px">out of 5 &nbsp;<strong>+12.6%</strong></div>
+                    <div style="background:#c5d9fc;height:8px;border-radius:4px;margin-top:16px;overflow:hidden">
+                        <div style="background:var(--md-primary);height:100%;width:83.6%;border-radius:4px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-chips">
+            <span class="ic">+12.6% satisfaction in one quarter (3.71 to 4.18, same n=160 cohort pre/post) · first major design system update in 15 years</span>
+            <span class="ic">~8 weeks of engineering rework prevented · 3 structural changes shipped in v25.04</span>
+            <span class="ic">Android and iOS leads aligned on a shared problem definition for the first time · 2026 roadmap shaped</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:12px;line-height:1.55"><strong style="color:var(--md-on-surface)">On ~8 weeks:</strong> PM estimate based on average sprint cost of custom component detachment cycles observed during research. Each detachment forced a rebuild calculated at approximately 2 sprint weeks of engineering time. Three structural blockers contributed to at least 4 such cycles in the 6 months prior to the study. Conservative estimate; actual value was likely higher given compounding effects on QA and accessibility review.</p>
+        <p style="font-size:11.5px;color:var(--md-on-surface-variant);margin-top:8px;line-height:1.55"><strong style="color:var(--md-on-surface)">On the +12.6% CSAT lift:</strong> This is a within-cohort pre/post comparison (same n=160 respondents, before and after v25.04 shipped). There was no control group, so other factors active during that quarter — such as broader Fiori communication changes or onboarding updates — cannot be ruled out as contributors. The study design provides strong directional signal, not a controlled attribution. The appropriate interpretation is that structural changes coincided with a meaningful satisfaction increase in the target cohort, not that research alone caused it.</p>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Challenging assumptions does not mean being oppositional</div>
+            <div class="reflect-body">The lesson I took from this project is that challenging the team's hypothesis required more care, not less. I had to be rigorous enough that the evidence spoke for itself, and I had to give the team a path forward rather than just a stop signal. The workshop was critical for this. If I had simply presented the findings, the team could have debated them. By working through the data together, they arrived at the same conclusions themselves.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">A diary study would have strengthened the causal chain</div>
+            <div class="reflect-body">Workflow observations captured a snapshot of behavior. A short diary study of 1 to 2 weeks would have revealed when teams made the detachment decision in real time rather than reconstructed after the fact, making the root cause harder to dispute and the causal chain more rigorous.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs01-support-landscape.html" class="cs-nav-link">← CS01: SAP Support Landscape</a>
+    <a href="cs03-retry-button.html" class="cs-nav-link next">CS03: Joule Retry Button →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>
