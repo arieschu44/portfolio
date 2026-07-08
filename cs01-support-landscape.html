@@ -33,11 +33,14 @@
 </div>
 <script>
 (function(){
-  var correct='star';
+  var h='cc7fffc22c4f12d190e818690c66a232d95bd5b590fcdf50bcedebca912ea720';
   var key='portfolio_unlocked';
   if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
-  function attempt(){
-    if(document.getElementById('pw-input').value===correct){
+  async function attempt(){
+    var val=document.getElementById('pw-input').value;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(val));
+    var hex=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    if(hex===h){
       sessionStorage.setItem(key,'1');
       document.getElementById('pw-gate').style.display='none';
     } else {
