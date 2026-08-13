@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS03: Joule AI Assistant · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="cs-hero-grid">
+        <div>
+            <div class="tags"><span class="tag t-red">Feature Deprioritized</span><span class="tag t-blue">Behavioral Research</span><span class="tag t-amber">Executive Influence</span></div>
+            <div class="cs-num">03 · Joule AI Assistant · Sept 2025</div>
+            <h1 class="cs-page-title">The button nobody reached for.</h1>
+            <p class="cs-hook">Leadership requested a Retry/Regenerate button for 440K+ enterprise users. Engineering was scoped. I pushed to run a behavioral study before anyone built anything. Every participant repaired AI errors conversationally without reaching for a reset control. The recommendation to deprioritize reached VP level without being pushed.</p>
+        </div>
+        <div class="cs-hero-media">
+            <img src="pic/joule-regenerate-menu.webp" alt="Joule AI assistant interface showing the proposed regenerate control" />
+        </div>
+    </div>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Sole researcher. Scoped the study, recruited participants, facilitated all 8 sessions, synthesized findings and drove readout to PM, Design and AI leads.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">n=8 enterprise Joule users (HR, finance and supply chain roles) · think-aloud behavioral observation · competitive benchmarking (ChatGPT, Copilot) · thematic analysis</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Retry feature deprioritized. Team redirected to conversational repair patterns. Findings escalated to VP unsolicited. A "Conversational vs. UI" framework adopted for future AI interface decisions.</div>
+        </div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">The Problem</div>
+        <p class="ns-p">Joule is SAP's AI assistant, deployed to more than 440,000 enterprise users across finance, HR and supply chain. The interface is conversational by design: a prompt field, a response and no traditional UI chrome. When teams started fielding feedback that responses were sometimes wrong or incomplete, the proposed fix was a Retry or Regenerate button. ChatGPT had one. Microsoft Copilot had one. A VP had sponsored the request and engineering estimated a small lift.</p>
+        <p class="ns-p">The assumption behind the request: when an AI response misses, users want a transactional fix. One button, one reset, move on.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0">
+            <figure style="margin:0">
+                <img src="pic/problem 1.png" alt="Problem statement 1" style="width:100%;max-height:580px;object-fit:contain;background:var(--md-surface-container-low);border-radius:var(--shape-md);border:1px solid var(--md-outline-variant)" />
+                <figcaption style="margin-top:8px;font-size:12px;color:var(--md-on-surface-variant)">Problem 1: user reports an unhelpful response with no clear path to correction</figcaption>
+            </figure>
+            <figure style="margin:0">
+                <img src="pic/problem 2.png" alt="Problem statement 2" style="width:100%;max-height:580px;object-fit:contain;background:var(--md-surface-container-low);border-radius:var(--shape-md);border:1px solid var(--md-outline-variant)" />
+                <figcaption style="margin-top:8px;font-size:12px;color:var(--md-on-surface-variant)">Problem 2: leadership's proposed solution, a single-tap reset control</figcaption>
+            </figure>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 8px">
+            <figure style="margin:0">
+                <img src="pic/joule-regenerate-static.webp" alt="Joule interface: static state with proposed regenerate control visible" style="width:100%;height:260px;object-fit:cover;object-position:top;border-radius:var(--shape-md);border:1px solid var(--md-outline-variant);display:block" />
+                <figcaption style="margin-top:8px;font-size:12px;color:var(--md-on-surface-variant)">The proposed control at rest: a regenerate option surfaced in the Joule response menu</figcaption>
+            </figure>
+            <figure style="margin:0">
+                <img src="pic/joule-regenerate-flow.gif" alt="Joule regenerate interaction flow animated" style="width:100%;height:260px;object-fit:cover;object-position:center;border-radius:var(--shape-md);border:1px solid var(--md-outline-variant);display:block" />
+                <figcaption style="margin-top:8px;font-size:12px;color:var(--md-on-surface-variant)">The proposed flow: tap regenerate, Joule resubmits without new context</figcaption>
+            </figure>
+        </div>
+        <p class="ns-p">Before building, I pushed to run a behavioral study. Not to confirm the button's design, but to check whether the assumption behind it was right.</p>
+        <figure class="cs-figure cs-figure-screenshot cs-figure-wide" style="margin:24px 0">
+            <img src="pic/study flow.png" alt="Study design flow: Competitive Benchmark, Behavioral Observation, Synthesis, Output" style="width:100%;height:auto;display:block" />
+            <figcaption>Study design: four phases from competitive benchmark through output.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Why Behavioral Observation, Not a Survey</div>
+        <p class="ns-p">A survey asking "would you use a Retry button?" would have returned misleading signal. People reliably say yes to features when evaluated in isolation. I needed to observe natural error-repair behavior without priming participants toward any specific control. Think-aloud behavioral observation was the only method that could surface the actual mental model users hold when an AI response misses the mark.</p>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Saturation</div>
+        <p class="ns-p">The goal wasn't to measure frequency. It was to find out whether the pattern existed at all. Nielsen's research shows 5–8 participants reliably surface recurring behavioral themes in focused task observation. By session 5, all observed users had repaired errors conversationally with zero button-seeking. Sessions 6–8 confirmed saturation. No new patterns. A larger n would have added confidence intervals to a frequency claim. It would not have changed the categorical finding. The appropriate next step is a quantitative phase to measure adoption of conversational repair at scale, not more behavioral interviews.</p>
+        <div style="margin:24px 0;overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:540px">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;padding:10px 14px;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low)">Behavioral pattern</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low)">S1</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low)">S2</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low)">S3</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low)">S4</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:700;color:var(--md-primary);border-bottom:2px solid var(--md-primary);border-left:2px solid var(--md-primary);background:color-mix(in srgb, var(--md-primary-container) 60%, white)">S5</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low);opacity:.7">S6</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low);opacity:.7">S7</th>
+                        <th style="padding:10px 8px;text-align:center;font-weight:500;color:var(--md-on-surface-variant);border-bottom:2px solid var(--md-outline-variant);background:var(--md-surface-container-low);opacity:.7">S8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid var(--md-outline-variant)">
+                        <td style="padding:10px 14px;color:var(--md-on-surface)">Users rephrased prompt on error</td>
+                        <td style="text-align:center;color:var(--md-primary);font-size:15px;font-weight:700">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;border-left:2px solid var(--md-primary)">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--md-outline-variant)">
+                        <td style="padding:10px 14px;color:var(--md-on-surface)">No UI button-seeking observed</td>
+                        <td style="text-align:center;color:var(--md-primary);font-size:15px;font-weight:700">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;border-left:2px solid var(--md-primary)">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--md-outline-variant)">
+                        <td style="padding:10px 14px;color:var(--md-on-surface)">Retry/Regenerate distinction invisible</td>
+                        <td style="text-align:center;color:var(--md-outline-variant);font-size:13px">—</td>
+                        <td style="text-align:center;color:var(--md-primary);font-size:15px;font-weight:700">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;border-left:2px solid var(--md-primary)">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px 14px;color:var(--md-on-surface)">Transparency and steering desired</td>
+                        <td style="text-align:center;color:var(--md-outline-variant);font-size:13px">—</td>
+                        <td style="text-align:center;color:var(--md-outline-variant);font-size:13px">—</td>
+                        <td style="text-align:center;color:var(--md-primary);font-size:15px;font-weight:700">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;border-left:2px solid var(--md-primary)">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                        <td style="text-align:center;color:var(--md-on-surface-variant);font-size:15px;opacity:.7">●</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:12px;color:var(--md-on-surface-variant);margin-top:8px"><span style="color:var(--md-primary);font-weight:600">●</span> First observed &nbsp;·&nbsp; <span style="color:var(--md-on-surface-variant)">●</span> Confirmed &nbsp;·&nbsp; — Not yet observed &nbsp;·&nbsp; <span style="color:var(--md-primary);font-weight:600">S5</span> Saturation point</p>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Users treated AI correction as collaborative dialogue, not mechanical repair</div>
+                    <div class="in-body">All 8 participants immediately rephrased their prompt when Joule missed the mark. None paused to look for a button or control. Users treated correction as an iterative conversation, not a transaction a reset could resolve.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">The Retry vs. Regenerate distinction that mattered to engineers was invisible to users</div>
+                    <div class="in-body">Even when directly prompted to reflect on the difference, participants couldn't distinguish the two concepts during an active task. The label debate the team was having was solving a problem users didn't experience.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Users wanted transparency and steering controls, not a reset</div>
+                    <div class="in-body">Participants described wanting visibility into why a response changed, the ability to adjust tone and side-by-side comparisons. These match the conversational repair model they were already using naturally.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">4</div>
+                <div>
+                    <div class="in-title">Participants who had used dedicated regenerate buttons elsewhere found them useless and stopped</div>
+                    <div class="in-body">Several participants had prior experience with regenerate controls in other AI tools. Without exception, they had stopped using them. The reason was consistent: the button resubmits without incorporating new information, so the output doesn't meaningfully change. This wasn't a Joule-specific finding. It was a behavioral pattern across AI assistants.</div>
+                </div>
+            </div>
+        </div>
+        <div style="background:#1a1a2e;border-radius:var(--shape-lg);padding:32px 36px;margin:28px 0;position:relative;overflow:hidden">
+            <div style="position:absolute;top:16px;left:24px;font-size:64px;line-height:1;color:rgba(255,255,255,0.06);font-family:Georgia,serif;font-weight:700">"</div>
+            <p style="font-size:17px;color:#f0f0f5;line-height:1.75;margin:0 0 12px;position:relative;font-style:italic">"I would say that 90% of the time it is useless."</p>
+            <cite style="font-size:13px;color:rgba(240,240,245,0.5);font-style:normal;position:relative">Participant, on using the regenerate button in other AI tools</cite>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px">
+            <div class="quote" style="margin:0">
+                <p>"If retry without new information, then the result is still no good."</p>
+            </div>
+            <div class="quote" style="margin:0">
+                <p>"I don't know sometimes what exactly I'm looking for. I'm figuring out the journey along the way."</p>
+            </div>
+        </div>
+    </div>
+    <figure class="cs-figure cs-figure-screenshot cs-figure-narrow" style="margin:0 auto 40px;max-width:460px">
+        <img src="pic/Joule-Hiring.Attrition-Trends.png" alt="Joule AI assistant conversational interface" style="width:100%;height:auto;display:block" />
+        <figcaption><strong>The interface studied:</strong> Joule's conversational input. Users sent follow-up prompts to repair AI errors rather than reaching for any reset control.</figcaption>
+    </figure>
+    <div class="ns">
+        <div class="ns-h">Competitive Benchmarking: ChatGPT and Microsoft Copilot</div>
+        <p class="ns-p">Both ChatGPT and Copilot have regenerate controls below every response. If the behavior I observed was caused by Joule's missing button, the benchmark would expose it. Users who had access to the button in another tool should be reaching for it there.</p>
+        <p class="ns-p">They weren't. Participants who used both tools regularly had tried the button, found the new response wasn't meaningfully different and stopped. By the time they were in a Joule session, conversational repair wasn't a workaround for a missing feature. It was the behavior they'd already settled on, across tools that had the button.</p>
+        <p class="ns-p">The benchmarking did two things. First, it ruled out the most defensible objection to the behavioral data: that the finding was a Joule-specific artifact. Second, it gave the team a second independent data source when making the case to leadership. A VP had sponsored the Retry request. One n=8 behavioral study is contestable. Two independent signals, neither requiring the other, are harder to dismiss.</p>
+        <figure class="cs-figure cs-figure-screenshot cs-figure-wide" style="margin:24px 0">
+            <img src="pic/competitive benchmarking.png" alt="Competitive benchmarking: ChatGPT, Microsoft Copilot and SAP Joule error recovery patterns" style="width:100%;height:auto;display:block" />
+            <figcaption>Competitive benchmark: error recovery behavior across ChatGPT, Copilot and Joule. Users with access to the regenerate button in other tools had already stopped using it.</figcaption>
+        </figure>
+    <div class="ns">
+        <div class="ns-h">Cross-Functional Influence</div>
+        <p class="ns-p">The feature had been requested by a VP. I wasn't bringing unsolicited research to a blank slate. I was pushing back on a direction with real momentum. The burden of proof was higher than it would have been for a shape-the-feature study.</p>
+        <div class="sth" style="margin-top:20px">
+            <div class="sth-lbl">The framing</div>
+            <div class="sth-text">I led with the number, not the theme. "8/8 users repaired conversationally, zero reached for a control" is categorical. A qualitative theme about preferring conversation is contestable. One is harder to argue with.</div>
+        </div>
+        <div style="background:var(--md-primary-container);border-radius:var(--shape-md);border-top:3px solid var(--md-primary);padding:24px 26px;margin-top:12px">
+            <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-primary);margin-bottom:6px">The second signal</div>
+            <div style="font-size:15.5px;color:var(--md-on-primary-container);line-height:1.65">I brought in the competitive data. If someone wanted to argue the finding was a Joule-specific artifact, the benchmark cut that off. ChatGPT and Copilot both have the button. Users had it. They stopped using it. That's a second independent signal the study didn't require but the room did.</div>
+        </div>
+        <div style="background:color-mix(in srgb,#188038 10%,white);border-radius:var(--shape-md);border-top:3px solid #188038;padding:24px 26px;margin-top:12px">
+            <div style="font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1a6e31;margin-bottom:6px">The forward path</div>
+            <div style="font-size:15.5px;color:#1a3d23;line-height:1.65">"Don't build this" is a stop signal. Stop signals get argued with. I reframed the question: not "how should the button be labeled?" but "how should Joule support users who are already guiding it conversationally?" That gave the PM and design leads something to act on, not just a closed door.</div>
+        </div>
+        <p class="ns-p" style="margin-top:20px">The PM escalated the findings to the sponsoring VP after the readout without prompting from me. The feature was deprioritized at VP level. What came back was not a challenge to the data but a second ask: document the logic so the team could apply it without commissioning a new study each time.</p>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Product Implication</div>
+        <p class="ns-p">That ask became the "Conversational vs. UI" framework: a decision tool mapping which conditions make conversational repair sufficient and which require a dedicated UI control. The Joule product team adopted it as a standing input for interface design reviews. The next two AI feature discussions used it before research was even scoped.</p>
+        <figure class="cs-figure cs-figure-screenshot cs-figure-wide" style="margin:24px 0">
+            <img src="pic/UI Framework.png" alt="Conversational vs. UI Framework: screening tool for AI interface decisions" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>Conversational vs. UI Framework:</strong> screening tool mapping interaction type against repair complexity to determine whether an AI assistant needs a UI control or whether the conversation handles it.</figcaption>
+        </figure>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Retry feature deprioritized before engineering began</span>
+            <span class="ic">Team redirected to conversational repair design</span>
+            <span class="ic">VP escalation (unsolicited)</span>
+            <span class="ic">"Conversational vs. UI" framework adopted for AI decisions</span>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Follow the disconfirmation with a validation phase</div>
+            <div class="reflect-body">The study was rigorous at disconfirming the Retry button. It was weaker at validating the alternatives. A second phase testing tone controls and response comparison UIs would have turned "don't build X" into "build Y instead," giving the team a concrete direction alongside the stop signal.</div>
+        </div>
+        <div class="reflect">
+            <div class="reflect-title">Plan the influence path before data collection, not after</div>
+            <div class="reflect-body">The hardest moment in this project was presenting a stop signal to a room with a VP-sponsored direction already in motion. I built the triangulation and the reframe in response to that pressure rather than in advance of it. Scoping the influence question up front would have changed the study design: more deliberate triangulation, a quantitative follow-on planned before the readout and a recommendation artifact built for leadership from the start.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs02-fiori-design-system.html" class="cs-nav-link">← CS02: Fiori Design System</a>
+    <a href="cs04-av-hearing-impairment.html" class="cs-nav-link next">CS04: AV Hearing Impairment →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

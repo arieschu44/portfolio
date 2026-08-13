@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS04: Attachment Sheet · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-green">Engineering Unblocked</span><span class="tag t-blue">Mixed Methods</span><span class="tag t-blue">A/B Testing</span></div>
+    <div class="cs-num">04 · Joule Mobile AI · Oct 2025 · 3 weeks</div>
+    <h1 class="cs-page-title">Resolving a design deadlock with n=55 and merging code before the sprint closed</h1>
+    <p class="cs-hook">Engineering was blocked by a design debate with no data: a novel Attachment Sheet versus a familiar Input Field pattern. I designed and ran a two-phase mixed-methods study in three weeks, delivered a clear recommendation grounded in user mental models, and unblocked code merge within the active sprint.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">Problem</div>
+            <div class="snap-val">A data-free design debate was blocking engineering. Both options had legitimate advocates, and the wrong call would either confuse new users or frustrate experienced ones.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Lead researcher. Designed both study phases, ran quantitative and qualitative data collection, made the final recommendation, and independently initiated Phase 2 post-decision.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">n=47 unmoderated usability (UserZoom) · n=8 moderated in-depth interviews · A/B preference testing · Phase 2 targeted component usability</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Input Field selected. Code merged within the sprint. A status state ambiguity issue caught pre-merge. UserZoom protocol adopted as team standard. UI Kit updated.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">55</div><div class="cs-ml">Total participants</div></div>
+        <div><div class="cs-mn">1 sprint</div><div class="cs-ml">Engineering unblocked</div></div>
+        <div><div class="cs-mn">0</div><div class="cs-ml">Post-merge bugs from interaction</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Why This Study Needed Two Phases</div>
+        <p class="ns-p">Both design options had advocates with genuine conviction and no data. A wrong decision carried real costs: confused new users increase support load; frustrated experienced users drive churn. The team needed an impartial data partner, not a tiebreaker with a preference. Starting with quantitative behavioral data before introducing qualitative findings prevented any camp from anchoring interpretation around early qual signal.</p>
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px">
+            <img src="pic/sap-joule.jpg" alt="Joule Mobile AI interface showing the conversational input pattern" />
+            <figcaption><strong>The product under test:</strong> Joule Mobile — the AI assistant where the attachment interaction lived. Both design options (Attachment Sheet and Input Field) were tested within this interface context.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Research Design</div>
+        <div class="two-col">
+            <div class="ns-col">
+                <h4>Phase 1: Concept evaluation</h4>
+                <ul class="ns-list">
+                    <li>n=47 unmoderated (UserZoom): task success and time on task at scale</li>
+                    <li>n=8 moderated IDIs: mental models and the reasoning behind the numbers</li>
+                    <li>A/B preference testing for directional signal</li>
+                    <li>Quantitative data presented first, giving both sides a shared behavioral baseline before qualitative interpretation entered</li>
+                </ul>
+            </div>
+            <div class="ns-col">
+                <h4>Phase 2: Component validation (self-initiated)</h4>
+                <ul class="ns-list">
+                    <li>Targeted usability testing on the Attachment Cell Form post-decision</li>
+                    <li>Surfaced status state ambiguity: users couldn't distinguish uploading, processing, and ready states</li>
+                    <li>UI refined before code merge. The issue would not have been caught in production testing.</li>
+                    <li>Formal Change Request initiated; UI Kit updated accordingly</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Quantitative parity moved the decision to cognitive load</div>
+                    <div class="in-body">No significant difference in task success or time on task between the two designs. With no performance advantage, the recommendation came down to which option imposed lower cognitive load on first use. Qualitative mental model data became the deciding factor.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">8/8 moderated users recognized the Input Field pattern from prior AI experience</div>
+                    <div class="in-body">Enterprise users had already internalized the interaction model from ChatGPT and Copilot. Leveraging an established mental model reduced adoption friction, a high-value signal in enterprise contexts where training time and onboarding capacity are constrained.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">The status state ambiguity was only visible through follow-on component testing</div>
+                    <div class="in-body">Users couldn't determine whether a file was uploading, processing, or ready for use. The issue was invisible in Phase 1 concept evaluation. It only surfaced through targeted component testing after the decision was made, demonstrating the value of following findings downstream past the initial decision point.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="quote">
+        <p>"I mean, ChatGPT operates the same way. It literally looks like this."</p>
+        <cite>— Enterprise user, recognizing the Input Field pattern on first exposure</cite>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Navigating Competing Stakeholder Conviction</div>
+        <div class="sth">
+            <div class="sth-lbl">The challenge</div>
+            <div class="sth-text">Both design camps had strong advocates. Positioning as an impartial data partner rather than an arbiter with a preference was a deliberate choice. Quantitative-first sequencing established a behavioral baseline before qualitative interpretation entered, reducing advocacy-driven reading of the qual findings.</div>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Input Field selected, code merged within sprint</span>
+            <span class="ic">Zero post-merge bugs from attachment interaction</span>
+            <span class="ic">Status ambiguity caught and resolved pre-merge</span>
+            <span class="ic">UserZoom protocol adopted as team standard</span>
+            <span class="ic">UI Kit updated via formal Change Request</span>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Run Phase 2 in parallel rather than sequentially</div>
+            <div class="reflect-body">Running component validation after the design decision introduced a small but real delay. In a faster sprint cycle, that gap creates risk. Running Phase 2 as a parallel track would have surfaced the status ambiguity earlier and given the design team more runway before code freeze.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs03-retry-button.html" class="cs-nav-link">← CS03: Joule Retry Button</a>
+    <a href="cs05-voice-strategy.html" class="cs-nav-link next">CS05: Voice Strategy →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>

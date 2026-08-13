@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Support Landscape Nobody Had Mapped · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<style>
+#pw-gate{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Google Sans',sans-serif}
+#pw-box{text-align:center;padding:48px 40px;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:360px;width:90%}
+#pw-box h2{margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a}
+#pw-box p{margin:0 0 24px;font-size:14px;color:#666}
+#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;outline:none;margin-bottom:12px;transition:border-color .2s}
+#pw-input:focus{border-color:#1a73e8}
+#pw-btn{width:100%;padding:12px;background:#1a73e8;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+#pw-btn:hover{background:#1558b0}
+#pw-error{color:#d93025;font-size:13px;margin-top:8px;min-height:18px}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Protected Work</h2>
+    <p>This case study is password protected.<br>Enter the password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Unlock</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var h='cc7fffc22c4f12d190e818690c66a232d95bd5b590fcdf50bcedebca912ea720';
+  var key='portfolio_unlocked';
+  if(sessionStorage.getItem(key)==='1'){document.getElementById('pw-gate').style.display='none';return;}
+  async function attempt(){
+    var val=document.getElementById('pw-input').value;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(val));
+    var hex=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    if(hex===h){
+      sessionStorage.setItem(key,'1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-error').textContent='Incorrect password. Try again.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-btn').addEventListener('click',attempt);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+})();
+</script>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="cs-hero-grid">
+        <div>
+            <div class="tags"><span class="tag t-blue">Product Discovery</span><span class="tag t-amber">Product Direction</span><span class="tag t-green">RITE Testing</span></div>
+            <div class="cs-num">02 · The Support Landscape Nobody Had Mapped · Jan–Apr 2026 · 4 phases</div>
+            <h1 class="cs-page-title">The Support Landscape Nobody Had Mapped</h1>
+            <p class="cs-hook">Self-service wasn't failing because SAP lacked resources. It had 74, across 5 platforms. It was failing because users knew 3. I mapped the structural reasons why. The findings became requirements. The requirements became a product.</p>
+        </div>
+        <div class="cs-hero-media">
+            <img src="pic/bio next gen.png" alt="Next Gen Panel — the product outcome of this research program" />
+        </div>
+    </div>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Sole researcher across all 4 phases. Owned the full scope: survey design, interview recruitment and facilitation, CSM study design, synthesis and product framing, RITE study design and delivery, and all stakeholder readouts.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">Ecosystem survey (n=66) · semi-structured interviews (n=18) · CSM (Customer Success Manager) interviews (n=11) · RITE testing, 2 rounds (n=5)</div>
+        </div>
+        <div class="snap snap-wide">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Generated requirements for the Next Gen Panel — SAP's redesigned in-product help panel — a role-filtered, AI-first entry point replacing the curation CSMs were doing manually. RITE testing validated the prototype with 80%+ task success and surfaced 8 refinements before launch. Product launching August 2026.</div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Context &amp; Research Opportunity</div>
+        <p class="ns-p">SAP is enterprise software used by large organizations to manage business operations across finance, HR, IT and supply chain. The users in this study were the IT admins and business users who run those systems day to day, and the Customer Success Managers (CSMs) who support them when things go wrong.</p>
+        <p class="ns-p">When stakeholders first came to me, they wanted to understand why support ticket volume was climbing. I thought that was the wrong place to start. A ticket only appears after someone has already tried to help themselves and failed. I proposed we go upstream instead: map what users were actually doing before they gave up. That reframe wasn't a guaranteed sell. Phase 1 validated it fast.</p>
+        <p class="ns-p">Nobody had mapped SAP's help ecosystem before I did. When I finished, there were 74 resources across 5 platforms. I put the full list in front of users and asked them to identify what they knew. The average was 3. That number, measured directly rather than self-estimated, became the foundation of everything that followed.</p>
+        <!-- VISUALIZATION 2: 74 vs 3 dot matrix -->
+        <div style="margin-top:28px;margin-bottom:4px">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--md-on-surface-variant);margin-bottom:14px">The discoverability gap: each dot is one resource</div>
+            <div id="cs01-dotgrid" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px"></div>
+            <script>
+            (function(){
+                var g=document.getElementById('cs01-dotgrid');
+                for(var i=0;i<74;i++){
+                    var d=document.createElement('div');
+                    d.style.cssText='width:16px;height:16px;border-radius:50%;flex-shrink:0;background:'+(i<3?'var(--md-primary)':'var(--md-outline-variant)');
+                    g.appendChild(d);
+                }
+            })();
+            </script>
+            <div style="display:flex;gap:24px;font-size:13px;color:var(--md-on-surface-variant)">
+                <span style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--md-primary)"></span>3 avg. known by end users</span>
+                <span style="display:flex;align-items:center;gap:6px"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--md-outline-variant)"></span>71 unknown or undiscovered</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="ns">
+        <div class="ns-h">Research Program</div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:20px;margin-bottom:8px">
+            <img src="pic/case study phase.png" alt="Four-phase research program: survey, user interviews, CSM interviews and RITE testing — Jan to Apr 2026" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>Four phases, Jan–Apr 2026:</strong> Survey established scale, user interviews revealed behavior, CSM interviews triangulated the structural pattern and RITE testing validated the solution. 100 total participants across all phases.</figcaption>
+        </figure>
+
+        <div class="two-col" style="margin-top:28px">
+            <div class="ns-col">
+                <h4>Phase 1: Ecosystem survey (n=66)</h4>
+                <ul class="ns-list">
+                    <li>Catalogued 74 resources across 5 platforms. First time the landscape had been fully documented.</li>
+                    <li>Users aware of only 3 resources on average. High awareness did not produce adoption. This reframed the problem from ticket volume to discoverability.</li>
+                </ul>
+            </div>
+            <div class="ns-col">
+                <h4>Phase 2: User interviews (n=18)</h4>
+                <ul class="ns-list">
+                    <li>Mapped two divergent support paths: direct-to-human (8/18) vs. self-service first (10/18).</li>
+                    <li>14 of 18 participants named AI as their near-ideal support model — unprompted. The interview guide asked about ideal support experiences; no AI framing was introduced by the researcher.</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top:14px">
+            <h4>Phase 3: CSM interviews (n=11)</h4>
+            <ul class="ns-list">
+                <li>CSMs were manually filtering 25+ resources down to ~13 before customers started. This curation work belonged in the product.</li>
+                <li>All 11 CSMs independently named a role-filtered single entry point as the critical missing capability.</li>
+            </ul>
+        </div>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:20px;margin-bottom:4px">
+            <img src="pic/graph survey.png" alt="Phase 1 Survey — Resource Awareness by Platform (N=66)" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>Phase 1 Survey (n=66):</strong> Resource awareness by platform across end users, admins and content creators. SAP Central had the highest recognition across all three groups. Tools like Learning Hub, openSAP and training resources were largely invisible. Average awareness: 3 resources known out of 74.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <p class="ns-p">Three phases, 95 participants, and five patterns I couldn't explain away by role or method. They surfaced across surveys, interviews and CSM conversations. Regardless of who was in the room, the same structural problems kept coming back.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;margin-bottom:32px">
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #4285F4">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 1</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">No mental model of the ecosystem</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Most users assumed SAP Central was the only entry point. The ecosystem was invisible to the people it was designed to serve.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #1A73E8">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 2</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Escalation was the path of least resistance</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">For 8 of 18, calling a CSM was faster than using the system. The product had trained its users to bypass it.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #188038">
+                <div style="font-size:12px;font-weight:700;color:#137333;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 3</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Content existed but context was missing</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Resources surfaced for everyone. They applied to almost no one specifically. Users were doing the relevance filtering themselves.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #E37400">
+                <div style="font-size:12px;font-weight:700;color:#8A5000;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 4</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Language was a structural barrier</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Users searched in plain language. SAP docs used internal taxonomy. If you didn't know the right term, the right answer was out of reach.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #D93025;grid-column:1/-1">
+                <div style="font-size:12px;font-weight:700;color:#C5221F;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.8px">Theme 5</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">AI was the unprompted near-ideal model</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">14 of 18 described the same ideal without being asked: AI that speaks plain language, knows their context and returns one answer. The strongest signal in the data set. It became the design requirement.</p>
+            </div>
+        </div>
+
+        <div class="quote" style="margin-bottom:28px">
+            <p>"I'm the Siri of SAP. When customers can't find something, they call me."</p>
+            <cite>CSM, Phase 3 interview — summarizing the structural problem in one sentence</cite>
+        </div>
+
+        <!-- Support Paths A and B -->
+        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:28px">
+
+        <div class="viz-journey">
+            <div class="viz-journey-label">Path A: Direct to Human (8 of 18 participants)</div>
+            <p class="viz-journey-sub">Triggered by high urgency or prior failures. Self-service is never considered.</p>
+            <div class="viz-journey-steps">
+                <div class="viz-step viz-step--red">
+                    <div class="viz-step-num">Problem Occurs</div>
+                    <div class="viz-step-body">Problem arises. High urgency or high stakes.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--green">
+                    <div class="viz-step-num">Colleagues</div>
+                    <div class="viz-step-body">When colleagues aren't available or can't help.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--blue">
+                    <div class="viz-step-num">SAP Consultant / Ticket</div>
+                    <div class="viz-step-body">Immediate escalation. Self-service is never attempted.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="viz-journey" style="margin-top:0">
+            <div class="viz-journey-label">Path B: Self-Serve First → Gradual Escalation (10 of 18 participants)</div>
+            <p class="viz-journey-sub">Lower-stakes issues, prior self-service success. Escalation is a last resort.</p>
+            <div class="viz-journey-steps">
+                <div class="viz-step viz-step--red">
+                    <div class="viz-step-num">Problem Occurs</div>
+                    <div class="viz-step-body">Problem arises.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--orange">
+                    <div class="viz-step-num">Google / YouTube / AI</div>
+                    <div class="viz-step-body">Most common first resource. Preferred for visual, quick-answer formats.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--amber">
+                    <div class="viz-step-num">Colleagues</div>
+                    <div class="viz-step-body">When first step fails, the people next to them or reachable quickly.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--green">
+                    <div class="viz-step-num">SAP Resources</div>
+                    <div class="viz-step-body">When colleagues can't help; deeper technical documentation.</div>
+                </div>
+                <div class="viz-step-arrow">›</div>
+                <div class="viz-step viz-step--blue">
+                    <div class="viz-step-num">SAP Consultant / Ticket</div>
+                    <div class="viz-step-body">Last resort. Slow and expensive. Filed only when everything else fails.</div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+    <div style="text-align:center;padding:20px 0 28px">
+        <div style="display:inline-flex;align-items:center;gap:16px">
+            <div style="width:48px;height:1px;background:var(--md-outline-variant)"></div>
+            <span style="font-style:italic;color:var(--md-on-surface-variant);font-size:15px">The research had its answer. The product team needed a brief.</span>
+            <div style="width:48px;height:1px;background:var(--md-outline-variant)"></div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">From Research to Product Direction</div>
+        <p class="ns-p">Three data sets pointing to the same gap made the case straightforward. The question was what to do with it. I didn't hand off a deck of findings and step back. I worked with the product team to turn the research into a design direction — mapping the requirement, tracing it back to the data and then working through what it could look like in use before anyone started building.</p>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-bottom:28px">
+            <img src="pic/all in one stop.png" alt="SAP Central Hub connected to 9 peripheral resources — 9 of 74 shown" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>The ecosystem users had to navigate:</strong> 9 of 74 resources shown. End users were aware of an average of 3. Admins averaged 7+. The curation work belonged in the product.</figcaption>
+        </figure>
+
+        <div class="reframe">
+            <div class="rf-box">
+                <div class="rf-mark">Current state</div>
+                <div class="rf-text">User hits an issue → attempts self-service → fails → contacts CSM → CSM manually curates and filters resources → user gets an answer. CSM absorbs the navigation burden.</div>
+            </div>
+            <div class="rf-arrow">→</div>
+            <div class="rf-box after">
+                <div class="rf-mark">Design requirement (research-generated)</div>
+                <div class="rf-text">One role-filtered, AI-first entry point. Surfaces relevant resources by product, role and situation. Diagnoses problems directly. Replaces the curation work CSMs were absorbing manually.</div>
+            </div>
+        </div>
+        <p class="ns-p" style="margin-top:14px">All three data sets converged on the same requirement.</p>
+
+        <!-- Requirements Traceability -->
+        <figure class="cs-figure cs-figure-wide" style="margin-top:28px;margin-bottom:28px">
+            <img src="pic/help findings.png" alt="From Finding to Feature — How Research Drove the Design" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>From finding to feature:</strong> Three research findings mapped directly to panel requirements and features. Discoverability gap drove a role-filtered home screen. Language mismatch drove Joule natural language search. CSM manual curation drove contextual resource surfacing.</figcaption>
+        </figure>
+
+        <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;margin-bottom:28px">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--md-on-surface-variant);border-bottom:1px solid var(--md-outline-variant);padding-bottom:12px;margin-bottom:12px">Design process</div>
+            <p style="font-size:14px;color:var(--md-on-surface-variant);line-height:1.65;margin:0 0 20px">By the end of Phase 3, I had a clear picture of the problem but no product. The research pointed to what was needed, but the team needed a shared understanding of what that actually looked like in use before anyone could start building. I facilitated an HMW session to turn the findings into design questions — moving from "users can't find relevant resources" to something the team could act on. From there I worked through early sketches to explore what the panel could feel like: the layout, the hierarchy, how Joule (SAP's AI assistant) would sit relative to the other resources. The storyboard came last. I needed to make the primary use case concrete. Not a list of requirements, but a specific person, in a specific moment, trying to solve a real problem. That's Brian.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+                <figure style="margin:0">
+                    <img src="pic/hmw mapping.png" alt="HMW mapping board — five journey phases across user types" style="width:100%;height:200px;object-fit:cover;display:block;border-radius:var(--shape-lg)" />
+                    <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5">HMW session: five journey phases mapped across admin, IT and end user target users.</figcaption>
+                </figure>
+                <figure style="margin:0">
+                    <img src="pic/hmw mapping 2.png" alt="HMW mapping board — target users with proactive support and personalization flows" style="width:100%;height:200px;object-fit:cover;display:block;border-radius:var(--shape-lg)" />
+                    <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5">User focus view: admin, IT and end user flows with proactive support and personalization as organizing themes.</figcaption>
+                </figure>
+                <figure style="margin:0">
+                    <img src="pic/hmw themes.png" alt="HMW themes — synthesized design questions organized by theme" style="width:100%;height:200px;object-fit:cover;display:block;border-radius:var(--shape-lg)" />
+                    <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5">HMW themes: session output clustered into actionable design questions by theme.</figcaption>
+                </figure>
+                <figure style="margin:0">
+                    <img src="pic/sketching.png" alt="Concept sketching — early solution exploration before prototype development" style="width:100%;height:200px;object-fit:cover;display:block;border-radius:var(--shape-lg)" />
+                    <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5">Concept sketching: HMW themes translated into panel layout and interaction ideas.</figcaption>
+                </figure>
+            </div>
+            <figure style="margin:0">
+                <img src="pic/storyboarding.png" alt="Storyboard for Brian (Admin/S-User) — 7-scene user journey through the help panel" style="width:100%;height:auto;display:block;border-radius:var(--shape-lg)" />
+                <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5"><strong>Storyboard: Brian (Admin/S-User).</strong> Seven-scene user journey from problem onset through troubleshooting, escalation and case creation. Used to align the team on the primary IT admin use case before prototype development began.</figcaption>
+            </figure>
+        </div>
+
+        <div style="background:var(--md-primary-container);border-radius:var(--shape-lg);padding:28px 32px;border-left:4px solid var(--md-primary)">
+            <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--md-primary);margin-bottom:10px">Research output</div>
+            <div style="font-family:'Google Sans',sans-serif;font-size:18px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px;line-height:1.3">Introducing the Next Gen Panel</div>
+            <p style="font-size:14px;color:var(--md-on-primary-container);line-height:1.75;margin:0">That convergence became the product brief for SAP's redesigned in-product help experience, launching August 2026. One role-filtered entry point. Joule, SAP's AI assistant, handles what CSMs were absorbing manually.</p>
+        </div>
+
+        <!-- Panel gallery -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px">
+            <figure style="margin:0">
+                <img src="pic/single entry point.png" alt="Next Gen Panel — single entry point home screen" style="width:100%;height:auto;display:block;border-radius:var(--shape-lg)" />
+                <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5"><strong>Single entry point:</strong> Joule search, contextually surfaced materials and recents replace 5-platform navigation. Requirements generated directly from this research program.</figcaption>
+            </figure>
+            <figure style="margin:0">
+                <img src="pic/AI resolution.png" alt="Joule AI-first resolution flow — root cause analysis and support case creation" style="width:100%;height:auto;display:block;border-radius:var(--shape-lg)" />
+                <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5"><strong>AI-first resolution:</strong> Joule diagnoses errors in context, surfaces troubleshooting steps and creates a pre-filled support case without the user leaving the product.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div style="text-align:center;padding:20px 0 28px">
+        <div style="display:inline-flex;align-items:center;gap:16px">
+            <div style="width:48px;height:1px;background:var(--md-outline-variant)"></div>
+            <span style="font-style:italic;color:var(--md-on-surface-variant);font-size:15px">The brief became a prototype. The prototype needed testing.</span>
+            <div style="width:48px;height:1px;background:var(--md-outline-variant)"></div>
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="ns-h">Phase 4: RITE Testing the Panel</div>
+        <p class="ns-p">RITE testing, run in two rounds. I didn't go in knowing what the prototype had missed — that was the point. Round one surfaced what participants actually did with the panel, which was different enough from what the team expected that the prototype was adjusted before round two began. Three tasks. Three ways IT admins actually hit a help panel in real work.</p>
+        <p class="ns-p">Discovery had covered the full range of user types. For RITE, I scoped to IT admins and S-Users — the users most likely to encounter the panel's primary use cases in daily work: technical troubleshooting, error diagnosis and system configuration support. Testing with the highest-stakes user group first gave the most relevant signal before launch.</p>
+
+        <figure class="cs-figure cs-figure-wide" style="margin-top:24px;margin-bottom:28px">
+            <img src="pic/Recommended tile + Jump back in.jpg" alt="Next Gen Panel prototype — home screen with Joule search, contextual recommended resources and recents" style="width:100%;height:auto;display:block" />
+            <figcaption><strong>Prototype tested in RITE sessions:</strong> The Next Gen Panel home screen showing Joule search, contextually surfaced relevant materials and a recents section. Five IT admins and S-Users interacted with this prototype across three core task scenarios.</figcaption>
+        </figure>
+
+        <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px 28px;margin-top:24px;margin-bottom:8px">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center">
+                <div>
+                    <div style="font-size:28px;font-weight:700;color:var(--md-primary);font-family:'Google Sans',sans-serif">5</div>
+                    <div style="font-size:13px;color:var(--md-on-surface-variant);margin-top:4px">IT admin &amp; S-User (SAP standard user) participants</div>
+                </div>
+                <div>
+                    <div style="font-size:28px;font-weight:700;color:#188038;font-family:'Google Sans',sans-serif">80%+</div>
+                    <div style="font-size:13px;color:var(--md-on-surface-variant);margin-top:4px">Task success rate</div>
+                </div>
+                <div>
+                    <div style="font-size:28px;font-weight:700;color:#E37400;font-family:'Google Sans',sans-serif">8</div>
+                    <div style="font-size:13px;color:var(--md-on-surface-variant);margin-top:4px">Refinements before launch</div>
+                </div>
+            </div>
+        </div>
+        <p class="ns-p" style="font-size:13px;color:var(--md-on-surface-variant);margin-bottom:28px">Refinements included AI identity labeling on the search bar, persistent chat history and audit trail visibility for AI-driven configuration changes — surface-level changes that addressed the gap between what the prototype assumed and what users actually needed.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #4285F4">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px">Finding 1</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Entry point trusted. First impression wrong.</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">The ? icon had universal recognition. But they arrived expecting search, not AI. First screen. First friction.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #1A73E8">
+                <div style="font-size:12px;font-weight:700;color:#174EA6;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px">Finding 2</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Joule's AI identity was invisible by default</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">2 of 5 never recognized the search bar as AI. Where Joule was discovered, it was accidental. When they did reach it, the reaction was immediate. The feature worked. The panel wasn't introducing it.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #188038">
+                <div style="font-size:12px;font-weight:700;color:#137333;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px">Finding 3</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Context-free guidance creates distrust</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Participants expected guidance tailored to their specific environment and version. Generic steps read as a documentation dump. Context-free responses led to faster disengagement.</p>
+            </div>
+            <div style="background:var(--md-surface-container-low);border:1px solid var(--md-outline-variant);border-radius:var(--shape-lg);padding:24px;border-top:3px solid #E37400">
+                <div style="font-size:12px;font-weight:700;color:#8A5000;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px">Finding 4 &middot; Enterprise insight</div>
+                <div style="font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--md-on-surface);margin-bottom:10px">Admins want AI that guides. With a paper trail.</div>
+                <p style="font-size:15px;color:var(--md-on-surface-variant);line-height:1.65;margin:0">Participants embraced Joule's speed and diagnostic capability. But two named auditability as a hard requirement for AI-driven config changes. Not resistance to AI. The exact conditions for adoption. Speed without a record isn't a feature. It's a risk. This finding was independently corroborated by concurrent research across the organization.</p>
+            </div>
+        </div>
+
+        <!-- AI Identity Gap Visual -->
+        <figure style="margin:0 auto 28px;max-width:340px;display:block">
+            <img src="pic/Rectangle 34656885.png" alt="Joule active search — What does BTP — showing AI-powered autocomplete suggestions" style="width:100%;height:auto;display:block;border-radius:var(--shape-lg)" />
+            <figcaption style="padding:10px 0 0;font-size:13px;color:var(--md-on-surface-variant);line-height:1.5"><strong>Joule in action:</strong> when participants reached it, the reaction was immediate.</figcaption>
+        </figure>
+
+        <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
+            <div class="quote">
+                <p>"I think is the best, best idea of the model because I've seen an error when testing the connection and I'm able to get the AI to analyze for me what might be wrong with my connection and how to troubleshoot it."</p>
+                <cite>P3, on Joule root cause analysis</cite>
+            </div>
+            <div class="quote">
+                <p>"It should not bypass the audit trails. Everywhere, whenever we are creating, the way we maintain the audit trails in a normal configuration scenario, if we are doing via AI also, those audit trails should be available, who has created, when it has been created, so on and so forth."</p>
+                <cite>P4, on AI governance in enterprise workflows</cite>
+            </div>
+        </div>
+
+        <!-- P5 isolated governance quote -->
+        <div style="background:#1a1a2e;border-radius:var(--shape-lg);padding:32px 36px;margin-bottom:28px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:16px;left:24px;font-size:64px;line-height:1;color:rgba(255,255,255,0.06);font-family:Georgia,serif;font-weight:700">"</div>
+            <p style="font-size:17px;color:#f0f0f5;line-height:1.75;margin:0 0 16px;position:relative;font-style:italic">"There was a company that ran some AI agent to do some execution. Cleaned up their whole production database, wiped it off with the backup. So those kind of news that you see, then these fix it for me button becomes, wait, uh, let me think about it."</p>
+            <cite style="font-size:13px;color:rgba(240,240,245,0.6);font-style:normal;position:relative">P5, on why enterprise admins pause before trusting AI-driven actions</cite>
+        </div>
+
+        <div style="background:var(--md-primary-container);border-radius:var(--shape-lg);padding:28px 32px;border-left:4px solid var(--md-primary)">
+            <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--md-primary);margin-bottom:10px">The loop closed</div>
+            <p style="font-size:14px;color:var(--md-on-primary-container);line-height:1.75;margin:0">Discovery found the problem. Direction wrote the brief. RITE put it in front of real users and found what the brief had missed. Not because the brief was wrong. Because some requirements only surface when there's something real to react to. Persistent chat history wasn't in the brief. The governance requirement wasn't in the discovery data. It took a working prototype to surface both. Eight refinements entered the backlog. The architecture held. The product got sharper.</p>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Cross-Functional Influence</div>
+        <div class="sth">
+            <div class="sth-lbl">The reframe that created buy-in</div>
+            <div class="sth-text">The original ask was to explain ticket volume. I pushed back. A ticket only tells you someone gave up — it doesn't tell you what they tried first. I proposed a landscape study that started upstream, before any failure had been filed. That wasn't what stakeholders expected to hear. But once Phase 1 data came back with 74 resources and an average awareness of 3, the conversation shifted. It was no longer about optimizing a support process. It was about a product problem that nobody had named yet.</div>
+        </div>
+        <ul class="ns-list">
+            <li>"I'm the Siri of SAP" did more work than any slide. A single CSM quote made the structural problem legible to stakeholders without a research background.</li>
+            <li>Three independent data sets converging on one requirement made the findings hard to dismiss. The executive sent an unsolicited DM requesting wider distribution. The research reached product leadership. The Next Gen Panel followed.</li>
+        </ul>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Next Gen Panel added to the August 2026 roadmap as a direct result of this research — not a pre-existing plan</span>
+            <span class="ic">Executive stakeholder sent an unsolicited DM requesting the research be shared org-wide; described as the first fully holistic review of SAP help and support</span>
+            <span class="ic">All 5 RITE participants independently raised persistent chat history as a missing feature — a requirement that did not exist in the discovery data</span>
+        </div>
+        <div class="quote" style="margin-top:24px">
+            <p>"I think this is the first research I've seen at SAP with a fully holistic review of help and support. I didn't know the extent of the problems with this experience, and how much each individual issue exacerbates the others. Let's get some more eyes on this."</p>
+            <cite>Executive stakeholder — unsolicited DM following the research readout</cite>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">RITE testing surfaced two requirements generative research could not have found</div>
+            <div class="reflect-body">Persistent chat history and AI identity signaling didn't emerge from the discovery study. That's not a gap. Generative research surfaces how people behave in an existing system. It can't surface expectations about something that doesn't exist yet. That required a prototype. Running both phases is what builds the full picture.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">The governance finding was the most important output of the RITE study</div>
+            <div class="reflect-body">This wasn't a usability finding. It was a product direction signal. The adoption ceiling for AI in critical enterprise workflows isn't set by capability or interface quality. It's set by trust architecture. That distinction belongs in a product brief, not a research report. I flagged it directly to stakeholders as a prerequisite for adoption, not a refinement.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">The reframe was the hardest call — and I'd run the CSM phase earlier next time</div>
+            <div class="reflect-body">When stakeholders came with a ticket volume question, I pushed back and proposed a landscape study instead. Phase 1 validated the reframe fast, but I went in without a guarantee. I'd make the same call again. What I'd change: CSM interviews corroborated Phase 2 findings after the fact. Running them in parallel would have let me target sharper user profiles in Phase 2 and tightened the cross-phase triangulation from the start.</div>
+        </div>
+        <div class="reflect" style="margin-top:12px">
+            <div class="reflect-title">Study limitations</div>
+            <div class="reflect-body">
+                <strong>Phase 1 (n=66):</strong> Self-selected sample. Participants motivated enough to complete a survey about support resources likely overrepresent more engaged users — those who have given up on self-service entirely may be underrepresented.<br><br>
+                <strong>Phase 2 (n=18):</strong> Sample skewed toward BTP-adjacent roles and more technically experienced users. Findings may not fully represent users on older SAP product lines or lower-technical roles.<br><br>
+                <strong>Phase 3 (n=11):</strong> All CSMs shared a similar customer-success function within a single support tier. Structural patterns may differ across regions or product tiers.<br><br>
+                <strong>Phase 4 (n=5):</strong> Five participants provides directional signal, not statistical confidence. The governance finding (2 of 5) is a strong hypothesis corroborated by concurrent research — but warrants broader validation before becoming a hard product requirement.<br><br>
+                <strong>Scope:</strong> The study mapped awareness and behavior patterns. It did not measure actual self-service resolution rates — the downstream metric that would confirm whether the identified gaps translate directly to business impact.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs02-fiori-design-system.html" class="cs-nav-link">← CS01: SAP Fiori Mobile Design System</a>
+    <a href="cs03-retry-button.html" class="cs-nav-link next">CS03: Joule Retry Button →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>
