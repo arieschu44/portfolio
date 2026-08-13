@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS02: Joule Retry Button · Aries Chu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">Aries <span>Chu</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html#approach">Approach</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#work" class="nav-back">← All work</a>
+</nav>
+
+<div class="section">
+    <div class="tags"><span class="tag t-red">Feature Deprioritized</span><span class="tag t-blue">Behavioral Research</span><span class="tag t-amber">Executive Influence</span></div>
+    <div class="cs-num">02 · Joule AI Assistant · Sept 2025</div>
+    <h1 class="cs-page-title">8 out of 8 users never reached for a Retry button. So I recommended we don't build one.</h1>
+    <p class="cs-hook">Leadership requested a Retry/Regenerate button for 440K+ enterprise users and engineering was ready to begin. Before building, I ran a behavioral study to observe how users actually responded to AI errors. Every participant repaired mistakes conversationally without looking for a control. The recommendation to deprioritize the feature reached VP level without being pushed.</p>
+
+    <div class="snapshot">
+        <div class="snap">
+            <div class="snap-lbl">Problem</div>
+            <div class="snap-val">The team assumed AI errors were transactional and fixable with a reset button. No behavioral evidence existed to validate or challenge that mental model.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">My Role</div>
+            <div class="snap-val">Sole researcher on my first independent project. Scoped the study, recruited participants, facilitated all 8 sessions, synthesized findings, and presented to PM, Design, and AI leads.</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Methods</div>
+            <div class="snap-val">n=8 behavioral observation interviews · think-aloud protocol · competitive benchmarking (ChatGPT, Copilot) · thematic analysis</div>
+        </div>
+        <div class="snap">
+            <div class="snap-lbl">Outcome</div>
+            <div class="snap-val">Retry feature deprioritized. Team redirected to conversational repair patterns. Findings escalated to VP unsolicited. A "Conversational vs. UI" framework adopted for future AI interface decisions.</div>
+        </div>
+    </div>
+
+    <div class="cs-metrics">
+        <div><div class="cs-mn">8/8</div><div class="cs-ml">Users repaired errors conversationally</div></div>
+        <div><div class="cs-mn">VP</div><div class="cs-ml">Findings escalated unsolicited</div></div>
+        <div><div class="cs-mn">4 wks</div><div class="cs-ml">End-to-end ownership</div></div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<div class="section">
+    <div class="ns">
+        <div class="ns-h">Why Behavioral Observation, Not a Survey</div>
+        <p class="ns-p">A survey asking "would you use a Retry button?" would have returned misleading signal. People reliably say yes to features when evaluated in isolation. I needed to observe natural error-repair behavior without priming participants toward any specific control. Think-aloud behavioral observation was the only method that could surface the actual mental model users hold when an AI response misses the mark.</p>
+        <figure class="cs-figure" style="margin-top:28px">
+            <img src="pic/In-person + remote usability tests .png" alt="Remote and in-person behavioral observation sessions" />
+            <figcaption><strong>Field sessions:</strong> All 8 sessions were conducted via moderated remote interview — participants shared their screen while working in Joule, allowing natural error-repair behavior to surface without a lab environment constraining it.</figcaption>
+        </figure>
+    </div>
+    <div class="ns">
+        <div class="ns-h">On Sample Size: Why n=8 Was Sufficient</div>
+        <p class="ns-p">The goal was not to measure frequency — it was to identify whether a behavioral pattern existed at all. Nielsen's research on diminishing returns in usability studies shows that 5–8 participants reliably surface recurring behavioral themes in focused task observation. By session 5, 100% of observed users had repaired errors conversationally with zero button-seeking. Sessions 6–8 confirmed saturation: no new repair patterns emerged. A larger n would have added confidence intervals to a frequency claim; it would not have changed the categorical finding. The appropriate next step is a quantitative phase to measure adoption of conversational repair at scale — not more behavioral interviews.</p>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Key Findings</div>
+        <div class="insight-list">
+            <div class="insight">
+                <div class="in-num">1</div>
+                <div>
+                    <div class="in-title">Users treated AI correction as collaborative dialogue, not mechanical repair</div>
+                    <div class="in-body">All 8 participants immediately rephrased their prompt when Joule missed the mark. None paused to look for a button or control. Users treated correction as an iterative conversation, not a transaction a reset could resolve.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">2</div>
+                <div>
+                    <div class="in-title">The Retry vs. Regenerate distinction that mattered to engineers was invisible to users</div>
+                    <div class="in-body">Even when directly prompted to reflect on the difference, participants couldn't distinguish the two concepts during an active task. The label debate the team was having was solving a problem users didn't experience.</div>
+                </div>
+            </div>
+            <div class="insight">
+                <div class="in-num">3</div>
+                <div>
+                    <div class="in-title">Users wanted transparency and steering controls, not a reset</div>
+                    <div class="in-body">Participants described wanting visibility into why a response changed, the ability to adjust tone, and side-by-side comparisons. These match the conversational repair model they were already using naturally.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <figure class="cs-figure cs-figure-narrow" style="margin: 0 auto 40px">
+        <img src="pic/Joule-Hiring.Attrition-Trends.png" alt="Joule AI assistant conversational interface" />
+        <figcaption><strong>The interface studied:</strong> Joule's conversational input — users sent follow-up prompts to repair AI errors rather than reaching for any reset control.</figcaption>
+    </figure>
+    <div class="quote">
+        <p>"I don't know sometimes what exactly I'm looking for. I'm figuring out the journey along the way."</p>
+        <cite>— Enterprise user, describing AI error-repair behavior</cite>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Influencing a Skeptical Stakeholder Environment</div>
+        <div class="sth">
+            <div class="sth-lbl">The challenge</div>
+            <div class="sth-text">The feature request originated with leadership, and a direction was already implied. Recommending "don't build this" required a higher burden of proof than recommending how to shape a feature. Behavioral evidence needed to be airtight, and the framing needed to make the alternative path clear.</div>
+        </div>
+        <ul class="ns-list">
+            <li>Led with behavior, not interpretation. "8/8 users repaired conversationally" is harder to dismiss than a qualitative theme</li>
+            <li>Benchmarked against ChatGPT and Copilot to show the conversational repair pattern was not unique to Joule</li>
+            <li>Reframed the design question from "how should the button be labeled?" to "how should the system support users who are guiding it conversationally?" This gave the team a forward path, not just a stop signal</li>
+        </ul>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Product Implication</div>
+        <p class="ns-p">The "Conversational vs. UI" framework, which distinguishes when natural language repair is sufficient from when UI controls add value, was adopted as a screening lens for future Joule interface decisions. One study created a reusable decision tool the team now applies independently.</p>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Impact</div>
+        <div class="impact-chips">
+            <span class="ic">Retry feature deprioritized before engineering began</span>
+            <span class="ic">Team redirected to conversational repair design</span>
+            <span class="ic">VP escalation (unsolicited)</span>
+            <span class="ic">"Conversational vs. UI" framework adopted for AI decisions</span>
+        </div>
+    </div>
+    <div class="ns">
+        <div class="ns-h">Reflection</div>
+        <div class="reflect">
+            <div class="reflect-title">Follow the disconfirmation with a validation phase</div>
+            <div class="reflect-body">The study was rigorous at disconfirming the Retry button. It was weaker at validating the alternatives. A second phase testing tone controls and response comparison UIs would have turned "don't build X" into "build Y instead," giving the team a concrete direction alongside the stop signal.</div>
+        </div>
+    </div>
+</div>
+
+<div class="cs-nav-footer">
+    <a href="cs01-support-landscape.html" class="cs-nav-link">← CS01: SAP Support Landscape</a>
+    <a href="cs03-fiori-design-system.html" class="cs-nav-link next">CS03: Fiori Design System →</a>
+</div>
+
+<footer>
+    <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
+</footer>
+
+</body>
+</html>
