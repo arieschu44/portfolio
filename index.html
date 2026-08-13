@@ -7,2075 +7,506 @@
     <title>Aries Chu · UX Researcher</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap"
-        rel="stylesheet" />
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        :root {
-            --blue: #1a73e8;
-            --blue-dk: #1557b0;
-            --blue-lt: #e8f0fe;
-            --green: #1e8e3e;
-            --green-lt: #e6f4ea;
-            --amber: #f9ab00;
-            --amber-lt: #fef3e2;
-            --red: #d93025;
-            --red-lt: #fce8e6;
-            --g50: #f8f9fa;
-            --g100: #f1f3f4;
-            --g200: #e8eaed;
-            --g400: #bdc1c6;
-            --g600: #5f6368;
-            --g900: #202124;
-            --surface: #fff;
-            --border: #e8eaed;
-            --r: 8px;
-            --rl: 14px;
-            --sans: 'DM Sans', system-ui, sans-serif;
-            --serif: 'DM Serif Display', Georgia, serif;
-            --ease: 0.18s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: var(--sans);
-            background: var(--g50);
-            color: var(--g900);
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased
-        }
-
-        img {
-            display: block;
-            max-width: 100%
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        ::-webkit-scrollbar {
-            width: 5px
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--g200);
-            border-radius: 3px
-        }
-
-        /* NAV */
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 48px
-        }
-
-        .nav-logo {
-            font-family: var(--serif);
-            font-size: 18px
-        }
-
-        .nav-logo span {
-            color: var(--blue)
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none
-        }
-
-        .nav-links a {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: var(--g600);
-            transition: color var(--ease)
-        }
-
-        .nav-links a:hover {
-            color: var(--blue)
-        }
-
-        .nav-cta {
-            font-size: 13.5px;
-            font-weight: 500;
-            background: var(--blue);
-            color: #fff;
-            padding: 8px 22px;
-            border-radius: 24px;
-            transition: background var(--ease)
-        }
-
-        .nav-cta:hover {
-            background: var(--blue-dk)
-        }
-
-        /* HERO */
-        .hero {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 80px 48px 64px;
-            display: grid;
-            grid-template-columns: 1fr 220px;
-            gap: 56px;
-            align-items: center
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--green-lt);
-            color: var(--green);
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            padding: 5px 14px;
-            border-radius: 20px;
-            margin-bottom: 18px
-        }
-
-        .hero-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--green);
-            flex-shrink: 0
-        }
-
-        .hero-eyebrow {
-            font-size: 11.5px;
-            font-weight: 600;
-            color: var(--blue);
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            margin-bottom: 10px
-        }
-
-        .hero h1 {
-            font-family: var(--serif);
-            font-size: 46px;
-            font-weight: 400;
-            line-height: 1.08;
-            letter-spacing: -0.4px;
-            margin-bottom: 14px
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--blue)
-        }
-
-        .hero-sub {
-            font-size: 16px;
-            color: var(--g600);
-            line-height: 1.7;
-            max-width: 520px;
-            margin-bottom: 8px
-        }
-
-        .hero-sub strong {
-            color: var(--g900);
-            font-weight: 500
-        }
-
-        .hero-tagline {
-            font-size: 14px;
-            color: var(--g600);
-            line-height: 1.65;
-            max-width: 500px;
-            margin-bottom: 26px
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 38px
-        }
-
-        .btn-primary {
-            font-size: 14px;
-            font-weight: 500;
-            background: var(--blue);
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 24px;
-            transition: background var(--ease)
-        }
-
-        .btn-primary:hover {
-            background: var(--blue-dk)
-        }
-
-        .btn-ghost {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--blue);
-            border: 1.5px solid var(--blue);
-            padding: 9px 22px;
-            border-radius: 24px;
-            transition: background var(--ease)
-        }
-
-        .btn-ghost:hover {
-            background: var(--blue-lt)
-        }
-
-        .hero-metrics {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap
-        }
-
-        .metric-num {
-            font-family: var(--serif);
-            font-size: 28px;
-            color: var(--g900);
-            line-height: 1
-        }
-
-        .metric-label {
-            font-size: 11.5px;
-            color: var(--g600);
-            margin-top: 3px
-        }
-
-        .portrait-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px
-        }
-
-        .portrait {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--border)
-        }
-
-        .portrait-chips {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: center
-        }
-
-        .portrait-chip {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--g600);
-            background: var(--g100);
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 12px;
-            white-space: nowrap
-        }
-
-        /* DIVIDER */
-        .divider {
-            border: none;
-            border-top: 1px solid var(--border)
-        }
-
-        /* SECTION */
-        .section {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 64px 48px
-        }
-
-        .eyebrow {
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: var(--blue);
-            margin-bottom: 8px
-        }
-
-        .section-title {
-            font-family: var(--serif);
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: -0.3px;
-            margin-bottom: 8px
-        }
-
-        .section-sub {
-            font-size: 15px;
-            color: var(--g600);
-            line-height: 1.65;
-            max-width: 580px;
-            margin-bottom: 36px
-        }
-
-        /* PHILOSOPHY */
-        .phil-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px
-        }
-
-        .phil-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--rl);
-            padding: 22px;
-            transition: box-shadow var(--ease), transform var(--ease)
-        }
-
-        .phil-card:hover {
-            box-shadow: 0 4px 20px rgba(26, 115, 232, 0.09);
-            transform: translateY(-2px)
-        }
-
-        .phil-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 9px;
-            background: var(--blue-lt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px
-        }
-
-        .phil-icon svg {
-            width: 17px;
-            height: 17px;
-            stroke: var(--blue);
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round
-        }
-
-        .phil-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 6px
-        }
-
-        .phil-body {
-            font-size: 12.5px;
-            color: var(--g600);
-            line-height: 1.6
-        }
-
-        /* CASE STUDY CARDS */
-        .cs-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px
-        }
-
-        .cs-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--rl);
-            overflow: hidden;
-            transition: box-shadow var(--ease)
-        }
-
-        .cs-card:hover {
-            box-shadow: 0 4px 20px rgba(32, 33, 36, 0.09)
-        }
-
-        .cs-top {
-            display: grid;
-            grid-template-columns: 1fr 300px
-        }
-
-        .cs-body {
-            padding: 36px 38px
-        }
-
-        .tags {
-            display: flex;
-            gap: 7px;
-            flex-wrap: wrap;
-            margin-bottom: 16px
-        }
-
-        .tag {
-            font-size: 10.5px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            padding: 3px 10px;
-            border-radius: 11px
-        }
-
-        .t-blue {
-            background: var(--blue-lt);
-            color: #1557b0
-        }
-
-        .t-green {
-            background: var(--green-lt);
-            color: #166534
-        }
-
-        .t-amber {
-            background: var(--amber-lt);
-            color: #92400e
-        }
-
-        .t-red {
-            background: var(--red-lt);
-            color: #991b1b
-        }
-
-        .t-gray {
-            background: var(--g100);
-            color: var(--g600)
-        }
-
-        .cs-num {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--g400);
-            margin-bottom: 6px;
-            letter-spacing: 0.3px
-        }
-
-        .cs-title {
-            font-family: var(--serif);
-            font-size: 21px;
-            font-weight: 400;
-            line-height: 1.25;
-            margin-bottom: 12px
-        }
-
-        .cs-hook {
-            font-size: 14px;
-            color: var(--g600);
-            line-height: 1.7;
-            margin-bottom: 20px
-        }
-
-        /* snapshot */
-        .snapshot {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border: 1px solid var(--border);
-            border-radius: var(--r);
-            overflow: hidden;
-            margin-bottom: 22px;
-            font-size: 12.5px
-        }
-
-        .snap {
-            padding: 12px 15px;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border)
-        }
-
-        .snap:nth-child(2n) {
-            border-right: none
-        }
-
-        .snap:nth-last-child(-n+2) {
-            border-bottom: none
-        }
-
-        .snap-lbl {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--g400);
-            margin-bottom: 4px
-        }
-
-        .snap-val {
-            color: var(--g900);
-            line-height: 1.5
-        }
-
-        /* metrics row */
-        .cs-metrics {
-            display: flex;
-            gap: 26px;
-            flex-wrap: wrap;
-            margin-bottom: 22px
-        }
-
-        .cs-mn {
-            font-family: var(--serif);
-            font-size: 24px;
-            color: var(--g900)
-        }
-
-        .cs-ml {
-            font-size: 11px;
-            color: var(--g600);
-            margin-top: 2px
-        }
-
-        /* expand button */
-        .exp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--blue);
-            background: none;
-            border: 1.5px solid var(--border);
-            padding: 7px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all var(--ease)
-        }
-
-        .exp-btn:hover {
-            border-color: var(--blue);
-            background: var(--blue-lt)
-        }
-
-        .exp-btn svg {
-            width: 13px;
-            height: 13px;
-            stroke: var(--blue);
-            fill: none;
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            transition: transform var(--ease)
-        }
-
-        .exp-btn.open svg {
-            transform: rotate(180deg)
-        }
-
-        /* image panel */
-        .cs-img {
-            background: var(--g100);
-            overflow: hidden;
-            min-height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        .cs-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover
-        }
-
-        /* EXPANDED DETAIL */
-        .cs-detail {
-            display: none;
-            border-top: 1px solid var(--border)
-        }
-
-        .cs-detail.open {
-            display: block
-        }
-
-        .cs-detail-inner {
-            padding: 36px 38px
-        }
-
-        /* reframe */
-        .reframe {
-            display: grid;
-            grid-template-columns: 1fr 32px 1fr;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 28px
-        }
-
-        .rf-box {
-            border: 1px solid var(--border);
-            border-radius: var(--r);
-            padding: 16px;
-            background: var(--g50)
-        }
-
-        .rf-box.after {
-            background: var(--blue-lt);
-            border-color: #c5d9f8
-        }
-
-        .rf-mark {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--g400);
-            margin-bottom: 6px
-        }
-
-        .rf-box.after .rf-mark {
-            color: var(--blue)
-        }
-
-        .rf-text {
-            font-size: 13px;
-            color: var(--g900);
-            line-height: 1.55
-        }
-
-        .rf-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--blue)
-        }
-
-        /* narrative blocks */
-        .ns {
-            margin-bottom: 28px
-        }
-
-        .ns:last-child {
-            margin-bottom: 0
-        }
-
-        .ns-h {
-            font-size: 10.5px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--g400);
-            margin-bottom: 14px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border)
-        }
-
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px
-        }
-
-        .ns-col h4 {
-            font-size: 12.5px;
-            font-weight: 600;
-            margin-bottom: 9px
-        }
-
-        .ns-list {
-            list-style: none
-        }
-
-        .ns-list li {
-            font-size: 13px;
-            color: var(--g600);
-            padding: 6px 0;
-            border-bottom: 1px solid var(--g100);
-            line-height: 1.55
-        }
-
-        .ns-list li:last-child {
-            border-bottom: none
-        }
-
-        .ns-list li::before {
-            content: "→ ";
-            color: var(--blue);
-            font-weight: 600
-        }
-
-        .ns-p {
-            font-size: 13.5px;
-            color: var(--g600);
-            line-height: 1.75
-        }
-
-        /* insights */
-        .insight-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px
-        }
-
-        .insight {
-            display: flex;
-            gap: 14px;
-            background: var(--g50);
-            border: 1px solid var(--border);
-            border-radius: var(--r);
-            padding: 14px 18px
-        }
-
-        .in-num {
-            font-family: var(--serif);
-            font-size: 20px;
-            color: var(--blue);
-            line-height: 1;
-            flex-shrink: 0;
-            padding-top: 2px
-        }
-
-        .in-title {
-            font-size: 13.5px;
-            font-weight: 600;
-            margin-bottom: 4px
-        }
-
-        .in-body {
-            font-size: 12.5px;
-            color: var(--g600);
-            line-height: 1.6
-        }
-
-        /* stakeholder callout */
-        .sth {
-            background: #fef3e2;
-            border: 1px solid #fde68a;
-            border-left: 4px solid var(--amber);
-            border-radius: 0 var(--r) var(--r) 0;
-            padding: 14px 18px;
-            margin-bottom: 16px
-        }
-
-        .sth-lbl {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #92400e;
-            margin-bottom: 5px
-        }
-
-        .sth-text {
-            font-size: 13px;
-            color: var(--g900);
-            line-height: 1.6
-        }
-
-        /* quote */
-        .quote {
-            border-left: 3px solid var(--blue);
-            padding: 12px 18px;
-            background: var(--blue-lt);
-            border-radius: 0 var(--r) var(--r) 0;
-            margin-bottom: 18px
-        }
-
-        .quote p {
-            font-style: italic;
-            font-size: 14px;
-            color: var(--g900);
-            line-height: 1.65;
-            margin-bottom: 5px
-        }
-
-        .quote cite {
-            font-size: 11.5px;
-            color: var(--g600);
-            font-style: normal;
-            font-weight: 500
-        }
-
-        /* impact chips */
-        .impact-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px
-        }
-
-        .ic {
-            background: var(--green-lt);
-            color: #166534;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 4px 13px;
-            border-radius: 13px;
-            border: 1px solid #bbf7d0
-        }
-
-        /* reflection */
-        .reflect {
-            background: var(--g50);
-            border: 1px solid var(--border);
-            border-radius: var(--r);
-            padding: 20px 22px
-        }
-
-        .reflect-title {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px
-        }
-
-        .reflect-body {
-            font-size: 13px;
-            color: var(--g600);
-            line-height: 1.75
-        }
-
-        /* ABOUT */
-        .about-wrap {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 64px;
-            align-items: start
-        }
-
-        .about-body p {
-            font-size: 15px;
-            color: var(--g600);
-            line-height: 1.8;
-            margin-bottom: 16px
-        }
-
-        .about-body p strong {
-            color: var(--g900);
-            font-weight: 500
-        }
-
-        .skills-group {
-            margin-top: 22px
-        }
-
-        .sg-label {
-            font-size: 10.5px;
-            font-weight: 700;
-            letter-spacing: 0.9px;
-            text-transform: uppercase;
-            color: var(--g400);
-            margin-bottom: 8px
-        }
-
-        .sg-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-bottom: 16px
-        }
-
-        .sc {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--g600);
-            background: var(--g100);
-            padding: 4px 12px;
-            border-radius: 11px
-        }
-
-        .tl-item {
-            display: flex;
-            gap: 14px;
-            margin-bottom: 24px
-        }
-
-        .tl-item:last-child {
-            margin-bottom: 0
-        }
-
-        .tl-spine {
-            display: flex;
-            flex-direction: column;
-            align-items: center
-        }
-
-        .tl-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--blue);
-            flex-shrink: 0;
-            margin-top: 5px
-        }
-
-        .tl-line {
-            width: 2px;
-            background: var(--border);
-            flex: 1;
-            margin-top: 5px
-        }
-
-        .tl-role {
-            font-size: 14px;
-            font-weight: 600
-        }
-
-        .tl-org {
-            font-size: 13px;
-            color: var(--blue);
-            margin-top: 1px
-        }
-
-        .tl-meta {
-            font-size: 11.5px;
-            color: var(--g600);
-            margin-top: 1px
-        }
-
-        /* CONTACT */
-        .contact-bg {
-            background: var(--surface);
-            border-top: 1px solid var(--border)
-        }
-
-        .contact-inner {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 64px 48px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 72px;
-            align-items: start
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 280px
-        }
-
-        .contact-card {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            border: 1px solid var(--border);
-            border-radius: var(--rl);
-            padding: 14px 18px;
-            background: var(--surface);
-            transition: all var(--ease)
-        }
-
-        .contact-card:hover {
-            border-color: var(--blue);
-            background: #f0f7ff
-        }
-
-        .contact-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 9px;
-            background: var(--blue-lt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0
-        }
-
-        .contact-icon svg {
-            width: 15px;
-            height: 15px;
-            stroke: var(--blue);
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round
-        }
-
-        .contact-lbl {
-            font-size: 11px;
-            color: var(--g600)
-        }
-
-        .contact-val {
-            font-size: 13.5px;
-            font-weight: 500
-        }
-
-        footer {
-            background: var(--g50);
-            border-top: 1px solid var(--border);
-            padding: 20px 48px;
-            text-align: center
-        }
-
-        footer p {
-            font-size: 12.5px;
-            color: var(--g600)
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .hero-left>* {
-            animation: fadeUp 0.5s ease both
-        }
-
-        .hero-left>*:nth-child(1) {
-            animation-delay: .04s
-        }
-
-        .hero-left>*:nth-child(2) {
-            animation-delay: .10s
-        }
-
-        .hero-left>*:nth-child(3) {
-            animation-delay: .16s
-        }
-
-        .hero-left>*:nth-child(4) {
-            animation-delay: .22s
-        }
-
-        .hero-left>*:nth-child(5) {
-            animation-delay: .28s
-        }
-
-        .hero-left>*:nth-child(6) {
-            animation-delay: .34s
-        }
-
-        /* RESPONSIVE */
-        @media(max-width:900px) {
-            .nav {
-                padding: 0 20px
-            }
-
-            .nav-links {
-                display: none
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 48px 20px 40px;
-                gap: 24px
-            }
-
-            .portrait-wrap {
-                flex-direction: row;
-                justify-content: flex-start
-            }
-
-            .section {
-                padding: 48px 20px
-            }
-
-            .phil-grid {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .cs-top {
-                grid-template-columns: 1fr
-            }
-
-            .cs-img {
-                min-height: 180px
-            }
-
-            .snapshot {
-                grid-template-columns: 1fr
-            }
-
-            .snap {
-                border-right: none
-            }
-
-            .snap:nth-last-child(-n+2) {
-                border-bottom: 1px solid var(--border)
-            }
-
-            .snap:last-child {
-                border-bottom: none
-            }
-
-            .two-col {
-                grid-template-columns: 1fr
-            }
-
-            .reframe {
-                grid-template-columns: 1fr
-            }
-
-            .rf-arrow {
-                display: none
-            }
-
-            .about-wrap {
-                grid-template-columns: 1fr
-            }
-
-            .contact-inner {
-                grid-template-columns: 1fr;
-                gap: 36px;
-                padding: 48px 20px
-            }
-
-            footer {
-                padding: 20px
-            }
-        }
-
-        @media(max-width:600px) {
-            .hero h1 {
-                font-size: 34px
-            }
-
-            .phil-grid {
-                grid-template-columns: 1fr
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
     <!-- NAV -->
     <nav class="nav">
-        <div class="nav-logo">Aries <span>Chu</span></div>
+        <div class="nav-logo">
+            <span class="nav-logo-first">Aries</span>
+            <span class="nav-logo-last">Chu</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#approach">Approach</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="nav-cta">Get in touch</a>
+        <a href="mailto:arieschu44@gmail.com" class="nav-cta">Get in touch</a>
     </nav>
 
     <!-- HERO -->
-    <div class="hero">
-        <div class="hero-left">
-            <div class="hero-badge">
-                <div class="hero-dot"></div>Open to UXR roles
+    <section class="hero-section">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Currently at SAP
+                </div>
+                <h1 class="hero-title">Aries <em>Chu</em></h1>
+                <p class="hero-desc">I study behavior in <strong>AI assistants, enterprise platforms and voice interfaces</strong>, then translate the findings into decisions that change what gets built. I scope the problem before I scope the method.</p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn-filled">View case studies</a>
+                    <a href="files/resume.pdf" class="btn-outlined">Download resume</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">+12.6%</span>
+                        <span class="stat-label">CSAT lift</span>
+                        <span class="stat-note">Design system CSAT, n=160</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">~4 sprints</span>
+                        <span class="stat-label">Engineering saved</span>
+                        <span class="stat-note">Feature disconfirmed before scoping</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">200+</span>
+                        <span class="stat-label">Research participants</span>
+                        <span class="stat-note">Across 4 studies</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">ACM/HFES/IEEE publications</span>
+                        <span class="stat-note">Peer-reviewed, 2024–2025</span>
+                    </div>
+                </div>
             </div>
-            <p class="hero-eyebrow">UX Researcher · Enterprise AI · Human Factors</p>
-            <h1>Aries <em>Chu</em></h1>
-            <p class="hero-sub">I study how people interact with <strong>AI, voice, and enterprise systems.</strong> I turn behavioral evidence into product decisions that stick.</p>
-            <p class="hero-tagline">My work combines qualitative research, experimental design, and behavioral analysis to help teams understand user needs and shape product direction.</p>
-            <div class="hero-btns">
-                <a href="#work" class="btn-primary">View case studies</a>
-                <a href="files/resume.pdf" class="btn-ghost">Download resume</a>
-            </div>
-            <div class="hero-metrics">
-                <div>
-                    <div class="metric-num">400K+</div>
-                    <div class="metric-label">Enterprise users impacted</div>
+            <div class="hero-portrait-col">
+                <div class="portrait-ring">
+                    <img src="pic/me.png" alt="Aries Chu, UX Researcher" class="portrait-img" />
                 </div>
-                <div>
-                    <div class="metric-num">+12.6%</div>
-                    <div class="metric-label">CSAT lift driven</div>
-                </div>
-                <div>
-                    <div class="metric-num">~8 wks</div>
-                    <div class="metric-label">Engineering rework prevented</div>
-                </div>
-                <div>
-                    <div class="metric-num">9</div>
-                    <div class="metric-label">Roadmap decisions influenced</div>
+                <div class="portrait-meta">
+                    <span class="meta-chip">SAP</span>
+                    <span class="meta-chip">M.S. Human Factors</span>
+                    <span class="meta-chip">San Jose, CA</span>
                 </div>
             </div>
         </div>
-        <div class="portrait-wrap">
-            <img src="pic/me.png" alt="Aries Chu, UX Researcher" class="portrait" />
-            <div class="portrait-chips">
-                <span class="portrait-chip">SAP</span>
-                <span class="portrait-chip">M.S. in Human Factors</span>
-                <span class="portrait-chip">San Jose, CA</span>
-            </div>
-        </div>
-    </div>
-
-    <hr class="divider" />
+    </section>
 
     <!-- APPROACH -->
-    <section class="section" id="approach">
-        <p class="eyebrow">Research approach</p>
-        <h2 class="section-title">How I work</h2>
-        <p class="section-sub">Four principles that shape every study, from scoping to stakeholder readout.</p>
-        <div class="phil-grid">
-            <div class="phil-card">
-                <div class="phil-icon"><svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3" />
-                        <path
-                            d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
-                    </svg></div>
-                <div class="phil-title">End-to-end ownership</div>
-                <div class="phil-body">I identify the gap before anyone assigns it. Research plan, fieldwork, synthesis, readout: full arc, independently.</div>
+    <section class="section section-page" id="approach">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="eyebrow">Research approach</p>
+                <h2 class="section-title">How I work</h2>
+                <p class="section-sub">Four principles that keep research from landing in a slide deck nobody acts on.</p>
             </div>
-            <div class="phil-card">
-                <div class="phil-icon"><svg viewBox="0 0 24 24">
-                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                        <polyline points="16 7 22 7 22 13" />
-                    </svg></div>
-                <div class="phil-title">Research that moves strategy</div>
-                <div class="phil-body">I frame findings as business risk and investment tradeoffs, not just user observations. My work reaches exec level without being pushed.</div>
-            </div>
-            <div class="phil-card">
-                <div class="phil-icon"><svg viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg></div>
-                <div class="phil-title">User voice in every room</div>
-                <div class="phil-body">I translate behavioral insight into language PMs and engineers act on, keeping users present in every decision.</div>
-            </div>
-            <div class="phil-card">
-                <div class="phil-icon"><svg viewBox="0 0 24 24">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg></div>
-                <div class="phil-title">Failure mode thinking</div>
-                <div class="phil-body">Human Factors training means I ask "how will this break?" before "what should we
-                    build?" and before a line of code is written.</div>
+            <div class="principles-grid">
+                <div class="principle-card principle-blue">
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">I work backwards from the decision</h3>
+                    <p class="principle-body">The brief rarely names the real risk. Before designing any study, I find out what would actually change product direction. If I can't name the decision, I don't run it.</p>
+                </div>
+                <div class="principle-card principle-red">
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                            <polyline points="16 7 22 7 22 13" />
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Findings are framed as tradeoffs</h3>
+                    <p class="principle-body">I hand over a choice with the cost of each option made explicit, not a list of observations. A readout that doesn't change what the team does next didn't land.</p>
+                </div>
+                <div class="principle-card principle-yellow">
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Method choice is a hypothesis</h3>
+                    <p class="principle-body">I pick methods because they answer a specific question, not because they fit the timeline. Qual reveals mechanism; quant tests whether it holds. I sequence them so each phase narrows what the next needs to find.</p>
+                </div>
+                <div class="principle-card principle-green">
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Research that scales past the study</h3>
+                    <p class="principle-body">A study that answers one question once is the floor, not the goal. I build reusable assets: decision frameworks, screeners and synthesis templates that teams use independently on future work.</p>
+                </div>
             </div>
         </div>
     </section>
-
-    <hr class="divider" />
 
     <!-- CASE STUDIES -->
-    <section class="section" id="work">
-        <p class="eyebrow">Selected work</p>
-        <h2 class="section-title">Case studies</h2>
-        <p class="section-sub">Five research projects at SAP spanning AI interfaces, design systems, voice strategy, and in-product support. Each addresses a different product challenge with a measurable outcome.</p>
-        <div class="cs-list">
-
-            <!-- CS 01 - SAP Support Landscape (was CS05) -->
-            <div class="cs-card">
-                <div class="cs-top">
-                    <div class="cs-body">
-                        <div class="tags"><span class="tag t-blue">Generative Research</span><span class="tag t-amber">Multi-Phase</span><span class="tag t-green">Product Direction</span></div>
-                        <div class="cs-num">01 · SAP Help &amp; Support · 2025–2026 · 3 phases</div>
-                        <div class="cs-title">Mapping a broken support ecosystem and generating the product direction to fix it</div>
-                        <div class="cs-hook">SAP had 74 help and support resources across 5 platforms, yet self-service kept failing. I led a three-phase landscape study across 95 participants to understand why. The findings directly generated the requirements for the Next Gen Panel, SAP's redesigned in-product support experience.</div>
-                        <div class="snapshot">
-                            <div class="snap">
-                                <div class="snap-lbl">Problem</div>
-                                <div class="snap-val">Self-service failure pushed support load onto CSMs, who spent the majority of their time on reactive navigation work instead of strategic advisory. No one had mapped why this pattern persisted.</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">My Role</div>
-                                <div class="snap-val">Researcher across all three phases. Independently designed and led Phase 3 (n=11 CSM interviews); contributed to synthesis and product framing across the full program.</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Methods</div>
-                                <div class="snap-val">Ph.1: ecosystem survey (n=66) · Ph.2: semi-structured interviews with end users, admins, and content creators (n=18) · Ph.3: CSM interviews (n=11)</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Outcome</div>
-                                <div class="snap-val">Research generated the Next Gen Panel product concept: a role-filtered, AI-first single entry point that replaces the manual curation work CSMs were absorbing at scale.</div>
-                            </div>
-                        </div>
-                        <div class="cs-metrics">
-                            <div>
-                                <div class="cs-mn">95</div>
-                                <div class="cs-ml">Participants across 3 phases</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">74</div>
-                                <div class="cs-ml">Support resources in ecosystem</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">11/11</div>
-                                <div class="cs-ml">CSMs independently named same gap</div>
-                            </div>
-                        </div>
-                        <button class="exp-btn" onclick="toggle('d1',this)">Read full case study <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></button>
-                    </div>
-                    <div class="cs-img"><img src="pic/userjourney.png" alt="SAP support landscape research" /></div>
-                </div>
-                <div class="cs-detail" id="d1">
-                    <div class="cs-detail-inner">
-                        <div class="ns">
-                            <div class="ns-h">Context &amp; Research Opportunity</div>
-                            <p class="ns-p">SAP's help and support ecosystem had grown to 74 resources across 5 platforms, yet self-service adoption continued to fail. When users hit problems, they either bypassed self-service entirely and contacted their Customer Success Manager (CSM), or attempted self-service once, encountered a poor experience, and never tried again. CSMs were absorbing the navigation burden the product was meant to carry. Before designing a solution, the team needed to understand the full failure landscape.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Research Program</div>
-                            <div class="two-col">
-                                <div class="ns-col">
-                                    <h4>Phase 1: Ecosystem mapping (n=66, survey)</h4>
-                                    <ul class="ns-list">
-                                        <li>Catalogued 74 resources across 5 platforms and 6 resource types</li>
-                                        <li>Quantified the awareness-to-use gap: high awareness did not produce adoption</li>
-                                        <li>End users knew an average of 3 resources; admins averaged 7+</li>
-                                        <li>Established a behavioral baseline before any qualitative data collection</li>
-                                    </ul>
-                                </div>
-                                <div class="ns-col">
-                                    <h4>Phase 2: User interviews (n=18, end users, admins, content creators)</h4>
-                                    <ul class="ns-list">
-                                        <li>45-min semi-structured sessions: resolving a real problem, learning journey, and ideal future state</li>
-                                        <li>Identified 4 distinct entry triggers: error/blockage, onboarding, skill growth, content creation</li>
-                                        <li>Mapped two divergent support paths: direct-to-human (8/18) vs. self-service first (10/18)</li>
-                                        <li>14 of 18 participants independently named AI as their near-ideal support model</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div style="margin-top:14px">
-                                <h4 style="font-size:12.5px;font-weight:600;margin-bottom:9px">Phase 3: CSM interviews (n=11, independently led)</h4>
-                                <ul class="ns-list">
-                                    <li>Explored how CSMs navigated and recommended resources and what customer behavior patterns they observed</li>
-                                    <li>Found CSMs were manually filtering 25+ resources to ~13, then customers selected 1–3. This curation chain belonged in the product.</li>
-                                    <li>CSM data corroborated Phase 2 from the outside, triangulating both user paths and friction points</li>
-                                    <li>All 11 CSMs independently named a role-filtered, single entry point as the critical missing capability</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Key Findings</div>
-                            <div class="insight-list">
-                                <div class="insight">
-                                    <div class="in-num">1</div>
-                                    <div>
-                                        <div class="in-title">CSMs were acting as the navigation layer the product should provide</div>
-                                        <div class="in-body">The manual curation work CSMs performed, filtering by product, role, and situation, was precisely what a well-designed panel should automate. Without that, customers either escalated immediately or experienced repeated self-service failures that built lasting negative associations with SAP support.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">2</div>
-                                    <div>
-                                        <div class="in-title">Self-service failure is cumulative. Each failed attempt made the next one less likely.</div>
-                                        <div class="in-body">Users described SAP support with words like "challenging, difficult, painful." CSMs reported customers gave up after one or two unhelpful results regardless of experience level. The failure was a pattern that compounded across the customer relationship, not a single bad interaction.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">3</div>
-                                    <div>
-                                        <div class="in-title">Four predictable friction points drove every failure</div>
-                                        <div class="in-body">Discovery (no clear starting point), navigation (multiple windows, no clearer answer), contextual fit (content didn't reflect the user's specific setup), and terminology mismatch (customers searched in business language; SAP content used SAP language). These patterns held across all three phases and all participant types.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">4</div>
-                                    <div>
-                                        <div class="in-title">The problem was not a lack of resources. It was a lack of filtering.</div>
-                                        <div class="in-body">SAP had more than enough content. Even experienced CSMs actively recommended only about 13 of 25+ available resources. Adoption was lost in the gap between awareness and use: a discoverability and role-filtering problem, not a content volume problem.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote">
-                            <p>"I'm like the Siri of SAP. They can ask me and I'll tell them where to go."</p>
-                            <cite>— CSM participant, describing their day-to-day role</cite>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">From Research to Product Direction</div>
-                            <div class="reframe">
-                                <div class="rf-box">
-                                    <div class="rf-mark">Current state</div>
-                                    <div class="rf-text">User hits an issue → attempts self-service → fails → contacts CSM → CSM manually curates and filters resources → user gets an answer. CSM absorbs the navigation burden.</div>
-                                </div>
-                                <div class="rf-arrow">→</div>
-                                <div class="rf-box after">
-                                    <div class="rf-mark">Design requirement (research-generated)</div>
-                                    <div class="rf-text">A role-filtered, AI-first single entry point that surfaces relevant resources by product, role, and situation. This replaces the manual curation chain so CSMs can focus on strategic work.</div>
-                                </div>
-                            </div>
-                            <p class="ns-p" style="margin-top:14px">The three-phase program produced a product direction rather than evaluating one. All three data sets converged on the same requirement: 11/11 CSMs named it unprompted, 14/18 end users described AI as their near-ideal model, and the ecosystem survey quantified exactly where the filtration gap sat.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Cross-Functional Influence</div>
-                            <div class="sth">
-                                <div class="sth-lbl">The challenge</div>
-                                <div class="sth-text">The finding that CSMs were acting as a manual navigation layer was a structural critique of the existing product. Framing it as an opportunity, that the panel should replicate what CSMs already do at scale, shifted the insight from a problem statement into a product brief that stakeholders could act on.</div>
-                            </div>
-                            <ul class="ns-list">
-                                <li>Anchored the presentation in CSM voice. "I'm the Siri of SAP" was more persuasive to leadership than any researcher summary</li>
-                                <li>Visualized the curation chain (25+ resources → CSM curates 13 → admin selects a few → end user sees 1–3) to make the opportunity concrete</li>
-                                <li>Cross-phase triangulation across three independent data sets reduced the ability to dismiss any single finding</li>
-                            </ul>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Impact</div>
-                            <div class="impact-chips">
-                                <span class="ic">Next Gen Panel concept generated from research</span>
-                                <span class="ic">Role-filtered AI-first entry point defined as core requirement</span>
-                                <span class="ic">CSM escalation burden reframed as a product design problem</span>
-                                <span class="ic">Requirements validated across 95 participants</span>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Reflection</div>
-                            <div class="reflect">
-                                <div class="reflect-title">Run the CSM phase earlier to sharpen Phase 2 recruitment</div>
-                                <div class="reflect-body">Phase 3 CSM interviews corroborated and sharpened the Phase 2 user findings. Running them sequentially meant I missed the opportunity to use CSM-observed customer behavior to target specific user profiles earlier. Running CSM interviews first, or in parallel with Phase 2, would have made the end-user sample more precise and the cross-phase triangulation tighter from the start.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section class="section section-alt section-page" id="work">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="eyebrow">Selected work</p>
+                <h2 class="section-title">Case studies</h2>
+                <p class="section-sub">Four studies across AI products, enterprise platforms and autonomous systems. Each one changed what got built.</p>
             </div>
 
-            <!-- CS 02 - Retry Button (was CS03) -->
-            <div class="cs-card">
-                <div class="cs-top">
-                    <div class="cs-body">
-                        <div class="tags"><span class="tag t-red">Feature Deprioritized</span><span class="tag t-blue">Behavioral Research</span><span class="tag t-amber">Executive Influence</span></div>
-                        <div class="cs-num">02 · Joule AI Assistant · Sept 2025</div>
-                        <div class="cs-title">8 out of 8 users never reached for a Retry button. So I recommended we don't build one.</div>
-                        <div class="cs-hook">Leadership requested a Retry/Regenerate button for 440K+ enterprise users and engineering was ready to begin. Before building, I ran a behavioral study to observe how users actually responded to AI errors. Every participant repaired mistakes conversationally without looking for a control. The recommendation to deprioritize the feature reached VP level without being pushed.</div>
-                        <div class="snapshot">
-                            <div class="snap">
-                                <div class="snap-lbl">Problem</div>
-                                <div class="snap-val">The team assumed AI errors were transactional and fixable with a reset button. No behavioral evidence existed to validate or challenge that mental model.</div>
+            <!-- CS 01 — Fiori Design System (strongest) -->
+            <article class="cs-card">
+                <div class="cs-card-inner cs-card-inner--reverse">
+                    <div class="cs-card-body">
+                        <div class="cs-tags">
+                            <span class="tag tag-green">Measured Impact</span>
+                            <span class="tag tag-blue">Mixed Methods</span>
+                            <span class="tag tag-blue">Workshop Facilitation</span>
+                        </div>
+                        <p class="cs-meta">01 · SAP Fiori Mobile Design System · Aug–Sep 2025</p>
+                        <h3 class="cs-title">A working design system nobody trusted.</h3>
+                        <p class="cs-hook">I pushed for this study before I had data to justify it. 600 internal designers were quietly building custom alternatives instead of using the system. The team's read was a training problem. Mine was different: when that many people independently make the same workaround, the system has a structural failure, not a communication one. I challenged the framing before the roadmap was locked.</p>
+                        <div class="cs-impact-row">
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">+12.6%</span>
+                                <span class="impact-label">CSAT lift</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">My Role</div>
-                                <div class="snap-val">Sole researcher on my first independent project. Scoped the study, recruited participants, facilitated all 8 sessions, synthesized findings, and presented to PM, Design, and AI leads.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">n=160</span>
+                                <span class="impact-label">same cohort pre/post</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Methods</div>
-                                <div class="snap-val">n=8 behavioral observation interviews · think-aloud protocol · competitive benchmarking (ChatGPT, Copilot) · thematic analysis</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Outcome</div>
-                                <div class="snap-val">Retry feature deprioritized. Team redirected to conversational repair patterns. Findings escalated to VP unsolicited. A "Conversational vs. UI" framework adopted for future AI interface decisions.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">~8 wks</span>
+                                <span class="impact-label">engineering rework prevented</span>
                             </div>
                         </div>
-                        <div class="cs-metrics">
-                            <div>
-                                <div class="cs-mn">8/8</div>
-                                <div class="cs-ml">Users repaired errors conversationally</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">VP</div>
-                                <div class="cs-ml">Findings escalated unsolicited</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">4 wks</div>
-                                <div class="cs-ml">End-to-end ownership</div>
-                            </div>
-                        </div>
-                        <button class="exp-btn" onclick="toggle('d2',this)">Read full case study <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></button>
+                        <a href="cs02-fiori-design-system.html" class="cs-link">
+                            Read full case study
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-                    <div class="cs-img"><img src="pic/Joule-Hiring.Attrition-Trends.png" alt="AI error repair research" style="object-position:top" /></div>
-                </div>
-                <div class="cs-detail" id="d2">
-                    <div class="cs-detail-inner">
-                        <div class="ns">
-                            <div class="ns-h">Why Behavioral Observation, Not a Survey</div>
-                            <p class="ns-p">A survey asking "would you use a Retry button?" would have returned misleading signal. People reliably say yes to features when evaluated in isolation. I needed to observe natural error-repair behavior without priming participants toward any specific control. Think-aloud behavioral observation was the only method that could surface the actual mental model users hold when an AI response misses the mark.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Key Findings</div>
-                            <div class="insight-list">
-                                <div class="insight">
-                                    <div class="in-num">1</div>
-                                    <div>
-                                        <div class="in-title">Users treated AI correction as collaborative dialogue, not mechanical repair</div>
-                                        <div class="in-body">All 8 participants immediately rephrased their prompt when Joule missed the mark. None paused to look for a button or control. Users treated correction as an iterative conversation, not a transaction a reset could resolve.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">2</div>
-                                    <div>
-                                        <div class="in-title">The Retry vs. Regenerate distinction that mattered to engineers was invisible to users</div>
-                                        <div class="in-body">Even when directly prompted to reflect on the difference, participants couldn't distinguish the two concepts during an active task. The label debate the team was having was solving a problem users didn't experience.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">3</div>
-                                    <div>
-                                        <div class="in-title">Users wanted transparency and steering controls, not a reset</div>
-                                        <div class="in-body">Participants described wanting visibility into why a response changed, the ability to adjust tone, and side-by-side comparisons. These match the conversational repair model they were already using naturally.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote">
-                            <p>"I don't know sometimes what exactly I'm looking for. I'm figuring out the journey along the way."</p>
-                            <cite>— Enterprise user, describing AI error-repair behavior</cite>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Influencing a Skeptical Stakeholder Environment</div>
-                            <div class="sth">
-                                <div class="sth-lbl">The challenge</div>
-                                <div class="sth-text">The feature request originated with leadership, and a direction was already implied. Recommending "don't build this" required a higher burden of proof than recommending how to shape a feature. Behavioral evidence needed to be airtight, and the framing needed to make the alternative path clear.</div>
-                            </div>
-                            <ul class="ns-list">
-                                <li>Led with behavior, not interpretation. "8/8 users repaired conversationally" is harder to dismiss than a qualitative theme</li>
-                                <li>Benchmarked against ChatGPT and Copilot to show the conversational repair pattern was not unique to Joule</li>
-                                <li>Reframed the design question from "how should the button be labeled?" to "how should the system support users who are guiding it conversationally?" This gave the team a forward path, not just a stop signal</li>
-                            </ul>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Product Implication</div>
-                            <p class="ns-p">The "Conversational vs. UI" framework, which distinguishes when natural language repair is sufficient from when UI controls add value, was adopted as a screening lens for future Joule interface decisions. One study created a reusable decision tool the team now applies independently.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Impact</div>
-                            <div class="impact-chips">
-                                <span class="ic">Retry feature deprioritized before engineering began</span>
-                                <span class="ic">Team redirected to conversational repair design</span>
-                                <span class="ic">VP escalation (unsolicited)</span>
-                                <span class="ic">"Conversational vs. UI" framework adopted for AI decisions</span>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Reflection</div>
-                            <div class="reflect">
-                                <div class="reflect-title">Follow the disconfirmation with a validation phase</div>
-                                <div class="reflect-body">The study was rigorous at disconfirming the Retry button. It was weaker at validating the alternatives. A second phase testing tone controls and response comparison UIs would have turned "don't build X" into "build Y instead," giving the team a concrete direction alongside the stop signal.</div>
-                            </div>
-                        </div>
+                    <div class="cs-card-image">
+                        <img src="pic/fiori-swap-slots.webp" alt="SAP Fiori swap slots — customization zones made explicit" />
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- CS 03 - Fiori Design System (was CS02) -->
-            <div class="cs-card">
-                <div class="cs-top">
-                    <div class="cs-body">
-                        <div class="tags"><span class="tag t-green">Measured Impact</span><span class="tag t-blue">Mixed Methods</span><span class="tag t-blue">Workshop Facilitation</span></div>
-                        <div class="cs-num">03 · SAP Fiori Design System · Aug–Sep 2025</div>
-                        <div class="cs-title">Designers were abandoning a working design system. The problem wasn't quality. It was trust.</div>
-                        <div class="cs-hook">Satisfaction with SAP Fiori Mobile dropped to 3.71/5 and teams were quietly building custom components instead of using the ones available. The team's hypothesis pointed to component quality. I challenged that hypothesis, uncovered three structural trust failures, and drove changes that lifted satisfaction by +12.6% within a single quarter.</div>
-                        <div class="snapshot">
-                            <div class="snap">
-                                <div class="snap-lbl">Problem</div>
-                                <div class="snap-val">Teams were bypassing functional components. A quality fix would have addressed the symptom and missed the underlying cause entirely.</div>
+            <!-- CS 02 — SAP Help & Support -->
+            <article class="cs-card">
+                <div class="cs-card-inner" style="height:460px">
+                    <div class="cs-card-body">
+                        <div class="cs-tags">
+                            <span class="tag tag-blue">Product Discovery</span>
+                            <span class="tag tag-amber">Product Direction</span>
+                            <span class="tag tag-green">RITE Testing</span>
+                        </div>
+                        <p class="cs-meta">02 · SAP Help &amp; Support · Jan–Apr 2026 · 4 phases</p>
+                        <h3 class="cs-title">The support landscape nobody had mapped.</h3>
+                        <p class="cs-hook">Self-service wasn't failing because SAP lacked resources. It had 74, across 5 platforms. It was failing because users knew 3. I mapped the structural reasons why. The findings became requirements. The requirements became a product.</p>
+                        <div class="cs-impact-row">
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">11/11</span>
+                                <span class="impact-label">CSMs named the same gap</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">My Role</div>
-                                <div class="snap-val">Lead researcher. Challenged the initial hypothesis, designed and ran the mixed-methods study, facilitated a cross-functional workshop, and drove three changes shipped in v25.04.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">4 phases</span>
+                                <span class="impact-label">Jan–Apr 2026</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Methods</div>
-                                <div class="snap-val">n=19 interviews · live workflow observations · pre/post benchmark survey · cross-functional prioritization workshop</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Outcome</div>
-                                <div class="snap-val">+12.6% satisfaction (3.71 → 4.18) in one quarter. ~8 weeks of engineering rework prevented. Three structural changes shipped in v25.04. 2026 roadmap shaped.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">Aug 2026</span>
+                                <span class="impact-label">product launch</span>
                             </div>
                         </div>
-                        <div class="cs-metrics">
-                            <div>
-                                <div class="cs-mn">+12.6%</div>
-                                <div class="cs-ml">Satisfaction lift in one quarter</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">~8 wks</div>
-                                <div class="cs-ml">Engineering rework prevented</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">19</div>
-                                <div class="cs-ml">Interviews across designers &amp; developers</div>
-                            </div>
-                        </div>
-                        <button class="exp-btn" onclick="toggle('d3',this)">Read full case study <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></button>
+                        <a href="cs01-support-landscape.html" class="cs-link">
+                            Read full case study
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-                    <div class="cs-img"><img src="pic/visualFoundationImg.834e09a36611bd5c921d.png" alt="Design system research" /></div>
-                </div>
-                <div class="cs-detail" id="d3">
-                    <div class="cs-detail-inner">
-                        <div class="ns">
-                            <div class="ns-h">Context &amp; Hypothesis Challenge</div>
-                            <p class="ns-p">600+ internal designers at SAP depended on Fiori Mobile. When satisfaction dropped and teams began building custom components, the first instinct was to audit component quality. The behavioral signal told a different story. Teams were bypassing components that worked correctly. Avoiding something functional pointed to a structural cause, not a technical one.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">The Reframe</div>
-                            <div class="reframe">
-                                <div class="rf-box">
-                                    <div class="rf-mark">Team's hypothesis</div>
-                                    <div class="rf-text">"The components have quality issues. Improve them and adoption returns."</div>
-                                </div>
-                                <div class="rf-arrow">→</div>
-                                <div class="rf-box after">
-                                    <div class="rf-mark">My research question</div>
-                                    <div class="rf-text">"Why do designers feel unsafe depending on this system, and which dimensions of trust are breaking down?"</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Key Findings</div>
-                            <div class="insight-list">
-                                <div class="insight">
-                                    <div class="in-num">1</div>
-                                    <div>
-                                        <div class="in-title">Conflicting design authorities doubled decision time</div>
-                                        <div class="in-body">SAP guidelines contradicted Apple HIG and Material Design. Every component decision required external cross-referencing. Designers weren't avoiding low-quality components. They were avoiding a system that couldn't tell them what "correct" meant.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">2</div>
-                                    <div>
-                                        <div class="in-title">Rigid components created a debt spiral teams couldn't exit</div>
-                                        <div class="in-body">Any customization required detaching from the component → detaching meant losing future updates → teams built custom alternatives → debt compounded with every release. The system's inflexibility was generating the abandonment it suffered from.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">3</div>
-                                    <div>
-                                        <div class="in-title">Accessibility anxiety produced worse accessibility outcomes</div>
-                                        <div class="in-body">Developers couldn't verify WCAG compliance in the system, so they built custom components they believed were safe. Those builds were objectively less accessible. Unverifiable risk produced worse outcomes than the risk itself.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote">
-                            <p>"Sometimes I spend more time figuring out which component to use than actually designing."</p>
-                            <cite>— Internal designer, live workflow observation</cite>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Driving Consensus Across a Skeptical Team</div>
-                            <div class="sth">
-                                <div class="sth-lbl">The challenge</div>
-                                <div class="sth-text">The team had already committed to a quality hypothesis. Shifting the frame to investigate trust required presenting the behavioral evidence. Teams bypassing working components was a signal strong enough to warrant a different investigation entirely.</div>
-                            </div>
-                            <ul class="ns-list">
-                                <li>Facilitated a cross-functional prioritization workshop. Buy-in was built through co-prioritization, not presentation</li>
-                                <li>Interviewed designers and developers separately to surface role-specific trust failures before bringing groups together</li>
-                                <li>Framed each root cause as structural rather than attributable to any individual, reducing defensiveness and enabling action</li>
-                            </ul>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Changes Shipped in v25.04</div>
-                            <ul class="ns-list">
-                                <li>Comparison tables documenting where SAP intentionally diverges from Apple and Android guidelines, with the rationale made explicit</li>
-                                <li>Flexible component variants with clearly defined customization zones, enabling adaptation without forcing detachment</li>
-                                <li>Screen reader annotations integrated into every component spec, removing accessibility ambiguity at the point of decision</li>
-                            </ul>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Impact</div>
-                            <div class="impact-chips">
-                                <span class="ic">+12.6% satisfaction in one quarter (3.71 → 4.18)</span>
-                                <span class="ic">~8 weeks of engineering rework prevented</span>
-                                <span class="ic">3 structural changes shipped in v25.04</span>
-                                <span class="ic">2026 roadmap shaped by trust framework</span>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Reflection</div>
-                            <div class="reflect">
-                                <div class="reflect-title">Use a diary study to capture abandonment decisions as they happen</div>
-                                <div class="reflect-body">Workflow observations captured a snapshot of behavior. A short diary study (1–2 weeks) would have revealed when teams made the detachment decision in real time rather than reconstructed after the fact, strengthening the causal chain and making the root cause harder to dispute.</div>
-                            </div>
-                        </div>
+                    <div class="cs-card-image">
+                        <img src="pic/Report.png" alt="Next Gen Panel — SAP in-product support" style="object-position: top center" />
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- CS 04 - Attachment Sheet (was CS04) -->
-            <div class="cs-card">
-                <div class="cs-top">
-                    <div class="cs-body">
-                        <div class="tags"><span class="tag t-green">Engineering Unblocked</span><span class="tag t-blue">Mixed Methods</span><span class="tag t-blue">A/B Testing</span></div>
-                        <div class="cs-num">04 · Joule Mobile AI · Oct 2025 · 3 weeks</div>
-                        <div class="cs-title">Resolving a design deadlock with n=55 and merging code before the sprint closed</div>
-                        <div class="cs-hook">Engineering was blocked by a design debate with no data: a novel Attachment Sheet versus a familiar Input Field pattern. I designed and ran a two-phase mixed-methods study in three weeks, delivered a clear recommendation grounded in user mental models, and unblocked code merge within the active sprint.</div>
-                        <div class="snapshot">
-                            <div class="snap">
-                                <div class="snap-lbl">Problem</div>
-                                <div class="snap-val">A data-free design debate was blocking engineering. Both options had legitimate advocates, and the wrong call would either confuse new users or frustrate experienced ones.</div>
+            <!-- CS 03 — Joule Retry Button -->
+            <article class="cs-card">
+                <div class="cs-card-inner cs-card-inner--reverse">
+                    <div class="cs-card-body">
+                        <div class="cs-tags">
+                            <span class="tag tag-red">Feature Deprioritized</span>
+                            <span class="tag tag-blue">Behavioral Research</span>
+                            <span class="tag tag-amber">Executive Influence</span>
+                        </div>
+                        <p class="cs-meta">03 · Joule AI Assistant · Sept 2025</p>
+                        <h3 class="cs-title">The button nobody reached for.</h3>
+                        <p class="cs-hook">A VP requested a Retry/Regenerate button for 440K+ enterprise users. I pushed to run a behavioral study before engineering scoped a sprint. All 8 participants repaired AI errors conversationally without reaching for a reset control. The feature was deprioritized at VP level. A "Conversational vs. UI" framework now guides future AI interface decisions.</p>
+                        <div class="cs-impact-row">
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">8/8</span>
+                                <span class="impact-label">repaired conversationally</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">My Role</div>
-                                <div class="snap-val">Lead researcher. Designed both study phases, ran quantitative and qualitative data collection, made the final recommendation, and independently initiated Phase 2 post-decision.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">0</span>
+                                <span class="impact-label">participants sought a reset</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Methods</div>
-                                <div class="snap-val">n=47 unmoderated usability (UserZoom) · n=8 moderated in-depth interviews · A/B preference testing · Phase 2 targeted component usability</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Outcome</div>
-                                <div class="snap-val">Input Field selected. Code merged within the sprint. A status state ambiguity issue caught pre-merge. UserZoom protocol adopted as team standard. UI Kit updated.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">VP</span>
+                                <span class="impact-label">escalation, unsolicited</span>
                             </div>
                         </div>
-                        <div class="cs-metrics">
-                            <div>
-                                <div class="cs-mn">55</div>
-                                <div class="cs-ml">Total participants</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">1 sprint</div>
-                                <div class="cs-ml">Engineering unblocked</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">0</div>
-                                <div class="cs-ml">Post-merge bugs from interaction</div>
-                            </div>
-                        </div>
-                        <button class="exp-btn" onclick="toggle('d4',this)">Read full case study <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></button>
+                        <a href="cs03-retry-button.html" class="cs-link">
+                            Read full case study
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-                    <div class="cs-img"><img src="pic/sap-joule.jpg" alt="Mobile attachment research" /></div>
-                </div>
-                <div class="cs-detail" id="d4">
-                    <div class="cs-detail-inner">
-                        <div class="ns">
-                            <div class="ns-h">Why This Study Needed Two Phases</div>
-                            <p class="ns-p">Both design options had advocates with genuine conviction and no data. A wrong decision carried real costs: confused new users increase support load; frustrated experienced users drive churn. The team needed an impartial data partner, not a tiebreaker with a preference. Starting with quantitative behavioral data before introducing qualitative findings prevented any camp from anchoring interpretation around early qual signal.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Research Design</div>
-                            <div class="two-col">
-                                <div class="ns-col">
-                                    <h4>Phase 1: Concept evaluation</h4>
-                                    <ul class="ns-list">
-                                        <li>n=47 unmoderated (UserZoom): task success and time on task at scale</li>
-                                        <li>n=8 moderated IDIs: mental models and the reasoning behind the numbers</li>
-                                        <li>A/B preference testing for directional signal</li>
-                                        <li>Quantitative data presented first, giving both sides a shared behavioral baseline before qualitative interpretation entered</li>
-                                    </ul>
-                                </div>
-                                <div class="ns-col">
-                                    <h4>Phase 2: Component validation (self-initiated)</h4>
-                                    <ul class="ns-list">
-                                        <li>Targeted usability testing on the Attachment Cell Form post-decision</li>
-                                        <li>Surfaced status state ambiguity: users couldn't distinguish uploading, processing, and ready states</li>
-                                        <li>UI refined before code merge. The issue would not have been caught in production testing.</li>
-                                        <li>Formal Change Request initiated; UI Kit updated accordingly</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Key Findings</div>
-                            <div class="insight-list">
-                                <div class="insight">
-                                    <div class="in-num">1</div>
-                                    <div>
-                                        <div class="in-title">Quantitative parity moved the decision to cognitive load</div>
-                                        <div class="in-body">No significant difference in task success or time on task between the two designs. With no performance advantage, the recommendation came down to which option imposed lower cognitive load on first use. Qualitative mental model data became the deciding factor.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">2</div>
-                                    <div>
-                                        <div class="in-title">8/8 moderated users recognized the Input Field pattern from prior AI experience</div>
-                                        <div class="in-body">Enterprise users had already internalized the interaction model from ChatGPT and Copilot. Leveraging an established mental model reduced adoption friction, a high-value signal in enterprise contexts where training time and onboarding capacity are constrained.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">3</div>
-                                    <div>
-                                        <div class="in-title">The status state ambiguity was only visible through follow-on component testing</div>
-                                        <div class="in-body">Users couldn't determine whether a file was uploading, processing, or ready for use. The issue was invisible in Phase 1 concept evaluation. It only surfaced through targeted component testing after the decision was made, demonstrating the value of following findings downstream past the initial decision point.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quote">
-                            <p>"I mean, ChatGPT operates the same way. It literally looks like this."</p>
-                            <cite>— Enterprise user, recognizing the Input Field pattern on first exposure</cite>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Navigating Competing Stakeholder Conviction</div>
-                            <div class="sth">
-                                <div class="sth-lbl">The challenge</div>
-                                <div class="sth-text">Both design camps had strong advocates. Positioning as an impartial data partner rather than an arbiter with a preference was a deliberate choice. Quantitative-first sequencing established a behavioral baseline before qualitative interpretation entered, reducing advocacy-driven reading of the qual findings.</div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Impact</div>
-                            <div class="impact-chips">
-                                <span class="ic">Input Field selected, code merged within sprint</span>
-                                <span class="ic">Zero post-merge bugs from attachment interaction</span>
-                                <span class="ic">Status ambiguity caught and resolved pre-merge</span>
-                                <span class="ic">UserZoom protocol adopted as team standard</span>
-                                <span class="ic">UI Kit updated via formal Change Request</span>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Reflection</div>
-                            <div class="reflect">
-                                <div class="reflect-title">Run Phase 2 in parallel rather than sequentially</div>
-                                <div class="reflect-body">Running component validation after the design decision introduced a small but real delay. In a faster sprint cycle, that gap creates risk. Running Phase 2 as a parallel track would have surfaced the status ambiguity earlier and given the design team more runway before code freeze.</div>
-                            </div>
-                        </div>
+                    <div class="cs-card-image">
+                        <img src="pic/joule-regenerate-menu.webp" alt="Joule AI assistant interface showing the proposed regenerate control" style="object-position:top" />
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- CS 05 - Voice Strategy (was CS01) -->
-            <div class="cs-card">
-                <div class="cs-top">
-                    <div class="cs-body">
-                        <div class="tags"><span class="tag t-blue">Foundational Research</span><span class="tag t-amber">Cross-org Alignment</span><span class="tag t-green">Completed</span></div>
-                        <div class="cs-num">05 · Joule Mobile Voice · Feb–May 2026</div>
-                        <div class="cs-title">Reframing "How do we build voice?" to "Where does voice earn its place?"</div>
-                        <div class="cs-hook">Voice development for Joule Mobile launched on executive enthusiasm without a validated user model. Before the investment compounded, I intervened to answer a more fundamental question: do enterprise users actually want voice, and if so, when? The research paused speculative builds and aligned three organizations on a shared criteria framework.</div>
-                        <div class="snapshot">
-                            <div class="snap">
-                                <div class="snap-lbl">Problem</div>
-                                <div class="snap-val">Three organizations were building toward voice without answering whether enterprise users would use it, or under what conditions it would add value rather than increase cognitive load.</div>
+            <!-- CS 04 — AV Hearing Impairment -->
+            <article class="cs-card">
+                <div class="cs-card-inner">
+                    <div class="cs-card-body">
+                        <div class="cs-tags">
+                            <span class="tag tag-blue">Human Factors</span>
+                            <span class="tag tag-amber">Controlled Experiment</span>
+                            <span class="tag tag-green">Accessibility</span>
+                        </div>
+                        <p class="cs-meta">04 · SJSU Human Factors Lab · 2024–2025 · NSF-funded · Published AutomotiveUI '24</p>
+                        <h3 class="cs-title">The driver no one had tested yet.</h3>
+                        <p class="cs-hook">Every AV takeover system I studied assumed the driver could hear. Nobody had tested what happens when they cannot. I ran the study: 42 participants, 18 conditions each, a driving simulator and two years of NSF-funded lab work. The finding that surprised me most: no significant performance gap between hearing and non-hearing groups when the interface is designed right.</p>
+                        <div class="cs-impact-row">
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">42</span>
+                                <span class="impact-label">participants · 18 conditions each</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">My Role</div>
-                                <div class="snap-val">Sole researcher across both phases. Independently identified the research gap, rewrote the brief, and ran the full study arc from scoping through stakeholder readout.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">1st</span>
+                                <span class="impact-label">study of its kind</span>
                             </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Methods</div>
-                                <div class="snap-val">Ph.1: JTBD framework · n=7 PM interviews · cross-org assumption mapping · Ph.2: n=15 contextual interviews across 7 job roles · criteria framework validation</div>
-                            </div>
-                            <div class="snap">
-                                <div class="snap-lbl">Outcome</div>
-                                <div class="snap-val">Speculative builds paused. Three orgs aligned on shared adoption criteria. Voice scoped to 2 of 7 job roles with validated high-fit use cases.</div>
+                            <div class="cs-impact-stat">
+                                <span class="impact-num">ACM</span>
+                                <span class="impact-label">published · Stanford 2024</span>
                             </div>
                         </div>
-                        <div class="cs-metrics">
-                            <div>
-                                <div class="cs-mn">22</div>
-                                <div class="cs-ml">Participants across both phases</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">3</div>
-                                <div class="cs-ml">Organizations aligned</div>
-                            </div>
-                            <div>
-                                <div class="cs-mn">2/7</div>
-                                <div class="cs-ml">Job roles with validated voice fit</div>
-                            </div>
-                        </div>
-                        <button class="exp-btn" onclick="toggle('d5',this)">Read full case study <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></button>
+                        <a href="cs04-av-hearing-impairment.html" class="cs-link">
+                            Read full case study
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
-                    <div class="cs-img"><img src="pic/1_Z9tcYm-1alsxK9JG_m7Msw.jpg" alt="Voice strategy research" /></div>
-                </div>
-                <div class="cs-detail" id="d5">
-                    <div class="cs-detail-inner">
-                        <div class="ns">
-                            <div class="ns-h">Context &amp; Research Opportunity</div>
-                            <p class="ns-p">SAP's AI-first strategy had generated executive momentum behind voice for Joule, serving 400K+ enterprise customers. The team moved from enthusiasm to engineering without pausing to answer a foundational question: do enterprise users actually want to use voice for work tasks, and when? Without that answer, three organizations were simultaneously building toward different, unvalidated user models.</p>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">The Reframe</div>
-                            <div class="reframe">
-                                <div class="rf-box">
-                                    <div class="rf-mark">Original brief</div>
-                                    <div class="rf-text">"How should we build Joule Voice?" This assumes voice is inherently valuable and leads directly to feature design.</div>
-                                </div>
-                                <div class="rf-arrow">→</div>
-                                <div class="rf-box after">
-                                    <div class="rf-mark">My reframe</div>
-                                    <div class="rf-text">"Where does voice earn its place in enterprise workflows?" This questions the premise and leads to investment strategy.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Research Design</div>
-                            <div class="two-col">
-                                <div class="ns-col">
-                                    <h4>Phase 1: Stakeholder alignment (n=7 PM interviews)</h4>
-                                    <ul class="ns-list">
-                                        <li>Semi-structured interviews with PM leads across AI, Voice, and Mobile orgs</li>
-                                        <li>JTBD framework: "When would an enterprise user hire voice over touch or keyboard?"</li>
-                                        <li>Cross-org assumption mapping to surface contradictions across teams</li>
-                                        <li>Thematic analysis and workflow mapping to identify where voice might earn adoption</li>
-                                    </ul>
-                                </div>
-                                <div class="ns-col">
-                                    <h4>Phase 2: End-user validation (n=15 interviews, 7 job roles)</h4>
-                                    <ul class="ns-list">
-                                        <li>Contextual interviews in field scenarios to test the criteria framework</li>
-                                        <li>Hands-occupied simulation and screen-free workflow tasks</li>
-                                        <li>Voice validated in 2 of 7 roles: field technician and warehouse operator</li>
-                                        <li>Remaining 5 roles cited task switching cost and multi-intent complexity as disqualifying factors</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Key Findings</div>
-                            <div class="insight-list">
-                                <div class="insight">
-                                    <div class="in-num">1</div>
-                                    <div>
-                                        <div class="in-title">Voice is situational. It earns adoption in hands-occupied, single-intent moments.</div>
-                                        <div class="in-body">High value was limited to contexts where hands were occupied and the task was simple and singular, such as a field technician logging a status update. Complex, multi-step workflows added cognitive load rather than reducing it.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">2</div>
-                                    <div>
-                                        <div class="in-title">The top barrier was cognitive load, not privacy. Consumer research didn't transfer.</div>
-                                        <div class="in-body">Existing literature predicted privacy concerns as the primary enterprise barrier to voice adoption. End users named cognitive load and workflow complexity instead. This mid-study divergence required recalibrating the criteria framework and reframing the product risk for stakeholders.</div>
-                                    </div>
-                                </div>
-                                <div class="insight">
-                                    <div class="in-num">3</div>
-                                    <div>
-                                        <div class="in-title">Three organizations were building toward three incompatible user models</div>
-                                        <div class="in-body">AI, Voice, and Mobile leads each held a different mental model of who would use voice and why. Surfacing these contradictions through cross-org assumption mapping was the prerequisite for alignment. Without it, each team would have optimized for a different user.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Influencing Without Authority</div>
-                            <div class="sth">
-                                <div class="sth-lbl">The challenge</div>
-                                <div class="sth-text">Executive enthusiasm and competitive pressure were driving the roadmap, not user evidence. Intervening before the study was complete required framing the research as investment risk mitigation rather than a gatekeeping exercise.</div>
-                            </div>
-                            <ul class="ns-list">
-                                <li>Rewrote the brief independently. This was not an assigned question. I identified the gap and made the case to pursue it</li>
-                                <li>Built a shared criteria framework adopted by all three org leads before end-user validation began</li>
-                                <li>Shifted leadership framing from "voice as an innovation signal" to "voice as a targeted investment with defined fit criteria"</li>
-                            </ul>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Impact</div>
-                            <div class="impact-chips">
-                                <span class="ic">Speculative voice builds paused</span>
-                                <span class="ic">Three orgs aligned on shared adoption criteria</span>
-                                <span class="ic">Roadmap reframed from feature delivery to investment strategy</span>
-                                <span class="ic">Voice scoped to 2 validated high-fit job roles</span>
-                            </div>
-                        </div>
-                        <div class="ns">
-                            <div class="ns-h">Reflection</div>
-                            <div class="reflect">
-                                <div class="reflect-title">Run a cross-org assumption workshop before individual PM interviews</div>
-                                <div class="reflect-body">The contradictions between organizations emerged gradually across individual interviews. A structured assumption-mapping session with all three org leads at the outset would have surfaced conflicts faster, made the reframe easier to socialize, and reduced the time spent reconstructing a shared picture from separate conversations.</div>
-                            </div>
-                        </div>
+                    <div class="cs-card-image">
+                        <img src="https://img.youtube.com/vi/5XM6ELdGQS8/maxresdefault.jpg" alt="Participant in miniSim driving simulator at SJSU Human Factors Lab" style="object-position:center" />
                     </div>
                 </div>
-            </div>
+            </article>
 
         </div>
     </section>
-
-    <hr class="divider" />
 
     <!-- ABOUT -->
-    <section class="section" id="about">
-        <p class="eyebrow">Background</p>
-        <h2 class="section-title">I think about where products break before they ship.</h2>
-        <div class="about-wrap">
-            <div class="about-body">
-                <p>My background is in <strong>Human Factors and Cognitive Science</strong>, fields built on the premise that systems fail in predictable ways when designed without accounting for how people actually behave. Before any study begins, I ask: what are we assuming about our users, and have we validated it?</p>
-                <p>I work closely with designers, PMs, and engineers throughout the process, not just at the readout. I write deliverables that help stakeholders make faster, better-calibrated decisions.</p>
-                <div class="skills-group">
-                    <div class="sg-label">Qualitative</div>
-                    <div class="sg-chips"><span class="sc">In-depth interviews</span><span class="sc">Usability
-                            testing</span><span class="sc">Workshop facilitation</span><span class="sc">Jobs to Be
-                            Done</span><span class="sc">Contextual inquiry</span><span class="sc">Diary studies</span>
-                    </div>
-                    <div class="sg-label">Quantitative</div>
-                    <div class="sg-chips"><span class="sc">A/B testing</span><span class="sc">Surveys &amp;
-                            MaxDiff</span><span class="sc">Pre/post benchmarking</span>
-                    </div>
-                    <div class="sg-label">Specialized</div>
-                    <div class="sg-chips"><span class="sc">Eye tracking · GSR · HRV · Motion capture</span><span
-                            class="sc">FDA usability (IEC 62366)</span><span class="sc">Dovetail</span></div>
-                </div>
+    <section class="section section-page" id="about">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="eyebrow">Background</p>
+                <h2 class="section-title">I think about where products break before they ship.</h2>
             </div>
-            <div>
-                <div class="tl-item">
-                    <div class="tl-spine">
-                        <div class="tl-dot"></div>
-                        <div class="tl-line"></div>
-                    </div>
-                    <div>
-                        <div class="tl-role">UX Researcher</div>
-                        <div class="tl-org">SAP · Joule Mobile + Design System + WalkMe</div>
-                        <div class="tl-meta">Jun 2025–Present · Palo Alto, CA</div>
-                    </div>
+            <div class="about-layout">
+                <div class="about-text-col">
+                    <p class="about-p">My background is in <strong>Human Factors and Cognitive Science</strong>, built on the premise that systems fail predictably when designed without accounting for how people actually behave. At SAP I research AI assistants, enterprise tools and in-product support for both business users and end customers. I'm in the room when product decisions are still in motion: challenging assumptions before the study starts, shaping what gets scoped and translating findings into requirements that land on the roadmap. Research I run has stopped features from shipping, redirected sprint scope and set requirements that became roadmap commitments.</p>
+                    <p class="about-p" style="margin-bottom:0"><strong>Methods:</strong> In-depth interviews · usability testing · contextual inquiry · log analysis · workshop facilitation · A/B testing · surveys · pre/post benchmarking · eye tracking · FDA usability (IEC 62366)</p>
                 </div>
-                <div class="tl-item">
-                    <div class="tl-spine">
-                        <div class="tl-dot"></div>
-                        <div class="tl-line"></div>
-                    </div>
-                    <div>
-                        <div class="tl-role">Human Factors Intern</div>
-                        <div class="tl-org">ClariMed · FDA-regulated medical devices</div>
-                        <div class="tl-meta">Jan–May 2025 · San Jose, CA</div>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-spine">
-                        <div class="tl-dot"></div>
-                        <div class="tl-line"></div>
-                    </div>
-                    <div>
-                        <div class="tl-role">Graduate Research Assistant</div>
-                        <div class="tl-org">SJSU · Autonomous systems · Human Machine Interaction</div>
-                        <div class="tl-meta">Sep 2023–May 2025 · San Jose, CA</div>
-                    </div>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-spine">
-                        <div class="tl-dot"></div>
-                    </div>
-                    <div>
-                        <div class="tl-role">Research Assistant</div>
-                        <div class="tl-org">University of California, Santa Cruz · Voice Assistants · Linguistics</div>
-                        <div class="tl-meta">Sep 2022–May 2023 · Santa Cruz, CA</div>
+
+                <div class="timeline-col">
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-spine">
+                                <div class="tl-dot tl-dot--current"></div>
+                                <div class="tl-line"></div>
+                            </div>
+                            <div class="tl-content">
+                                <div class="tl-role">UX Researcher</div>
+                                <div class="tl-org">SAP · Joule Mobile + Design System + WalkMe</div>
+                                <div class="tl-meta">Jun 2025–Present · Palo Alto, CA</div>
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-spine">
+                                <div class="tl-dot"></div>
+                                <div class="tl-line"></div>
+                            </div>
+                            <div class="tl-content">
+                                <div class="tl-role">Human Factors Intern</div>
+                                <div class="tl-org">ClariMed · FDA-regulated medical devices</div>
+                                <div class="tl-meta">Jan–May 2025 · San Jose, CA</div>
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-spine">
+                                <div class="tl-dot"></div>
+                                <div class="tl-line"></div>
+                            </div>
+                            <div class="tl-content">
+                                <div class="tl-role">Graduate Research Assistant</div>
+                                <div class="tl-org">SJSU · Autonomous systems · Human Machine Interaction</div>
+                                <div class="tl-meta">Sep 2023–May 2025 · San Jose, CA</div>
+                            </div>
+                        </div>
+                        <div class="tl-item tl-item--last">
+                            <div class="tl-spine">
+                                <div class="tl-dot"></div>
+                            </div>
+                            <div class="tl-content">
+                                <div class="tl-role">Research Assistant</div>
+                                <div class="tl-org">University of California, Santa Cruz · Voice Assistants · Linguistics</div>
+                                <div class="tl-meta">Sep 2021–May 2023 · Santa Cruz, CA</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr class="divider" />
+    <!-- PUBLICATIONS -->
+    <section class="section section-alt section-page" id="publications">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="eyebrow">Research</p>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-sub">Peer-reviewed work in human factors, automotive UI and voice assistants, focused on accessibility, multimodal displays and automated driving. Also writing on accessibility practice.</p>
+            </div>
+
+            <div class="pub-list">
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue">HFES Annual Meeting 2025</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">The Impact of Mental States, Scenarios, and Modalities on Informative Takeover Requests in Automated Driving</div>
+                    <div class="pub-authors">Wei-Hsiang Lo, Aries Chu, Yue Luo, Egbe-Etu Etu, Nada Attar, Guannan Liu, Gaojian Huang</div>
+                    <div class="pub-conf">Proceedings of the Human Factors and Ergonomics Society Annual Meeting · Vol. 69, No. 1 · pp. 1486–1493</div>
+                    <div class="pub-links">
+                        <a href="https://doi.org/10.1177/10711813251360008" target="_blank" rel="noopener" class="pub-link pub-link-doi">DOI: 10.1177/10711813251360008</a>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue">HFES Annual Meeting 2024</span>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">The Intersection of Voice Assistants and Autonomous Vehicles: A Scoping Review</div>
+                    <div class="pub-authors">Aries Chu, Gaojian Huang</div>
+                    <div class="pub-conf">Proceedings of the Human Factors and Ergonomics Society Annual Meeting · Vol. 68, No. 1 · pp. 1795–1801</div>
+                    <div class="pub-links">
+                        <a href="https://doi.org/10.1177/10711813241275908" target="_blank" rel="noopener" class="pub-link pub-link-doi">DOI: 10.1177/10711813241275908</a>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue">HFES Annual Meeting 2024</span>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">Assessing Meaningful Visual and Tactile Feedback for Effective Automated Vehicle Takeover by Hearing and Non-Hearing Drivers</div>
+                    <div class="pub-authors">Aries Chu, Wei-Hsiang Lo, Gaojian Huang</div>
+                    <div class="pub-conf">Proceedings of the Human Factors and Ergonomics Society Annual Meeting · Vol. 68, No. 1</div>
+                    <div class="pub-links">
+                        <a href="cs04-av-hearing-impairment.html" class="pub-link">Case study</a>
+                        <a href="https://doi.org/10.1177/10711813241268844" target="_blank" rel="noopener" class="pub-link pub-link-doi">DOI: 10.1177/10711813241268844</a>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue">AutomotiveUI Adjunct '24</span>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">Multimodal Feedback for Effective Takeover in Automated Vehicles for Hearing Impairment</div>
+                    <div class="pub-authors">Aries Chu, Wei-Hsiang Lo, Gaojian Huang</div>
+                    <div class="pub-conf">16th International Conference on Automotive User Interfaces and Interactive Vehicular Applications · Stanford, CA · Sep 22–25, 2024</div>
+                    <div class="pub-links">
+                        <a href="cs04-av-hearing-impairment.html" class="pub-link">Case study</a>
+                        <a href="https://doi.org/10.1145/3641308.3680515" target="_blank" rel="noopener" class="pub-link pub-link-doi">DOI: 10.1145/3641308.3680515</a>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue">IEEE IV 2024</span>
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <div class="pub-title">Mental States &amp; Machine: Enhancing Driver Engagement in Automated Vehicles for Safer Transitions</div>
+                    <div class="pub-authors">Wei-Hsiang Lo, Aries Chu, Yue Luo, Egbe-Etu Etu, Nada Attar, Gaojian Huang</div>
+                    <div class="pub-conf">IEEE Intelligent Vehicles Symposium · Jeju Island, Korea · 2024</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-venue" style="background:var(--md-secondary-container);color:var(--md-on-secondary-container)">Writing · Medium</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">From Extra to Essential: Rethinking Accessibility in Design and Research</div>
+                    <div class="pub-authors">Aries Chu</div>
+                    <div class="pub-conf">Bootcamp · Medium · September 16, 2025</div>
+                    <div class="pub-links">
+                        <a href="https://medium.com/design-bootcamp/from-extra-to-essential-rethinking-accessibility-in-design-and-research-45c07298c1be" target="_blank" rel="noopener" class="pub-link">Read on Medium</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CONTACT -->
-    <div class="contact-bg" id="contact">
+    <section class="contact-section" id="contact">
         <div class="contact-inner">
-            <div>
-                <p class="eyebrow">Let's work together</p>
-                <h2 class="section-title">Open to UXR roles</h2>
-                <p class="section-sub" style="margin-bottom:0">Enterprise AI · Mobile · Human Factors<br>San Jose, CA. Open to remote and hybrid.</p>
+            <div class="contact-text">
+                <p class="eyebrow eyebrow--light">Let's work together</p>
+                <h2 class="contact-title">Open to UXR roles</h2>
+                <p class="contact-sub">AI products · Enterprise · Human Factors<br>San Jose, CA, open to remote and hybrid.</p>
             </div>
-            <div class="contact-links">
-                <a href="mailto:arieschu44@gmail.com" class="contact-card">                    <div class="contact-icon"><svg viewBox="0 0 24 24">
+            <div class="contact-cards">
+                <a href="mailto:arieschu44@gmail.com" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                             <polyline points="22,6 12,13 2,6" />
-                        </svg></div>
-                    <div>
-                        <div class="contact-lbl">Email</div>
-                        <div class="contact-val">arieschu44@gmail.com</div>
+                        </svg>
+                    </div>
+                    <div class="contact-card-text">
+                        <div class="contact-card-label">Email</div>
+                        <div class="contact-card-value">arieschu44@gmail.com</div>
                     </div>
                 </a>
                 <a href="files/resume.pdf" class="contact-card">
-                    <div class="contact-icon"><svg viewBox="0 0 24 24">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                             <line x1="16" y1="13" x2="8" y2="13" />
                             <line x1="16" y1="17" x2="8" y2="17" />
-                        </svg></div>
-                    <div>
-                        <div class="contact-lbl">Resume</div>
-                        <div class="contact-val">Download PDF →</div>
+                        </svg>
+                    </div>
+                    <div class="contact-card-text">
+                        <div class="contact-card-label">Resume</div>
+                        <div class="contact-card-value">Download PDF →</div>
                     </div>
                 </a>
-
+                <a href="https://www.linkedin.com/in/aries-chu/" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </div>
+                    <div class="contact-card-text">
+                        <div class="contact-card-label">LinkedIn</div>
+                        <div class="contact-card-value">linkedin.com/in/aries-chu</div>
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <footer>
+    <footer class="site-footer">
         <p>Aries Chu · UX Researcher · San Jose, CA · 2026</p>
     </footer>
 
-    <script>
-        function toggle(id, btn) {
-            var el = document.getElementById(id);
-            var open = el.classList.toggle('open');
-            btn.classList.toggle('open', open);
-            btn.childNodes[0].textContent = open ? 'Collapse ' : 'Read full case study ';
-            if (open) setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
-        }
-    </script>
 </body>
 
 </html>
